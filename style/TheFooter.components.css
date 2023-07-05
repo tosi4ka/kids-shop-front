@@ -1,0 +1,19 @@
+footer {
+	background-color: rgb(179, 165, 165);
+	display: flex;
+	justify-content: space-around;
+	border-top: 2px solid black;
+}
+ul {
+	padding: 0 auto 0 auto;
+}
+li {
+	list-style-type: none;
+}
+h2 {
+	display: flex;
+	justify-content: center;
+}
+Link {
+	color: black;
+}
