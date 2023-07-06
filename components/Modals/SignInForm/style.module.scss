@@ -1,0 +1,38 @@
+.main {
+    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fade-animation 900ms ease 1 normal both;
+    background-color: #fff;
+    padding: 40px;
+    -webkit-box-shadow: 10px 4px 19px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 4px 19px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 4px 19px 0px rgba(0, 0, 0, 0.75);
+    z-index: 2;
+
+    .btn_close {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 30px;
+        height: 30px;
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+}
+
+@keyframes fade-animation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
