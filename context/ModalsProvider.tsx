@@ -7,6 +7,8 @@ type contextData = {
 	RegistrationModalChangeVisibility: (message: boolean) => void
 	signIn: boolean
 	SignInModalChangeVisibility: (message: boolean) => void
+	userName?: string,
+	setUserName: (message: string) => void
 }
 
 export const ModalsContext = createContext<contextData | null>(null)
@@ -19,6 +21,7 @@ export const ModalsProvider = ({ children }: { children: React.ReactNode }) => {
 	const [registration, setRegistration] =
 		useState(false)
 	const [signIn, setSignIn] = useState(false)
+	const [userName, setUserName] = useState("")
 
 	function turnOnScroll() {
 		document.body.className = ''
@@ -52,7 +55,9 @@ export const ModalsProvider = ({ children }: { children: React.ReactNode }) => {
 				registration,
 				RegistrationModalChangeVisibility,
 				signIn,
-				SignInModalChangeVisibility
+				SignInModalChangeVisibility,
+				setUserName,
+				userName
 			}}
 		>
 			{children}

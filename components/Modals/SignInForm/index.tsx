@@ -37,6 +37,10 @@ const SignIn = () => {
 				if (data.detail) {
 					setError(data)
 				}
+				modals?.setUserName(values.username)
+				setTimeout(() => {
+					modals?.SignInModalChangeVisibility(false)
+				}, 2000)
 			})
 		}
 	})
@@ -50,29 +54,41 @@ const SignIn = () => {
 					gap: '10px'
 				}}
 			>
-				<div>
-					<input
-						type='text'
-						onChange={formik.handleChange}
-						value={formik.values.username}
-						name='username'
-						placeholder='Username *'
-					/>
-				</div>
-				<div>
-					<input
-						type='password'
-						onChange={formik.handleChange}
-						value={formik.values.password}
-						name='password'
-						placeholder='Password *'
-					/>
-				</div>
-				{error?.detail ? <span>{error.detail}</span> : null}
-				<button type='submit'>Отправить</button>
-				<div onClick={handleCloseModal} className={style.btn_close}>
-					X
-				</div>
+				{' '}
+				{modals?.userName ? (
+					<span>Вы успешно вошли как {modals?.userName}</span>
+				) : (
+					<>
+						<div>
+							<input
+								type='text'
+								onChange={formik.handleChange}
+								value={formik.values.username}
+								name='username'
+								placeholder='Username *'
+							/>
+						</div>
+						<div style={{ display: 'flex', flexDirection: 'column' }}>
+							<input
+								type='password'
+								onChange={formik.handleChange}
+								value={formik.values.password}
+								name='password'
+								placeholder='Password *'
+							/>
+							{error?.detail ? (
+								<span style={{ color: 'red', fontSize: '10px' }}>
+									{error.detail}
+								</span>
+							) : null}
+						</div>
+
+						<button type='submit'>Отправить</button>
+						<div onClick={handleCloseModal} className={style.btn_close}>
+							X
+						</div>
+					</>
+				)}
 			</form>
 		</div>
 	)
