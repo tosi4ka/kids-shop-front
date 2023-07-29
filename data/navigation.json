@@ -1,0 +1,37 @@
+{
+	"header": {
+		"leftLinks": [
+			{
+				"text": "Допомога",
+				"link": "/help"
+			},
+			{
+				"text": "Дівчатам",
+				"link": "/girls"
+			},
+			{
+				"text": "Хлопччикам",
+				"link": "/boys"
+			}
+		]
+	},
+	"subHeader": [
+		{
+			"text": "Нові надходження",
+			"link": "/new-arrivals"
+		},
+		{
+			"text": "Розпродаж",
+			"link": "/sale"
+		},
+		{
+			"text": "Бонусная програма",
+			"link": "/bonus-program"
+		},
+		{
+			"text": "Є речі я зких виросли?",
+			"link": "/grew-up-with",
+			"icon": true
+		}
+	]
+}

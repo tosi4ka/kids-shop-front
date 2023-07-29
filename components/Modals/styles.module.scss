@@ -1,0 +1,109 @@
+.modal_background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .4);
+    overflow: hidden;
+}
+
+.sign_in_modal {
+    position: absolute;
+    top: 0;
+    right: -530px;
+    width: 530px;
+    height: 100vh;
+    background-color: #fff;
+    transition: right 1s ease;
+
+    .modal__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 40px;
+        background-color: #F4F5F6;
+
+        .header_title {
+            color: #000;
+            text-align: center;
+            font-family: var(--font-Manrope);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .modal__close_icon {
+            cursor: pointer;
+            transition: all .3s ease;
+
+            &:hover {
+                transform: rotate(90deg);
+
+                g {
+                    opacity: .7
+                }
+            }
+        }
+    }
+
+    .modal__tabs {
+
+        padding: 32px 40px;
+
+        .modal__tabs_wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+
+
+            .modal__tab {
+                padding: 7px 0;
+                position: relative;
+                flex: 0 0 50%;
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+                text-align: center;
+                font-family: var(--font-Manrope);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+
+                &:hover {
+                    color: #236CF8;
+                }
+            }
+
+            .modal__tab_active {
+                color: #236CF8;
+            }
+        }
+
+        .tab_underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab_underline_active {
+            background-color: #236CF8;
+        }
+    }
+}
+
+.sign_in_modal_open {
+    right: 0px;
+}
+
+.form_wrapper {
+    padding: 0 40px;
+}

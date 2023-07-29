@@ -1,0 +1,85 @@
+.agreement_wrapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .agreement_block {
+        display: flex;
+        gap: 12px;
+
+        .checkbox {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .checkbox_label {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            user-select: none;
+            cursor: pointer;
+
+            .remember_me_text {
+                color: #000;
+                font-family: var(--font-Manrope);
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+
+                a {
+                    color: #236CF8;
+                    text-decoration: none;
+                }
+            }
+
+            &::before {
+                content: '';
+                box-sizing: border-box;
+                display: block;
+                width: 24px;
+                height: 24px;
+                flex-shrink: 0;
+                flex-grow: 0;
+                border: 1px solid #adb5bd;
+                border-radius: 2px;
+            }
+        }
+
+        .checkbox_label_error {
+            &::before {
+                border: 1px solid #F20;
+            }
+        }
+
+        .checkbox:checked+.checkbox_label::before {
+            width: 24px;
+            height: 24px;
+            background-size: cover;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M18 8.3999L10.4 16.7999L6 12.7499' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        }
+    }
+
+    .reset_password_text {
+        color: #236CF8;
+        text-align: right;
+        font-family: var(--font-Manrope);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        cursor: pointer;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #236CF8;
+        }
+    }
+}

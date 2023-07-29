@@ -7,6 +7,9 @@ import style from './style.module.scss'
 import { validate } from '@/components/functions/validate'
 import { signIn } from '@/components/functions'
 import { useModals } from '@/context/ModalsProvider'
+import Input from '../Input'
+import Button from '../Button'
+import Checkbox from '../Checkbox'
 
 type SignInErrorsTypes = {
 	detail: string
@@ -16,16 +19,11 @@ const SignIn = () => {
 	const [error, setError] = useState<SignInErrorsTypes | null>(null)
 	const modals = useModals()
 
-	const handleCloseModal = () => {
-		modals?.SignInModalChangeVisibility
-			? modals?.SignInModalChangeVisibility(false)
-			: modals?.RegistrationModalChangeVisibility(false)
-	}
-
 	const formik = useFormik({
 		initialValues: {
 			username: '',
-			password: ''
+			password: '',
+			agreement: true
 		},
 		validate,
 		onSubmit: values => {
@@ -45,52 +43,39 @@ const SignIn = () => {
 		}
 	})
 	return (
-		<div className={style.main}>
-			<form
-				onSubmit={formik.handleSubmit}
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					gap: '10px'
-				}}
-			>
-				{' '}
+		<>
+			<span className={style.form__title}>
+				Будь-ласка, введіть дані свого облікового запису:
+			</span>
+			<form onSubmit={formik.handleSubmit} className={style.sign_in__form}>
 				{modals?.userName ? (
 					<span>Вы успешно вошли как {modals?.userName}</span>
 				) : (
 					<>
-						<div>
-							<input
-								type='text'
-								onChange={formik.handleChange}
-								value={formik.values.username}
-								name='username'
-								placeholder='Username *'
-							/>
-						</div>
-						<div style={{ display: 'flex', flexDirection: 'column' }}>
-							<input
-								type='password'
-								onChange={formik.handleChange}
-								value={formik.values.password}
-								name='password'
-								placeholder='Password *'
-							/>
-							{error?.detail ? (
-								<span style={{ color: 'red', fontSize: '10px' }}>
-									{error.detail}
-								</span>
-							) : null}
-						</div>
-
-						<button type='submit'>Отправить</button>
-						<div onClick={handleCloseModal} className={style.btn_close}>
-							X
-						</div>
+						<Input
+							title='Логін*'
+							error={error?.detail as string}
+							type='text'
+							handleChange={formik.handleChange}
+							values={formik.values.username}
+							name='username'
+							// placeholder='Username *'
+						/>
+						<Input
+							title='Пароль*'
+							error={error?.detail as string}
+							type='password'
+							handleChange={formik.handleChange}
+							values={formik.values.password}
+							name='password'
+							// placeholder='Password *'
+						/>
+						<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль'/>
+						<Button text='Увійти'/>
 					</>
 				)}
 			</form>
-		</div>
+		</>
 	)
 }
 

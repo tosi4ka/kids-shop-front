@@ -1,0 +1,27 @@
+.header__slider {
+    margin: 0 auto;
+    background-color: #DDEEBB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header__slider_slide {
+        padding: 10px 0;
+        text-align: center;
+        background-color: #DDEEBB;
+        color: #808080;
+        font-family: var(--font-Manrope);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+}
+
+.arrow {
+    transition: all .4s ease;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}

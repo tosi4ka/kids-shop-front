@@ -7,10 +7,15 @@ import { registration } from '../../functions'
 import { validate } from '../../functions/validate'
 import { useModals } from '@/context/ModalsProvider'
 import { useState } from 'react'
+import Input from '../Input'
+import Button from '../Button'
+import Checkbox from '../Checkbox'
+import Link from 'next/link'
 
 type SignInErrorsTypes = {
 	email: string[]
 	username?: string[]
+	password: string
 }
 
 const RegistrationModal = () => {
@@ -18,17 +23,12 @@ const RegistrationModal = () => {
 	const [successRef, setSuccessRef] = useState(false)
 	const modals = useModals()
 
-	const handleCloseModal = () => {
-		modals?.RegistrationModalChangeVisibility
-			? modals?.RegistrationModalChangeVisibility(false)
-			: modals?.SignInModalChangeVisibility(false)
-	}
-
 	const formik = useFormik({
 		initialValues: {
 			username: '',
 			email: '',
-			password: ''
+			password: '',
+			agreement: true
 		},
 		validate,
 		onSubmit: values => {
@@ -46,104 +46,83 @@ const RegistrationModal = () => {
 				}
 				setSuccessRef(true)
 				console.log(data)
-				setTimeout(() => {
-					modals?.RegistrationModalChangeVisibility(false)
-				}, 3000)
 			})
 		}
 	})
 	return (
-		<div className={style.main}>
+		<>
 			{successRef ? (
 				<span>
 					Вы успешно зарегестрировались. <br />
-					Мы отправили Вам на указанную почту {formik.values.email} письмо с подтверждение регестрации.
+					Мы отправили Вам на указанную почту {formik.values.email} письмо с
+					подтверждение регистрации.
 				</span>
 			) : (
-				<form
-					onSubmit={formik.handleSubmit}
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						gap: '10px'
-					}}
-				>
-					<div
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							color: 'red',
-							fontSize: '12px'
-						}}
+				<>
+					<span className={style.form__title}>
+						Будь-ласка, заповніть усі поля нижче:
+					</span>
+					<form
+						onSubmit={formik.handleSubmit}
+						className={style.registration__form}
 					>
-						<input
-							type='email'
-							onChange={formik.handleChange}
-							value={formik.values.email}
-							id='email'
+						<Input
+							error={(formik.errors.email as string) || (error?.email as any)}
+							handleChange={formik.handleChange}
 							name='email'
-							placeholder='Email *'
+							title='Електронна пошта *'
+							type='email'
+							values={formik.values.email as string}
 						/>
-						{formik.errors.email || error?.email ? (
-							<span>{formik.errors.email || error?.email}</span>
-						) : null}
-					</div>
-					<div
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							color: 'red',
-							fontSize: '12px'
-						}}
-					>
-						<input
-							type='text'
-							onChange={formik.handleChange}
-							value={formik.values.username}
-							id='username'
+						<Input
+							error={
+								(formik.errors.username as string) || (error?.username as any)
+							}
+							handleChange={formik.handleChange}
 							name='username'
-							placeholder='Username *'
+							title='Логін *'
+							type='text'
+							values={formik.values.username}
 						/>
-						{formik.errors.username || error?.username ? (
-							<span>{formik.errors.username || error?.username}</span>
-						) : null}
-					</div>
-					<div>
-						<input
-							type='password'
-							onChange={formik.handleChange}
-							value={formik.values.password}
-							id='password'
+						<Input
+							error={
+								(formik.errors.password as string) || (error?.password as any)
+							}
+							handleChange={formik.handleChange}
 							name='password'
-							placeholder='Password *'
+							title='Пароль *'
+							type='password'
+							values={formik.values.password}
 						/>
-						{formik.errors.password ? (
-							<span>{formik.errors.password}</span>
-						) : null}
-					</div>
-					<div>
-						<input
-							type='text'
-							id='first_name'
+						<Input
+							error={formik.errors.first_name as string}
+							handleChange={formik.handleChange}
 							name='first_name'
-							placeholder='First Name'
-						/>
-					</div>
-					<div>
-						<input
+							title='Ім’я'
 							type='text'
-							id='last_name'
-							name='last_name'
-							placeholder='Last Name'
+							values={formik.values.first_name as string}
 						/>
-					</div>
-					<button type='submit'>Отправить</button>
-					<div onClick={handleCloseModal} className={style.btn_close}>
-						X
-					</div>
-				</form>
+						<Input
+							error={formik.errors.last_name as string}
+							handleChange={formik.handleChange}
+							name='last_name'
+							title='Прізвище '
+							type='text'
+							values={formik.values.last_name as string}
+						/>
+						<Checkbox
+							text={
+								<>
+									*Реєструючись, я приймаю умови публічної <Link href="#">оферти</Link> та надаю згоду
+									на <Link href="#">обробку персональних даних.</Link>
+								</>
+							}
+						/>
+						<Button text='Зареєструватися' />
+					</form>
+				</>
 			)}
-		</div>
+		</>
 	)
 }
 

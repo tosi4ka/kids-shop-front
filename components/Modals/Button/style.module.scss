@@ -1,0 +1,23 @@
+.form_button {
+    margin-top: 20px;
+    color: rgba(0, 0, 0, .6);
+    text-align: center;
+    font-family: var(--font-Manrope);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 15px 0;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    background: #CFFCCF;
+    outline: none;
+    border: 0;
+    transition: all .3s ease;
+
+    &:hover {
+        color: rgba(0, 0, 0, 1);
+        background: #9be79b;
+    }
+}

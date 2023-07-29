@@ -3,11 +3,18 @@ import { Metadata } from 'next'
 import { ModalsProvider } from '../context/ModalsProvider'
 import Layout from '@/Layout'
 import style from './page.module.scss'
+import { Manrope } from 'next/font/google'
 
 export const metadata: Metadata = {
 	title: 'Lama Shop',
 	description: 'Магазин детской одежды и аксесуаров'
 }
+
+const manrope = Manrope({
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-Manrope'
+})
 
 export default function RootLayout({
 	children
@@ -15,13 +22,17 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang='ua' suppressHydrationWarning={true}>
+		<html
+			lang='ua'
+			suppressHydrationWarning={true}
+			className={manrope.className}
+		>
 			<body suppressHydrationWarning={true}>
-				<ModalsProvider>
-					<Layout>
-						<main className={style.main}>{children}</main>
-					</Layout>
-				</ModalsProvider>
+				<main className={style.main}>
+					<ModalsProvider>
+						<Layout>{children}</Layout>
+					</ModalsProvider>
+				</main>
 			</body>
 		</html>
 	)

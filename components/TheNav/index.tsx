@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import '../style/TheNav.components.css'
+// import '../style/TheNav.components.css'
 
 const TheNav = () => {
 	return (

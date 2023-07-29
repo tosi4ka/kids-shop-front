@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import '../style/TheFooter.components.css'
+// import './style.module.scss'
 
 const TheFooter = () => {
 	return (

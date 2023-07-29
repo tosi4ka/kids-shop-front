@@ -3,8 +3,8 @@
 import { useContext, useState, createContext } from 'react'
 
 type contextData = {
-	registration: boolean
-	RegistrationModalChangeVisibility: (message: boolean) => void
+	// registration: boolean
+	// RegistrationModalChangeVisibility: (message: boolean) => void
 	signIn: boolean
 	SignInModalChangeVisibility: (message: boolean) => void
 	userName?: string,
@@ -52,8 +52,8 @@ export const ModalsProvider = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<ModalsContext.Provider
 			value={{
-				registration,
-				RegistrationModalChangeVisibility,
+				// registration,
+				// RegistrationModalChangeVisibility,
 				signIn,
 				SignInModalChangeVisibility,
 				setUserName,
