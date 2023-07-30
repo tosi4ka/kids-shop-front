@@ -44,7 +44,7 @@ const SubHeader = ({
 							type='text'
 							placeholder='я шукаю'
 						/>
-						<div className={style.search_input_icon}>
+						{/* <div className={style.search_input_icon}>
 							<svg
 								width='36'
 								height='36'
@@ -60,7 +60,7 @@ const SubHeader = ({
 									strokeLinejoin='round'
 								/>
 							</svg>
-						</div>
+						</div> */}
 					</div>
 				</label>
 			</nav>

@@ -20,11 +20,11 @@
 
             .list_item {
                 a {
-                    color: #302C2C;
+                    color: #000;
                     font-size: 16px;
                     line-height: 26px;
                     font-style: normal;
-                    font-weight: 400;
+                    font-weight: 600;
                     letter-spacing: -0.356px;
                     text-decoration: none;
                 }
@@ -53,6 +53,11 @@
                 display: flex;
                 align-items: center;
                 cursor: pointer;
+                color: #000;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 14px;
 
                 .list_item_icon {
                     path {

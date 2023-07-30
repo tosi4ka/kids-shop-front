@@ -2,15 +2,11 @@
 	"header": {
 		"leftLinks": [
 			{
-				"text": "Допомога",
-				"link": "/help"
-			},
-			{
 				"text": "Дівчатам",
 				"link": "/girls"
 			},
 			{
-				"text": "Хлопччикам",
+				"text": "Хлопчикам",
 				"link": "/boys"
 			}
 		]

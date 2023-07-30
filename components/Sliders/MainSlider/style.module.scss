@@ -1,0 +1,71 @@
+@import '../../../style/mixins.scss';
+
+.main_page_slider {
+    padding: 24px 0 64px 0;
+
+    .content {
+        @include container;
+        display: flex;
+
+        border-radius: 30px;
+        overflow: hidden;
+
+        .left_panel {
+            background-color: #BFC9C1;
+            padding: 64px 58px 0 58px;
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+
+
+            .panel_title {
+                color: #000;
+                text-align: center;
+                font-family: var(--font-Manrope);
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+        }
+
+        .slider {
+            width: 876px;
+            height: 620px;
+            position: relative;
+            cursor: grab;
+
+            .upper_slidew_wrapper {
+                display: flex;
+                border-radius: 30px;
+                overflow: hidden;
+            }
+
+            .NextArrow {
+                position: absolute;
+                padding: 4px 2px;
+                top: 50%;
+                right: 0;
+                cursor: pointer;
+                z-index: 2;
+                background-color: rgb(255, 255, 255);
+                border-radius: 100px 0 0 100px;
+            }
+
+            .PrevArrow {
+                position: absolute;
+                padding: 4px 2px;
+                top: 50%;
+                left: -324px;
+                cursor: pointer;
+                z-index: 2;
+                background-color: rgb(255, 255, 255);
+                border-radius: 0 100px 100px 0;
+            }
+        }
+    }
+
+    .miniSlider {
+        padding: 64px 0 64px 0;
+    }
+}

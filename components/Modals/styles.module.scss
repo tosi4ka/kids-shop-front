@@ -6,6 +6,7 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, .4);
     overflow: hidden;
+    z-index: 9;
 }
 
 .sign_in_modal {
@@ -16,6 +17,7 @@
     height: 100vh;
     background-color: #fff;
     transition: right 1s ease;
+    z-index: 10;
 
     .modal__header {
         display: flex;

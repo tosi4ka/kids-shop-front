@@ -1,10 +1,10 @@
-import Layout from '@/Layout'
+import '../style/globals.scss'
 import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import { Providers } from '../components/SocProviders/Provider'
 import { ModalsProvider } from '../context/ModalsProvider'
-import '../style/globals.css'
 import style from './page.module.scss'
+import Layout from '@/Layout'
 
 export const metadata: Metadata = {
 	title: 'Lama Shop',
@@ -29,13 +29,11 @@ export default function RootLayout({
 			className={manrope.className}
 		>
 			<body suppressHydrationWarning={true}>
-				<main className={style.main}>
 					<Providers>
 						<ModalsProvider>
 							<Layout>{children}</Layout>
 						</ModalsProvider>
 					</Providers>
-				</main>
 			</body>
 		</html>
 	)

@@ -1,0 +1,44 @@
+.mini__slider_wrapper {
+    background-color: #DDEEBB;
+
+    .mini__slider {
+        width: 700px;
+        margin: 0 auto;
+
+        .mini__slider_slide {
+            padding: 10px 0;
+            text-align: center;
+            background-color: #DDEEBB;
+            color: #808080;
+            font-family: var(--font-Manrope);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+}
+
+.nextArrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.prevArrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.arrow {
+    transition: all .4s ease;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
