@@ -1,9 +1,10 @@
-import '../style/globals.css'
-import { Metadata } from 'next'
-import { ModalsProvider } from '../context/ModalsProvider'
 import Layout from '@/Layout'
-import style from './page.module.scss'
+import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
+import { Providers } from '../components/SocProviders/Provider'
+import { ModalsProvider } from '../context/ModalsProvider'
+import '../style/globals.css'
+import style from './page.module.scss'
 
 export const metadata: Metadata = {
 	title: 'Lama Shop',
@@ -29,9 +30,11 @@ export default function RootLayout({
 		>
 			<body suppressHydrationWarning={true}>
 				<main className={style.main}>
-					<ModalsProvider>
-						<Layout>{children}</Layout>
-					</ModalsProvider>
+					<Providers>
+						<ModalsProvider>
+							<Layout>{children}</Layout>
+						</ModalsProvider>
+					</Providers>
 				</main>
 			</body>
 		</html>

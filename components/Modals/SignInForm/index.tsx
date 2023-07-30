@@ -3,13 +3,15 @@
 import { useFormik } from 'formik'
 import { useState } from 'react'
 
-import style from './style.module.scss'
-import { validate } from '@/components/functions/validate'
 import { signIn } from '@/components/functions'
+import { validate } from '@/components/functions/validate'
 import { useModals } from '@/context/ModalsProvider'
-import Input from '../Input'
 import Button from '../Button'
 import Checkbox from '../Checkbox'
+import { FacebookButton } from '../FacebookSignIn'
+import { GoogleButton } from '../GoogleSignIn'
+import Input from '../Input'
+import style from './style.module.scss'
 
 type SignInErrorsTypes = {
 	detail: string
@@ -70,11 +72,18 @@ const SignIn = () => {
 							name='password'
 							// placeholder='Password *'
 						/>
-						<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль'/>
-						<Button text='Увійти'/>
+						<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль' />
+						<Button text='Увійти' />
 					</>
 				)}
 			</form>
+			<div className={style.social__sign_in}>
+				<span className={style.social__title}>або за допомогою</span>
+				<div className={style.social__button}>
+					<FacebookButton />
+					<GoogleButton />
+				</div>
+			</div>
 		</>
 	)
 }
