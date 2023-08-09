@@ -1,5 +1,5 @@
 'use client'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import ProfileItem from './ProfileItem'
@@ -8,6 +8,7 @@ import style from './style.module.scss'
 const ProfileMenu = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const router = useRouter()
+	const session = useSession()
 
 	const toggleOpen = useCallback(() => {
 		setIsOpen(value => !value)
@@ -16,7 +17,9 @@ const ProfileMenu = () => {
 	return (
 		<div>
 			<div className={style.WrapperMenu}>
-				<div onClick={toggleOpen} className={style.TextWrap}></div>
+				<div onClick={toggleOpen} className={style.TextWrap}>
+					{session.data.user?.name}
+				</div>
 			</div>
 			{isOpen && (
 				<div className={style.MenuOpen}>
