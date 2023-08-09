@@ -3,7 +3,7 @@
 import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
-import img from '../../../public/icons/Facebook.svg'
+import img from '../../../public/icons/fecebook_vektor.svg'
 import style from './style.module.scss'
 
 const FacebookButton = () => {
@@ -12,10 +12,10 @@ const FacebookButton = () => {
 
 	return (
 		<div
-			onClick={() => signIn('facebook', { callbackUrl })}
 			className={style.facebook__button}
+			onClick={() => signIn('facebook', { callbackUrl })}
 		>
-			<Image src={img} alt='facebook' />
+			<Image src={img} alt='facebook' className={style.facebook__img} />
 		</div>
 	)
 }

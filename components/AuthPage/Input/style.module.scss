@@ -1,0 +1,54 @@
+.input_label {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+
+	.input_title {
+		color: #000;
+		font-family: var(--font-Manrope);
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		opacity: 0.6;
+	}
+
+	.input {
+		border: 1px solid #d9d9d9;
+		padding: 14px 12px;
+		margin-bottom: 0.75rem;
+
+		&::placeholder {
+			color: #000;
+			font-family: var(--font-Manrope);
+			font-size: 12px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			opacity: 0.6;
+		}
+
+		&:focus {
+			border-color: #236cf8;
+			outline: none;
+		}
+	}
+
+	.input_error {
+		border: 1px solid #f20;
+	}
+
+	.input_error_message {
+		position: absolute;
+		bottom: -5px;
+		right: 0;
+		color: #f20;
+		text-align: right;
+		font-family: var(--font-Manrope);
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
+}

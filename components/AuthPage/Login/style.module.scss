@@ -1,0 +1,45 @@
+.form__title {
+	font-size: 24px;
+	font-weight: 500;
+	align-items: center;
+	padding-bottom: 2rem;
+}
+.signin__button {
+	margin-top: 2rem;
+}
+.social__sign_in {
+	margin-top: 1.5rem;
+	.social__title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 24px;
+		letter-spacing: 2px;
+		word-spacing: 10px;
+		color: #7f7c83;
+	}
+	.social__button {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+		margin-top: 1.5rem;
+	}
+}
+
+.pass__wrap {
+	input {
+		display: relative;
+	}
+	.eye__button {
+		position: absolute;
+		right: 44.5%;
+		top: 40.2%;
+		display: block;
+		z-index: 99999999;
+		cursor: pointer;
+		width: 35px;
+		height: 40px;
+	}
+}

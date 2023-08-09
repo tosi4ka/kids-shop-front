@@ -134,11 +134,9 @@ const TheHeader = () => {
 									/>
 								</svg>
 								<ProfileMenu />
-								{session.data.user?.name}{' '}
-								{/* ==не ловит имя акаунта(поправлю)== */}
+								{session.data.user?.name}
 							</li>
 						)}
-						
 					</ul>
 				</nav>
 			</div>

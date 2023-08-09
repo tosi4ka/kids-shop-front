@@ -1,9 +1,9 @@
 'use client'
 
 import { useFormik } from 'formik'
-import { useState } from 'react'
+import { signIn } from 'next-auth/react'
+import { FormEventHandler, useState } from 'react'
 
-import { signIn } from '@/components/functions'
 import { validate } from '@/components/functions/validate'
 import { useModals } from '@/context/ModalsProvider'
 import Button from '../Button'
@@ -28,28 +28,37 @@ const SignIn = () => {
 			agreement: true
 		},
 		validate,
-		onSubmit: values => {
-			const value = {
-				username: values.username,
-				password: values.password
-			}
-			signIn(value).then(data => {
-				if (data.detail) {
-					setError(data)
-				}
-				modals?.setUserName(values.username)
+		onSubmit: () => {}
+	})
+
+	const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
+		event.preventDefault()
+
+		const formData = new FormData(event.currentTarget)
+
+		const res = await signIn('credentials', {
+			username: formData.get('username'),
+			password: formData.get('password'),
+			redirect: false
+		})
+
+		if (res && !res.error) {
+			// router.push('/profile')                         // работает но пока нето имя выводит
+			modals?.setUserName(),
 				setTimeout(() => {
 					modals?.SignInModalChangeVisibility(false)
-				}, 2000)
-			})
+				}, 0)
+		} else {
+			console.log(res)
 		}
-	})
+	}
+
 	return (
 		<>
 			<span className={style.form__title}>
 				Будь-ласка, введіть дані свого облікового запису:
 			</span>
-			<form onSubmit={formik.handleSubmit} className={style.sign_in__form}>
+			<form onSubmit={handleSubmit} className={style.sign_in__form}>
 				{modals?.userName ? (
 					<span>Вы успешно вошли как {modals?.userName}</span>
 				) : (

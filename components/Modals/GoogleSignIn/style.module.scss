@@ -1,8 +1,8 @@
-.facebook__button {
+.google__button {
 	width: 3.6rem;
 	height: 3.6rem;
+	margin-left: 2rem;
 	border-radius: 9999999px;
-	margin-right: 2rem;
 	transition-property: color, background-color, border-color,
 		text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
 		backdrop-filter;
@@ -10,7 +10,7 @@
 	transition-duration: 150ms;
 	cursor: pointer;
 }
-.facebook__button:hover {
+.google__button:hover {
 	width: 3.6rem;
 	height: 3.6rem;
 	border: 1px solid #e5e5e6;
@@ -19,8 +19,8 @@
 	border-radius: 9999999px;
 	background-color: #eff7de;
 }
-.facebook__img {
+.google__img {
 	position: relative;
 	top: 0.8rem;
-	left: 1.25rem;
+	left: 0.85rem;
 }

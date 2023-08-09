@@ -1,5 +1,5 @@
 const Girl = () => {
-	return <h1>GIRLS!!!!!!!!!</h1>
+	return <i>SOON!!!!!!!!!!!!!!!!!!</i>
 }
 
 export default Girl
