@@ -29,13 +29,11 @@
 }
 
 .pass__wrap {
-	input {
-		display: relative;
-	}
+	position: relative;
 	.eye__button {
 		position: absolute;
-		right: 44.5%;
-		top: 40.2%;
+		right: 4.5%;
+		top: 30.6%;
 		display: block;
 		z-index: 99999999;
 		cursor: pointer;

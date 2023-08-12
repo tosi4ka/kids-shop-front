@@ -31,7 +31,6 @@ const TheHeader = () => {
 	}
 
 	const session = useSession()
-	console.log(session)
 
 	const { header, subHeader } = navigationData
 	return (
@@ -134,7 +133,6 @@ const TheHeader = () => {
 									/>
 								</svg>
 								<ProfileMenu />
-								{session.data.user?.name}
 							</li>
 						)}
 					</ul>
