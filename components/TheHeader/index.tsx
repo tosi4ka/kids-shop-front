@@ -36,7 +36,7 @@ const TheHeader = () => {
 	const { header, subHeader } = navigationData
 	return (
 		<header className={style.header}>
-			<MiniSlider data={headerSliderText} slideToShow={1} />
+			<MiniSlider data={headerSliderText} slideToShow={1} style='header'/>
 			<div className={style.header__wrapper}>
 				<nav className={style.header__nav}>
 					<ul className={style.header__nav_list}>

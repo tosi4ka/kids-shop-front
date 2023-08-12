@@ -1,0 +1,179 @@
+@import '../../style/mixins.scss';
+
+.filter {
+    position: relative;
+    background: #EFF7DE url('/MainPage/MainFilter/upperWave.svg') 0 0 / 56px 10.5px repeat-x;
+    padding: 63px 0 93px 0;
+
+    &::after {
+        content: "";
+        background: #EFF7DE url('/MainPage/MainFilter/upperWave.svg') 0 0 / 56px 10.5px repeat-x;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: rotate(180deg);
+        height: 10.4px;
+        width: 100%;
+    }
+
+
+    .content {
+        @include container;
+
+        .title_wrapp {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 147px;
+
+            .title {
+                color: #211818;
+                font-family: var(--font-Manrope);
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+
+            .tabs_wrapper {
+                display: flex;
+                border-radius: 24px;
+                background-color: #DEDEDE;
+                box-shadow: 0px 5px 20px 0px rgba(18, 2, 47, 0.10);
+                max-width: 242px;
+
+                .tab {
+                    color: #969595;
+                    text-align: center;
+                    font-family: var(--font-Manrope);
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 171.429%;
+                    letter-spacing: -0.3px;
+                    border-radius: 24px;
+                    background: #DEDEDE;
+                    padding: 11px 45px;
+                    cursor: pointer;
+                    transition: color .4s ease;
+
+                    &:hover {
+                        color: #000;
+                    }
+                }
+
+                .active_tab {
+                    background: #FFF;
+                    color: #000;
+                }
+            }
+        }
+
+        .filters_wrapp {
+            margin-top: 61px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 147px;
+
+            .filters_cells_wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+
+                .filter_cell {
+                    cursor: pointer;
+                    border-radius: 32px;
+                    color: #08070D;
+                    font-family: var(--font-Manrope);
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                    padding: 45px 0;
+                    text-align: center;
+                    transition: all .3s ease;
+                    will-change: transform;
+
+                    &:hover {
+                        transform: scale(1.02);
+                        box-shadow: 0px 5px 20px 0px rgba(18, 2, 47, 0.20);
+                    }
+                }
+
+                .for_girls {
+                    background-color: #E5B7C0;
+                }
+
+                .for_boys {
+                    background-color: #B7D4E5;
+                }
+            }
+
+            .age_picker_wrapp {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+
+                .main_cyrcle {
+                    border-radius: 200px;
+                }
+
+                .filter_cell {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 52px;
+                    height: 52px;
+                    background-color: #FBFDF7;
+                    border-radius: 100px;
+                    color: #211818;
+                    text-align: center;
+                    font-family: var(--font-Manrope);
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    cursor: pointer;
+                    transition: all .4s ease;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+
+                    &:hover {
+                        color: #fff;
+                        background-color: #8B86BE;
+                        box-shadow: 0px 5px 20px 0px rgba(18, 2, 47, 0.10);
+                    }
+                }
+
+                .cell_0_2 {
+                    transform: translate(-445%, 0%);
+                }
+
+                .cell_3_4 {
+                    transform: translate(-390%, -200%);
+                }
+
+                .cell_5_7 {
+                    transform: translate(-250%, -330%);
+                }
+
+                .cell_8_11 {
+                    transform: translate(-50%, -390%);
+                }
+
+                .cell_12_14 {
+                    transform: translate(150%, -330%);
+                }
+
+                .cell_14 {
+                    transform: translate(290%, -200%);
+                }
+            }
+        }
+    }
+
+}

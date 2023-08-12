@@ -1,0 +1,17 @@
+@import '../../style/mixins.scss';
+
+.main_page_slider {
+    padding: 24px 0 0 0;
+
+    .content {
+        @include container;
+        display: flex;
+
+        border-radius: 30px;
+        overflow: hidden;
+    }
+
+    .miniSlider {
+        padding: 64px 0 64px 0;
+    }
+}

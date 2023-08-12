@@ -413,4 +413,38 @@ $slick-opacity-not-active: 0.25 !default;
 		}
 	}
 }
+
 /* ========= End Main Slider ========= */
+
+.card__slider {
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+
+
+	.slick-slider {
+		height: auto;
+		width: 100%;
+	}
+
+	.slick-slide {
+		padding: 0;
+	}
+
+	.slick-slide:last-child {
+		margin-right: 0;
+	}
+
+	.slick-list {
+		z-index: 5;
+		height: auto;
+		width: 100%;
+		overflow: visible;
+		overflow-x: clip; 
+	}
+
+	.slick-track {
+		display: flex;
+		gap: 24px;
+	}
+}

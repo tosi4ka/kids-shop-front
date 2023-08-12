@@ -1,0 +1,59 @@
+@import '../../style/mixins.scss';
+
+.main {
+    padding: 27px 0 34px 0;
+    background-color: #EFF7DE;
+
+    .content_wrapp {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 127px;
+        @include container;
+
+        .image_block {
+            position: relative;
+            height: 282px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            margin-top: 37px;
+
+            .title {
+                color: #000;
+                font-family: var(--font-Manrope);
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+
+            .text {
+                margin-top: 24px;
+                color: #000;
+                font-family: var(--font-Manrope);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            .email_input {
+                padding: 12px 20px 13px 20px;
+                border-radius: 100px;
+                border: 1px solid #8B86BE;
+                background: #F5F5F5 url('/icons/Arrow.svg') top 50% right 20px no-repeat;
+                color: #B3B3B3;
+                font-family: var(--font-Manrope);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 130%;
+                margin-top: 20px;
+                max-width: 201px;
+                /* 20.8px */
+            }
+        }
+    }
+}

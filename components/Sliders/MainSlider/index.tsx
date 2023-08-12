@@ -3,12 +3,10 @@ import Slider from 'react-slick'
 
 import style from './style.module.scss'
 import { useState } from 'react'
-import MiniSlider from '../MiniSlider'
 
 interface MainSliderProps {
 	data: dataProps[]
 	lamaImg: StaticImageData
-	miniSliderData: dataProps[]
 }
 
 type dataProps = {
@@ -90,24 +88,19 @@ const MainSlider: React.FC<MainSliderProps> = props => {
 	}
 
 	return (
-		<section className={style.main_page_slider}>
-			<div className={style.content}>
-				<div className={style.left_panel}>
-					<h3 className={style.panel_title}>{props.data[activeSlide].text}</h3>
-					<Image src={props.lamaImg} alt='Lama image' />
-				</div>
-				<div className={`${style.slider} main-slider`}>
-					<Slider {...settings}>
-						{props.data.map((item, index) => (
-							<Image src={item.image} alt='slide' height={620} key={index} />
-						))}
-					</Slider>
-				</div>
+		<>
+			<div className={style.left_panel}>
+				<h3 className={style.panel_title}>{props.data[activeSlide].text}</h3>
+				<Image src={props.lamaImg} alt='Lama image' />
 			</div>
-			<div className={style.miniSlider}>
-				<MiniSlider data={props.miniSliderData} slideToShow={2}/>
+			<div className={`${style.slider} main-slider`}>
+				<Slider {...settings}>
+					{props.data.map((item, index) => (
+						<Image src={item.image} alt='slide' height={620} key={index} />
+					))}
+				</Slider>
 			</div>
-		</section>
+		</>
 	)
 }
 

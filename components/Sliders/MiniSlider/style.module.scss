@@ -1,4 +1,6 @@
-.mini__slider_wrapper {
+@import '../../../style/mixins.scss';
+
+.header__slider_wrapper {
     background-color: #DDEEBB;
 
     .mini__slider {
@@ -17,28 +19,75 @@
             line-height: normal;
         }
     }
+
+    .nextArrow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .prevArrow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .arrow {
+        transition: all .4s ease;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
 }
 
-.nextArrow {
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    z-index: 2;
-}
+.mini__slider_wrapper {
+    background-color: #ffffff;
+    @include container;
 
-.prevArrow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    z-index: 2;
-}
+    .mini__slider {
+        padding: 0 20px;
+        width: 100%;
+        margin: 0 auto;
 
-.arrow {
-    transition: all .4s ease;
+        .mini__slider_slide {
+            padding: 10px 0;
+            text-align: center;
+            background-color: #ffffff;
+            color: #808080;
+            font-family: var(--font-Manrope);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
 
-    &:hover {
-        transform: scale(1.2);
+    .nextArrow {
+        position: absolute;
+        top: 0;
+        right: -40px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .prevArrow {
+        position: absolute;
+        top: 0;
+        left: -40px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .arrow {
+        transition: all .4s ease;
+
+        &:hover {
+            transform: scale(1.2);
+        }
     }
 }

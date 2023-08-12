@@ -29,5 +29,103 @@
 			"link": "/grew-up-with",
 			"icon": true
 		}
-	]
+	],
+	"footer": {
+		"help": [
+			{
+				"text": "Доставка і оплата",
+				"link": "/"
+			},
+			{
+				"text": "Обмін та повернення",
+				"link": "/"
+			},
+			{
+				"text": "Таблиці розмірів",
+				"link": "/"
+			},
+			{
+				"text": "Бонусна програма",
+				"link": "/"
+			}
+		],
+		"often_searched": [
+			{
+				"text": "Дівчаткам",
+				"link": "/girls"
+			},
+			{
+				"text": "Хлопчикам",
+				"link": "/boys"
+			},
+			{
+				"text": "Одяг",
+				"link": "/"
+			},
+			{
+				"text": "Взуття",
+				"link": "/"
+			},
+			{
+				"text": "Шкільна форма",
+				"link": "/girls"
+			},
+			{
+				"text": "Бренди",
+				"link": "/boys"
+			},
+			{
+				"text": "Чоловічки",
+				"link": "/"
+			},
+			{
+				"text": "Крижми",
+				"link": "/"
+			},
+			{
+				"text": "Повзунки",
+				"link": "/boys"
+			},
+			{
+				"text": "Чепчики",
+				"link": "/"
+			},
+			{
+				"text": "Одяг для Хрещення",
+				"link": "/"
+			}
+		],
+		"socials": [
+			{
+				"icon": "/icons/tiktok.svg",
+				"link" : "/"
+			},
+			{
+				"icon": "/icons/instagram.svg",
+				"link" : "/"
+			},
+			{
+				"icon": "/icons/footer facebook.svg",
+				"link" : "/"
+			}
+		],
+		"payments": [
+			{
+				"icon": "/icons/visa.svg",
+				"link" : "/"
+			},
+			{
+				"icon": "/icons/mastercard.svg",
+				"link" : "/"
+			},
+			{
+				"icon": "/icons/apple pay.svg",
+				"link" : "/"
+			},
+			{
+				"icon": "/icons/google pay.svg",
+				"link" : "/"
+			}
+		]
+	}
 }

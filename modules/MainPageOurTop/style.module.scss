@@ -1,0 +1,15 @@
+@import '../../style/mixins.scss';
+
+.main {
+    @include container;
+    padding: 130px 0 64px 0;
+
+    .title {
+        color: #211818;
+        font-family: var(--font-Manrope);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}

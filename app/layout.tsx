@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const manrope = Manrope({
 	subsets: ['latin'],
 	display: 'swap',
+	weight: ['400', '500', '600', '700'],
 	variable: '--font-Manrope'
 })
 
@@ -29,11 +30,11 @@ export default function RootLayout({
 			className={manrope.className}
 		>
 			<body suppressHydrationWarning={true}>
-					<Providers>
-						<ModalsProvider>
-							<Layout>{children}</Layout>
-						</ModalsProvider>
-					</Providers>
+				<Providers>
+					<ModalsProvider>
+						<Layout>{children}</Layout>
+					</ModalsProvider>
+				</Providers>
 			</body>
 		</html>
 	)

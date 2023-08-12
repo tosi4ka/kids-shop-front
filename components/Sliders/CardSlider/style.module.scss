@@ -1,0 +1,37 @@
+@import '../../../style/mixins.scss';
+
+.cards__slider_wrapper {
+    margin-top: 63.5px;
+}
+
+.prevArrow {
+    position: absolute;
+    top: -101px;
+    right: 68px;
+    display: grid;
+    place-content: center;
+    padding: 2px 4px;
+    background-color: #F5F5F5;
+    border-radius: 24px 0 0 24px;
+    width: 48px;
+
+    &:hover {
+        background-color: #DEE4DF;
+    }
+}
+
+.nextArrow {
+    position: absolute;
+    top: -101px;
+    right: 20px;
+    display: grid;
+    place-content: center;
+    padding: 2px 4px;
+    background-color: #F5F5F5;
+    border-radius: 0 24px 24px 0;
+    width: 48px;
+
+    &:hover {
+        background-color: #DEE4DF;
+    }
+}
