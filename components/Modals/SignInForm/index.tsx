@@ -44,7 +44,7 @@ const SignIn = () => {
 
 		if (res && !res.error) {
 			// router.push('/profile')                         // работает но пока нето имя выводит
-			modals?.setUserName(),
+			modals?.setUserName(''),
 				setTimeout(() => {
 					modals?.SignInModalChangeVisibility(false)
 				}, 0)

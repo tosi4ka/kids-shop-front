@@ -1,56 +1,58 @@
 @import '../../style/mixins.scss';
 
 .main {
-    padding: 27px 0 34px 0;
-    background-color: #EFF7DE;
+    margin: 158px 0 158px 0;
+    background-color: #FBF3E9;
 
     .content_wrapp {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 3fr 1fr;
         gap: 127px;
         @include container;
+        padding: 32px 0;
 
         .image_block {
             position: relative;
-            height: 282px;
+            height: 226px;
+            width: 226px;
         }
 
         .content {
             display: flex;
             flex-direction: column;
-            margin-top: 37px;
+            margin-top: 26px;
 
             .title {
-                color: #000;
-                font-family: var(--font-Manrope);
-                font-size: 24px;
+                color: #080709;
+                font-family: var(--font-Montserrat);
+                font-size: 36px;
                 font-style: normal;
-                font-weight: 700;
-                line-height: normal;
+                font-weight: 500;
+                line-height: 44px;
             }
 
             .text {
-                margin-top: 24px;
-                color: #000;
-                font-family: var(--font-Manrope);
-                font-size: 16px;
+                margin-top: 32px;
+                color: #7F7C83;
+                font-family: var(--font-Montserrat);
+                font-size: 18px;
                 font-style: normal;
-                font-weight: 400;
-                line-height: normal;
+                font-weight: 500;
+                line-height: 28px;
             }
 
             .email_input {
+                margin-top: 20px;
                 padding: 12px 20px 13px 20px;
                 border-radius: 100px;
                 border: 1px solid #8B86BE;
                 background: #F5F5F5 url('/icons/Arrow.svg') top 50% right 20px no-repeat;
                 color: #B3B3B3;
-                font-family: var(--font-Manrope);
+                font-family: var(--font-Montserrat);
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 500;
-                line-height: 130%;
-                margin-top: 20px;
+                line-height: 24px;
                 max-width: 201px;
                 /* 20.8px */
             }

@@ -1,7 +1,7 @@
 @import '../../../style/mixins.scss';
 
 .header__slider_wrapper {
-    background-color: #DDEEBB;
+    background-color: #F0D2AC;
 
     .mini__slider {
         width: 700px;
@@ -10,9 +10,9 @@
         .mini__slider_slide {
             padding: 10px 0;
             text-align: center;
-            background-color: #DDEEBB;
+            background-color: #F0D2AC;
             color: #808080;
-            font-family: var(--font-Manrope);
+            font-family: var(--font-Montserrat);
             font-size: 14px;
             font-style: normal;
             font-weight: 600;
@@ -59,7 +59,7 @@
             text-align: center;
             background-color: #ffffff;
             color: #808080;
-            font-family: var(--font-Manrope);
+            font-family: var(--font-Montserrat);
             font-size: 14px;
             font-style: normal;
             font-weight: 600;

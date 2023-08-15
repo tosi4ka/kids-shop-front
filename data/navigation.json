@@ -31,6 +31,13 @@
 		}
 	],
 	"footer": {
+		"contacts": {
+			"adress": "Київ, вул. Димитрівська 112/2",
+			"schedule": "Пн-Сб 09:00-19:00",
+			"dayOff": "Неділя - вихідний",
+			"phone": "0800-353-55-88",
+			"email": "lamastore@lama.com"
+		},
 		"help": [
 			{
 				"text": "Доставка і оплата",
@@ -98,33 +105,33 @@
 		"socials": [
 			{
 				"icon": "/icons/tiktok.svg",
-				"link" : "/"
+				"link": "/"
 			},
 			{
 				"icon": "/icons/instagram.svg",
-				"link" : "/"
+				"link": "/"
 			},
 			{
-				"icon": "/icons/footer facebook.svg",
-				"link" : "/"
+				"icon": "/icons/Facebook.svg",
+				"link": "/"
 			}
 		],
 		"payments": [
 			{
 				"icon": "/icons/visa.svg",
-				"link" : "/"
+				"link": "/"
 			},
 			{
 				"icon": "/icons/mastercard.svg",
-				"link" : "/"
+				"link": "/"
 			},
 			{
 				"icon": "/icons/apple pay.svg",
-				"link" : "/"
+				"link": "/"
 			},
 			{
 				"icon": "/icons/google pay.svg",
-				"link" : "/"
+				"link": "/"
 			}
 		]
 	}

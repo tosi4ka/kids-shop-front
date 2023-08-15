@@ -12,6 +12,11 @@ const Page: React.FC<PageProps> = props => {
 	return (
 		<section className={style.main}>
 			<div className={style.content_wrapp}>
+				<div className={style.content}>
+					<h2 className={style.title}>{props.title}</h2>
+                    <span className={style.text}>{props.text}</span>
+                    <input className={style.email_input} type="email" placeholder={props.placeholderText}/>
+				</div>
 				<div className={style.image_block}>
 					<Image
 						src={props.image}
@@ -20,11 +25,6 @@ const Page: React.FC<PageProps> = props => {
 						sizes='100vw'
 						style={{ objectFit: 'contain' }}
 					/>
-				</div>
-				<div className={style.content}>
-					<h2 className={style.title}>{props.title}</h2>
-                    <span className={style.text}>{props.text}</span>
-                    <input className={style.email_input} type="email" placeholder={props.placeholderText}/>
 				</div>
 			</div>
 		</section>

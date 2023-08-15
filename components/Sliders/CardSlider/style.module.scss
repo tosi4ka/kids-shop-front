@@ -1,7 +1,7 @@
 @import '../../../style/mixins.scss';
 
 .cards__slider_wrapper {
-    margin-top: 63.5px;
+    margin-top: 54px;
 }
 
 .prevArrow {
@@ -11,12 +11,13 @@
     display: grid;
     place-content: center;
     padding: 2px 4px;
-    background-color: #F5F5F5;
+    background-color: #FCFBFE;
     border-radius: 24px 0 0 24px;
-    width: 48px;
+    transition: background-color .4s ease;
 
     &:hover {
-        background-color: #DEE4DF;
+        transition: background-color .4s ease;
+        background-color: #E5E5E6;
     }
 }
 
@@ -27,11 +28,13 @@
     display: grid;
     place-content: center;
     padding: 2px 4px;
-    background-color: #F5F5F5;
+    background-color: #FCFBFE;
     border-radius: 0 24px 24px 0;
-    width: 48px;
+    transition: background-color .4s ease;
 
     &:hover {
-        background-color: #DEE4DF;
+        transition: background-color .4s ease;
+        background-color: #E5E5E6;
+        ;
     }
 }

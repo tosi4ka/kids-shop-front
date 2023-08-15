@@ -21,6 +21,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				offresData={offresData}
 				logo={logoIcon}
 				navigationLinksData={navigationLinksData}
+				payments={navigationsData.footer.payments}
 			/>
 		</>
 	)
@@ -49,7 +50,9 @@ const offresData = [
 
 const navigationLinksData = [
 	{
-		title: 'Наші контакти'
+		title: 'Наші контакти',
+		contacts: navigationsData.footer.contacts,
+		socials: navigationsData.footer.socials
 	},
 	{
 		title: 'Допомога',
@@ -58,10 +61,5 @@ const navigationLinksData = [
 	{
 		title: 'Часто шукають',
 		linksData: navigationsData.footer.often_searched
-	},
-	{
-		title: 'Наші соц мережі',
-		socials: navigationsData.footer.socials,
-		payments: navigationsData.footer.payments
 	}
 ]

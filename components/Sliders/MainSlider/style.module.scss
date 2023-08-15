@@ -1,5 +1,5 @@
 .left_panel {
-    background-color: #BFC9C1;
+    background-color: #FAF6FD;
     padding: 64px 58px 0 58px;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@
     .panel_title {
         color: #000;
         text-align: center;
-        font-family: var(--font-Manrope);
+        font-family: var(--font-Montserrat);
         font-size: 24px;
         font-style: normal;
         font-weight: 700;
@@ -36,7 +36,7 @@
         right: 0;
         cursor: pointer;
         z-index: 2;
-        background-color: rgb(255, 255, 255);
+        background-color: #E5E5E6;
         border-radius: 100px 0 0 100px;
     }
 
@@ -47,7 +47,7 @@
         left: -324px;
         cursor: pointer;
         z-index: 2;
-        background-color: rgb(255, 255, 255);
+        background-color: #E5E5E6;
         border-radius: 0 100px 100px 0;
     }
 }

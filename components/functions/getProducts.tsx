@@ -1,6 +1,6 @@
 const getProducts = async () => {
 	try {
-		const response = await fetch('http://localhost:8000/api/products/?limit=10&offset=10', {
+		const response = await fetch('http://localhost:8000/api/top/', {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json',

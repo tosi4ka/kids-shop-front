@@ -1,24 +1,24 @@
 @import '../../style/mixins.scss';
 
 .main {
-    padding: 96px 0;
+    padding: 158px 0 0 0;
     @include container;
 
     .title {
         color: #121212;
-        font-family: var(--font-Manrope);
-        font-size: 24px;
+        font-family: var(--font-Montserrat);
+        font-size: 36px;
         font-style: normal;
-        font-weight: 700;
-        line-height: normal;
+        font-weight: 500;
+        line-height: 44px
     }
 
     .content_wrapp {
-        margin-top: 56px;
+        margin-top: 52px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 24px;
-        
+
 
         .cell {
             cursor: pointer;
@@ -34,18 +34,18 @@
 
             .cell_title {
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
                 gap: 8px;
                 border-radius: 0px 0px 24px 24px;
-                background: #DEB;
-                padding: 8px 0 8px 24px;
+                background: #FAF6FD;
+                padding: 16px 10px 16px 24px;
                 color: #08070D;
-                font-family: var(--font-Manrope);
-                font-size: 14px;
+                font-family: var(--font-Montserrat);
+                font-size: 18px;
                 font-style: normal;
-                font-weight: 400;
-                line-height: 150%;
-                letter-spacing: 0.28px;
+                font-weight: 500;
+                line-height: 28px;
             }
         }
     }

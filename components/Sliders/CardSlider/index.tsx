@@ -11,6 +11,10 @@ interface HeaderSliderProps {
 	data: Array<{
 		product_images?: StaticImageData[]
 		age: number
+		brand: {
+			id: number
+			name: string
+		}
 		category: {
 			id: number
 			name: string
@@ -22,6 +26,11 @@ interface HeaderSliderProps {
 		name: string
 		price: number
 		rating: number
+		is_sale: boolean
+		discount?: {
+			id: number
+			name: number
+		}
 	}>
 	slideToShow: number
 }
@@ -78,8 +87,8 @@ const NextArrow: React.FC<ArrowProps> = props => {
 
 const MiniSlider: React.FC<HeaderSliderProps> = props => {
 	let settings = {
-		autoplay: true,
-		autoplaySpeed: 10000,
+		// autoplay: true,
+		// autoplaySpeed: 10000,
 		infinite: true,
 		speed: 500,
 		slidesToShow: props.slideToShow,
@@ -102,6 +111,10 @@ const MiniSlider: React.FC<HeaderSliderProps> = props => {
 								rating={item.rating}
 								key={index}
 								stars_Icon={startIcon}
+								brand={item.brand.name}
+								color={item.color}
+								is_sale={item.is_sale}
+								discout={item.discount?.name}
 							/>
 						))}
 				</Slider>

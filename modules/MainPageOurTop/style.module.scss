@@ -2,14 +2,14 @@
 
 .main {
     @include container;
-    padding: 130px 0 64px 0;
+    padding: 158px 0 0 0;
 
     .title {
-        color: #211818;
-        font-family: var(--font-Manrope);
-        font-size: 24px;
+        color: #080709;
+        font-family: var(--font-Montserrat);
+        font-size: 36px;
         font-style: normal;
-        font-weight: 700;
-        line-height: normal;
+        font-weight: 500;
+        line-height: 44px;
     }
 }

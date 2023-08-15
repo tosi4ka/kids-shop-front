@@ -1,7 +1,7 @@
 @import '../../style/mixins.scss';
 
 .header {
-    background-color: #EFF7DE;
+    background-color: #FBF3E9;
 }
 
 .header__wrapper {
@@ -21,6 +21,7 @@
             .list_item {
                 a {
                     color: #000;
+                    font-family: var(--font-Montserrat);
                     font-size: 16px;
                     line-height: 26px;
                     font-style: normal;
@@ -54,10 +55,11 @@
                 align-items: center;
                 cursor: pointer;
                 color: #000;
+                font-family: var(--font-Montserrat);
                 font-size: 16px;
                 font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
+                font-weight: 500;
+                line-height: 24px;
 
                 .list_item_icon {
                     path {
@@ -88,8 +90,6 @@
         }
     }
 }
-
-
 
 .userInfo {
     position: absolute;

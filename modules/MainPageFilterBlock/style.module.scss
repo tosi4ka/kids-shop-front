@@ -2,110 +2,153 @@
 
 .filter {
     position: relative;
-    background: #EFF7DE url('/MainPage/MainFilter/upperWave.svg') 0 0 / 56px 10.5px repeat-x;
-    padding: 63px 0 93px 0;
-
-    &::after {
-        content: "";
-        background: #EFF7DE url('/MainPage/MainFilter/upperWave.svg') 0 0 / 56px 10.5px repeat-x;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        transform: rotate(180deg);
-        height: 10.4px;
-        width: 100%;
-    }
+    padding: 94px 0 0 0;
 
 
     .content {
         @include container;
 
-        .title_wrapp {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 147px;
-
-            .title {
-                color: #211818;
-                font-family: var(--font-Manrope);
-                font-size: 24px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: normal;
-            }
-
-            .tabs_wrapper {
-                display: flex;
-                border-radius: 24px;
-                background-color: #DEDEDE;
-                box-shadow: 0px 5px 20px 0px rgba(18, 2, 47, 0.10);
-                max-width: 242px;
-
-                .tab {
-                    color: #969595;
-                    text-align: center;
-                    font-family: var(--font-Manrope);
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 171.429%;
-                    letter-spacing: -0.3px;
-                    border-radius: 24px;
-                    background: #DEDEDE;
-                    padding: 11px 45px;
-                    cursor: pointer;
-                    transition: color .4s ease;
-
-                    &:hover {
-                        color: #000;
-                    }
-                }
-
-                .active_tab {
-                    background: #FFF;
-                    color: #000;
-                }
-            }
+        .title {
+            color: #211818;
+            font-family: var(--font-Montserrat);
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
         }
 
         .filters_wrapp {
-            margin-top: 61px;
+            margin-top: 62px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 147px;
+            grid-template-columns: 0.9fr 1fr;
+            gap: 90px;
 
-            .filters_cells_wrapper {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 24px;
+            .gender_and_categories_filter_wrap {
+                display: flex;
+                flex-direction: column;
 
-                .filter_cell {
-                    cursor: pointer;
-                    border-radius: 32px;
-                    color: #08070D;
-                    font-family: var(--font-Manrope);
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: normal;
-                    padding: 45px 0;
-                    text-align: center;
-                    transition: all .3s ease;
-                    will-change: transform;
+                .tabs_block {
+                    display: grid;
+                    grid-template-columns: 0.4fr 1fr 0.4fr;
+                    align-items: center;
+                    gap: 12px;
 
-                    &:hover {
-                        transform: scale(1.02);
-                        box-shadow: 0px 5px 20px 0px rgba(18, 2, 47, 0.20);
+                    .growth_text {
+                        color: #7F7C83;
+                        font-family: var(--font-Montserrat);
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 28px;
+                        text-align: center;
                     }
                 }
 
-                .for_girls {
-                    background-color: #E5B7C0;
+                .filters_cells_wrapper {
+                    margin-top: 36px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 24px;
+
+                    .filter_cell {
+                        cursor: pointer;
+                        border-radius: 20px;
+                        color: #08070D;
+                        background-color: #fff;
+                        border: 1px solid #CCCACD;
+                        font-family: var(--font-Montserrat);
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 16px;
+                        padding: 28px 0;
+                        text-align: center;
+                        transition: all .3s ease;
+                        will-change: transform;
+                        outline: 0;
+                        transition: border .4s ease;
+
+                        &:hover {
+                            transition: border .2s ease;
+                            border: 1px solid #CD9EFF;
+                        }
+
+                        &:active {
+                            border: 1px solid #A663EE;
+                        }
+                    }
+
+                    .filter_cell_active {
+                        border: 1px solid #CD9EFF;
+                        background: #FAF6FD
+                    }
+
+                    .filter_cell_nonactive {
+                        border: 1px solid #E5E5E6;
+                        color: #99969C;
+                    }
                 }
 
-                .for_boys {
-                    background-color: #B7D4E5;
+                .button_wrapp {
+                    margin-top: 64px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 45px;
+
+                    .button {
+                        display: block;
+                        box-sizing: border-box;
+                        padding: 19px 41.5px;
+                        border-radius: 100px;
+                        background: #E5E5E6;
+                        color: #7F7C83;
+                        font-family: var(--font-Montserrat);
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 18px;
+                        outline: 0;
+                        border: none;
+                        transition: all .4s ease;
+                        border: 2px solid #E5E5E6;
+                    }
+
+                    .button_active {
+                        transition: all .4s ease;
+                        cursor: pointer;
+                        background-color: #CD9EFF;
+                        color: #080709;
+                        border: 2px solid #CD9EFF;
+
+                        &:hover {
+                            transition: all .4s ease;
+                            background-color: #A663EE;
+                            border: 2px solid #A663EE;
+                        }
+
+                        &:active {
+                            border: 2px solid #A663EE;
+                            background-color: #CD9EFF;
+                        }
+                    }
+
+                    .reset_filters {
+                        color: #7F7C83;
+                        text-align: center;
+                        font-family: var(--font-Montserrat);
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 24px;
+                        transition: color .4s ease;
+
+                        &:hover {
+                            transition: color .4s ease;
+                            cursor: pointer;
+                            color: #080709;
+                        }
+                    }
                 }
             }
 
@@ -116,64 +159,126 @@
                 align-items: center;
                 justify-content: flex-end;
 
-                .main_cyrcle {
-                    border-radius: 200px;
+                .age_picker_text {
+                    margin: 32px 0 13px 0;
+                    color: #7F7C83;
+                    font-family: var(--font-Montserrat);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 28px;
                 }
 
-                .filter_cell {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    width: 52px;
-                    height: 52px;
-                    background-color: #FBFDF7;
-                    border-radius: 100px;
-                    color: #211818;
-                    text-align: center;
-                    font-family: var(--font-Manrope);
-                    font-size: 12px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                    cursor: pointer;
-                    transition: all .4s ease;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
+                .age_picker {
+                    position: relative;
 
-                    &:hover {
-                        color: #fff;
-                        background-color: #8B86BE;
-                        box-shadow: 0px 5px 20px 0px rgba(18, 2, 47, 0.10);
+                    .main_cyrcle {
+                        border-radius: 200px;
+                        overflow: hidden;
+                        position: relative;
+
+                        .cyrcle_text {
+                            position: absolute;
+                            top: 50%;
+                            left: 65%;
+                            color: #7F7C83;
+                            font-family: var(--font-Montserrat);
+                            font-size: 18px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 28px;
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                    .filter_cell {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        width: 52px;
+                        height: 52px;
+                        background-color: #fff;
+                        border-radius: 100px;
+                        border: 1px solid #CCCACD;
+                        color: #211818;
+                        text-align: center;
+                        font-family: var(--font-Montserrat);
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 16px;
+                        cursor: pointer;
+                        transition: all .4s ease;
+                        position: absolute;
+
+                        &:hover {
+                            border: 1px solid #FBBBD7;
+                            background: #FBE9F1;
+                        }
+                    }
+
+                    .filter_cell_active_boys {
+                        background-color: #BFCCF8;
+                        border: 1px solid #BFCCF8;
+
+                        &:hover {
+                            border: 1px solid #BFCCF8;
+                            background: #EBEEFA;
+                        }
+                    }
+
+                    .filter_cell_active_girls {
+                        background-color: #FBBBD7;
+                        border: 1px solid #FBBBD7;
+
+                        &:hover {
+                            border: 1px solid #FBBBD7;
+                            background: #FBE9F1;
+                        }
+                    }
+
+                    .cell_0_2 {
+                        top: 130px;
+                        left: -80px;
+                    }
+
+                    .cell_3_4 {
+                        top: 45px;
+                        left: -62px;
+                    }
+
+                    .cell_5_7 {
+                        top: -25px;
+                        left: -10px;
+                    }
+
+                    .cell_8_11 {
+                        top: -70px;
+                        left: 64px;
+                    }
+
+                    .cell_12_14 {
+                        top: -80px;
+                        left: 155px;
+                    }
+
+                    .cell_14 {
+                        top: -50px;
+                        left: 240px;
                     }
                 }
 
-                .cell_0_2 {
-                    transform: translate(-445%, 0%);
-                }
-
-                .cell_3_4 {
-                    transform: translate(-390%, -200%);
-                }
-
-                .cell_5_7 {
-                    transform: translate(-250%, -330%);
-                }
-
-                .cell_8_11 {
-                    transform: translate(-50%, -390%);
-                }
-
-                .cell_12_14 {
-                    transform: translate(150%, -330%);
-                }
-
-                .cell_14 {
-                    transform: translate(290%, -200%);
+                .age_picker_boys {
+                    .filter_cell {
+                        &:hover {
+                            border: 1px solid #BFCCF8;
+                            background: #EBEEFA;
+                        }
+                    }
                 }
             }
         }
     }
-
 }

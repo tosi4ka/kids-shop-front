@@ -1,0 +1,36 @@
+.tabs_wrapper {
+    display: flex;
+    border-radius: 24px;
+    background: #FBF3E9;
+    max-width: 242px;
+
+    .tab {
+        color: #99969C;
+        text-align: center;
+        font-family: var(--font-Montserrat);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 171.429%;
+        letter-spacing: -0.3px;
+        border-radius: 24px;
+        background: #FBF3E9;
+        padding: 13px 45px;
+        cursor: pointer;
+        transition: color .4s ease;
+
+        &:hover {
+            color: #000;
+        }
+    }
+
+    .active_tab_gitls {
+        background: #FBBBD7;
+        color: #080709;
+    }
+
+    .active_tab_boys {
+        background: #BFCCF8;
+        color: #000;
+    }
+}

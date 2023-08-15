@@ -13,7 +13,6 @@ import getProducts from '../components/functions/getProducts'
 import lamaImg from '../public/MainPage/MainSlider/lama.png'
 import slide1 from '../public/MainPage/MainSlider/Image 1.jpg'
 import slide2 from '../public/MainPage/MainSlider/Image 2.jpg'
-import slide3 from '../public/MainPage/MainSlider/Image 3.jpg'
 import disneyLogo from '../public/MainPage/MiniSlider/disney_logo.png'
 import levisLogo from '../public/MainPage/MiniSlider/levis_logo.png'
 import bossLogo from '../public/MainPage/MiniSlider/boss_logo.png'
@@ -31,7 +30,7 @@ export default function Home() {
 	useEffect(() => {
 		getProducts().then(data => setOurTopData(data))
 	}, [])
-	// console.log(ourTopData)
+	console.log(ourTopData)
 	return (
 		<>
 			<MainPageSlider
@@ -82,10 +81,6 @@ const sliderData = [
 	{
 		image: slide2,
 		text: '20% на нову колекцію'
-	},
-	{
-		image: slide3,
-		text: '30% на нову колекцію'
 	}
 ]
 
@@ -103,10 +98,10 @@ const tabsData = [
 		text: 'Фемілі лук'
 	},
 	{
-		text: 'Школьна форма'
+		text: 'Тематичні костюми'
 	},
 	{
-		text: 'Тематичні костюми'
+		text: 'Всі товари'
 	}
 ]
 

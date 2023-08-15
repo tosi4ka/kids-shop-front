@@ -1,13 +1,14 @@
 .card__slider_slide {
     position: relative;
     cursor: pointer;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     height: 337px;
-    grid-template-rows: 1fr 65px;
+    border-radius: 16px;
+    overflow: hidden;
 
     &:hover {
-        grid-template-rows: 130px 1fr;
-
         .image {
             .add_to_favorite {
                 display: flex;
@@ -27,6 +28,10 @@
         }
 
         .card_info {
+            transition: top .4s ease;
+            top: 135px;
+            position: absolute;
+
             cursor: auto;
 
             .upper_row {
@@ -38,18 +43,29 @@
                     flex-direction: column;
                     gap: 2px;
 
+                    .card_brand {
+                        display: block;
+                        color: #99969C;
+                        font-family: var(--font-Montserrat);
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 20px;
+                    }
+
                     .card_title {
+                        display: none;
                         cursor: pointer;
                     }
 
                     .card_model {
                         display: block;
                         color: #B3B3B3;
-                        font-family: var(--font-Manrope);
-                        font-size: 14px;
+                        font-family: var(--font-Montserrat);
+                        font-size: 12px;
                         font-style: normal;
-                        font-weight: 500;
-                        line-height: 150%;
+                        font-weight: 400;
+                        line-height: 16px;
                     }
                 }
             }
@@ -57,35 +73,31 @@
             .category_wrapp {
                 margin-top: 9px;
 
-                .card_category {
+                .card_title {
+                    cursor: pointer;
                     display: block;
+                    overflow: hidden;
                     color: #080709;
-                    font-family: var(--font-Manrope);
+                    font-family: var(--font-Montserrat);
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 500;
-                    line-height: 150%;
+                    line-height: 24px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 270px;
                 }
 
                 .card_price_wrapp {
                     position: relative;
+                    display: flex;
 
                     .indicator_for {
-                        display: block;
-                        position: absolute;
-                        bottom: 0px;
-                        right: 0px;
+                        display: flex;
                         width: 16px;
                         height: 16px;
                         border-radius: 20px;
-                    }
-
-                    .for_girls {
-                        background-color: #E5B7C0;
-                    }
-
-                    .for_boys {
-                        background-color: #B7D4E5;
                     }
                 }
             }
@@ -103,10 +115,13 @@
 
                     .circle {
                         cursor: pointer;
-                        background-color: #D9D9D9;
                         width: 15px;
                         height: 15px;
                         border-radius: 20px;
+
+                        &:hover {
+                            border: 1px solid #080709 !important;
+                        }
                     }
                 }
 
@@ -121,11 +136,12 @@
                         padding-right: 8px;
                         border-right: 2px solid #7F7C83;
                         color: #7F7C83;
-                        font-family: var(--font-Manrope);
+                        font-family: var(--font-Montserrat);
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 24px;
+
                         &:last-child {
                             border-right: none;
                         }
@@ -142,33 +158,26 @@
 
     .top_icon {
         position: absolute;
-        top: -12px;
+        top: 0;
         left: 50%;
         z-index: 20;
         transform: translateX(-50%);
     }
 
     .image {
-        border-radius: 16px 16px 0 0;
+        height: 272px;
         overflow: hidden;
         position: relative;
         transition: height .1s ease;
+        border-radius: 16px 16px 0 0;
 
         .indicator_for {
             position: absolute;
-            bottom: 12px;
+            bottom: 20px;
             right: 12px;
             width: 16px;
             height: 16px;
             border-radius: 20px;
-        }
-
-        .for_girls {
-            background-color: #E5B7C0;
-        }
-
-        .for_boys {
-            background-color: #B7D4E5;
         }
 
         .add_to {
@@ -181,13 +190,12 @@
 
         .add_to_favorite {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 8px;
+            left: 12px;
 
             .svg {
-                path {
-                    transition: all .4s ease;
-                    fill: transparent
+                circle {
+                    display: none;
                 }
             }
 
@@ -195,8 +203,7 @@
                 .svg {
                     path {
                         transition: all .4s ease;
-                        stroke: red;
-                        fill: red;
+                        stroke: #A663EE
                     }
                 }
             }
@@ -204,12 +211,12 @@
 
         .add_to_cart {
             position: absolute;
-            top: 60px;
-            right: 12px;
+            top: 48px;
+            left: 12px;
 
             .svg_cart {
-                path {
-                    transition: all .4s ease;
+                circle {
+                    display: none;
                 }
             }
 
@@ -217,36 +224,68 @@
                 .svg_cart {
                     path {
                         transition: all .4s ease;
-                        stroke: red;
+                        stroke: #A663EE
                     }
                 }
+            }
+        }
+
+        .is_sale {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border-radius: 99px;
+            background: #F0D2AC;
+            padding: 4px 12px;
+
+            .sale_text {
+                color: #080709;
+                font-family: var(--font-Montserrat);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
             }
         }
     }
 
     .card_info {
-        border-radius: 0px 0px 24px 24px;
-        background: #F5F5F5;
-        padding: 8px 12px;
+        transition: top .4s ease;
+        position: absolute;
+        top: 272px;
+        width: 100%;
+        height: 100%;
+        border-radius: 0px 0px 16px 16px;
+        background: #FCFBFE;
         display: flex;
         flex-direction: column;
+        border-radius: 0 0 16px 16px;
 
         .upper_row {
             display: flex;
             justify-content: space-between;
+            padding: 8px 12px 0 12px;
 
             .card_title_row {
                 display: flex;
                 flex-direction: column;
                 gap: 2px;
 
+                .card_brand {
+                    display: none;
+                }
+
                 .card_title {
-                    color: #808080;
-                    font-family: var(--font-Manrope);
+                    color: #080709;
+                    font-family: var(--font-Montserrat);
                     font-size: 14px;
                     font-style: normal;
-                    font-weight: 500;
-                    line-height: 150%;
+                    font-weight: 400;
+                    line-height: 20px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 180px;
                 }
 
                 .card_model {
@@ -258,7 +297,7 @@
                 display: flex;
                 justify-content: flex-end;
                 color: #808080;
-                font-family: var(--font-Manrope);
+                font-family: var(--font-Montserrat);
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 500;
@@ -272,56 +311,35 @@
         }
 
         .category_wrapp {
-            .card_category {
+            padding: 0 12px 8px 12px;
+            border-radius: 0 0 16px 16px;
+
+            .card_title {
                 display: none;
             }
 
             .card_price_wrapp {
                 display: flex;
-                flex-direction: column;
                 justify-content: space-between;
 
                 .card_price {
-                    color: #08070D;
-                    font-family: var(--font-Manrope);
-                    font-size: 16px;
+                    color: #080709;
+                    font-family: var(--font-Montserrat);
+                    font-size: 18px;
                     font-style: normal;
-                    font-weight: 700;
-                    line-height: 172%;
+                    font-weight: 500;
+                    line-height: 28px;
+                }
+
+                .indicator_for {
+                    display: none;
                 }
             }
         }
 
         .colors_and_sizes {
             display: none;
+            padding: 0 12px;
         }
-
-
-
-
-
-
-
-
-        // .colors_and_sizes {
-        //     display: none;
-        //     display: flex;
-        //     flex-direction: column;
-        //     gap: 4px;
-
-        //     .circle_wrapp {
-        //         display: flex;
-        //         gap: 12px;
-
-        //         .circle {
-        //             cursor: pointer;
-        //             background-color: #D9D9D9;
-        //             width: 15px;
-        //             height: 15px;
-        //         }
-        //     }
-        // }
-
-
     }
 }
