@@ -15,7 +15,7 @@ export default async function AuthPage() {
 	const session = useSession()
 	return (
 		<>
-			{!session.data && (
+			<div className={style.wrap__page}>
 				<div className={style.wrapper_auth}>
 					<div className={style.auth__information}>
 						<span className={style.auth__h1}>
@@ -58,8 +58,7 @@ export default async function AuthPage() {
 						<RegistrationModal />
 					</div>
 				</div>
-			)}
-			{session.data && router.push('/')}
+			</div>
 		</>
 	)
 }

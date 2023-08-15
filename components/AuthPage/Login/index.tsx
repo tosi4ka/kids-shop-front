@@ -15,7 +15,8 @@ import Input from '../Input'
 import style from './style.module.scss'
 
 import Image from 'next/image'
-import img from '../../../public/icons/Eye.svg'
+import img__eye from '../../../public/icons/Eye.svg'
+import img__eyeClick from '../../../public/icons/Eye__click.svg'
 
 type SignInErrorsTypes = {
 	detail: string
@@ -26,14 +27,13 @@ const Login = () => {
 	const router = useRouter()
 
 	const [passwordShown, setPasswordShown] = useState(false)
-
 	const togglePassword = () => {
 		setPasswordShown(!passwordShown)
 	}
 
 	const formik = useFormik({
 		initialValues: {
-			username: '',
+			email: '',
 			password: '',
 			agreement: true
 		},
@@ -47,7 +47,7 @@ const Login = () => {
 		const formData = new FormData(event.currentTarget)
 
 		const res = await signIn('credentials', {
-			username: formData.get('username'),
+			email: formData.get('email'),
 			password: formData.get('password'),
 			redirect: false
 		})
@@ -64,12 +64,12 @@ const Login = () => {
 			<span className={style.form__title}>Я маю акаунт</span>
 			<form onSubmit={handleSubmit} className={style.sign_in__form}>
 				<Input
-					title='Логін*'
+					title='Електронна пошта *'
 					error={error?.detail as string}
-					type='text'
+					type='email'
 					handleChange={formik.handleChange}
-					values={formik.values.username}
-					name='username'
+					values={formik.values.email}
+					name='email'
 					// placeholder='Username *'
 				/>
 				<div className={style.pass__wrap}>
@@ -83,13 +83,12 @@ const Login = () => {
 						// placeholder='Password *'
 					/>
 					<Image
-						src={img}
+						src={passwordShown ? img__eyeClick : img__eye}
 						alt='eye'
 						onClick={togglePassword}
 						className={style.eye__button}
 					/>
 				</div>
-
 				<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль' />
 				<div className={style.signin__button}>
 					<Button text='Увійти' />

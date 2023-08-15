@@ -23,9 +23,10 @@ const SignIn = () => {
 
 	const formik = useFormik({
 		initialValues: {
-			username: '',
+			email: '',
 			password: '',
-			agreement: true
+			agreement: true,
+			username: ''
 		},
 		validate,
 		onSubmit: () => {}
@@ -37,17 +38,17 @@ const SignIn = () => {
 		const formData = new FormData(event.currentTarget)
 
 		const res = await signIn('credentials', {
-			username: formData.get('username'),
+			email: formData.get('email'),
 			password: formData.get('password'),
 			redirect: false
 		})
 
 		if (res && !res.error) {
-			// router.push('/profile')                         // работает но пока нето имя выводит
-			modals?.setUserName(''),
+			// router.push('/profile')
+			modals?.setUserName(formData.get('email')),
 				setTimeout(() => {
 					modals?.SignInModalChangeVisibility(false)
-				}, 0)
+				}, 2000)
 		} else {
 			console.log(res)
 		}
@@ -64,12 +65,12 @@ const SignIn = () => {
 				) : (
 					<>
 						<Input
-							title='Логін*'
+							title='Електронна пошта *'
 							error={error?.detail as string}
-							type='text'
+							type='email'
 							handleChange={formik.handleChange}
-							values={formik.values.username}
-							name='username'
+							values={formik.values.email}
+							name='email'
 							// placeholder='Username *'
 						/>
 						<Input
@@ -83,16 +84,16 @@ const SignIn = () => {
 						/>
 						<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль' />
 						<Button text='Увійти' />
+						<div className={style.social__sign_in}>
+							<span className={style.social__title}>або за допомогою</span>
+							<div className={style.social__button}>
+								<FacebookButton />
+								<GoogleButton />
+							</div>
+						</div>
 					</>
 				)}
 			</form>
-			<div className={style.social__sign_in}>
-				<span className={style.social__title}>або за допомогою</span>
-				<div className={style.social__button}>
-					<FacebookButton />
-					<GoogleButton />
-				</div>
-			</div>
 		</>
 	)
 }

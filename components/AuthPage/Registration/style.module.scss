@@ -1,9 +1,31 @@
 .form__title {
+	display: flex;
+	justify-content: center;
 	font-size: 24px;
 	font-weight: 500;
 	align-items: center;
 	padding-bottom: 2rem;
-	.registration__button {
-		margin-top: 12px;
+}
+.registration__button {
+	margin-top: 3.5rem;
+}
+
+.register__checkbox {
+	display: grid;
+	grid-template-columns: 19em;
+	grid-gap: 1rem;
+	margin-top: 1rem;
+}
+
+.pass__wrap {
+	position: relative;
+
+	.eye__button {
+		position: absolute;
+		right: 6.5%;
+		top: 45.6%;
+		display: block;
+		z-index: 99999999;
+		cursor: pointer;
 	}
 }

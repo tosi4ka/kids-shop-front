@@ -1,53 +1,52 @@
-.wrapper_auth {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	button {
-		border-radius: 60px;
-	}
-	input {
-		border-radius: 60px;
-	}
-	.signin_form,
-	.registr_form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-top: 2.75rem;
-		width: 18.75rem;
-		height: 30.5rem;
-	}
-	.signin_form {
-		margin-left: 9.5rem;
-		margin-right: 9.5rem;
-	}
-	.auth__information {
-		display: flex;
-		flex-direction: column;
-		width: 18.75rem;
-		margin-top: 2.75rem;
-		.auth__h1 {
+.wrap__page {
+	display: grid;
+	margin-bottom: 11rem;
+	.wrapper_auth {
+		display: grid;
+		grid-template-columns: 18.75rem 18.75rem 18.75rem;
+		margin: 0 auto;
+		grid-gap: 9.5rem;
+		button {
+			border-radius: 60px;
+		}
+		input {
+			border-radius: 60px;
+		}
+		.signin_form,
+		.registr_form {
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			margin-bottom: 2rem;
-			h1 {
-				font-size: 24px;
-				line-height: 28px;
-				font-weight: 500;
-			}
+			margin-top: 2.75rem;
 		}
-		.text__content {
+		.signin_form {
+		}
+		.auth__information {
 			display: flex;
-			align-items: center;
-			line-height: 12px;
-			margin-bottom: 2rem;
-			.text__icon {
-				margin-right: 0.75rem;
+			flex-direction: column;
+			margin-top: 2.75rem;
+			.auth__h1 {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 2rem;
+				h1 {
+					font-size: 24px;
+					line-height: 28px;
+					font-weight: 500;
+				}
 			}
-			.text__h2 {
-				line-height: 1.4rem;
+			.text__content {
+				display: flex;
+				align-items: center;
+				line-height: 12px;
+				margin-bottom: 2rem;
+				.text__icon {
+					margin-right: 0.75rem;
+				}
+				.text__h2 {
+					line-height: 1.4rem;
+				}
 			}
 		}
 	}

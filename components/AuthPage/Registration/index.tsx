@@ -12,6 +12,10 @@ import Checkbox from '../Checkbox'
 import Input from '../Input'
 import style from './style.module.scss'
 
+import Image from 'next/image'
+import img__eye from '../../../public/icons/Eye.svg'
+import img__eyeClick from '../../../public/icons/Eye__click.svg'
+
 type SignInErrorsTypes = {
 	email: string[]
 	username?: string[]
@@ -22,6 +26,11 @@ const RegistrationModal = () => {
 	const [error, setError] = useState<SignInErrorsTypes | null>(null)
 	const [successRef, setSuccessRef] = useState(false)
 	const modals = useModals()
+
+	const [passwordShown, setPasswordShown] = useState(false)
+	const togglePassword = () => {
+		setPasswordShown(!passwordShown)
+	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -72,45 +81,45 @@ const RegistrationModal = () => {
 							type='email'
 							values={formik.values.email as string}
 						/>
-						<Input
-							error={
-								(formik.errors.username as string) || (error?.username as any)
-							}
-							handleChange={formik.handleChange}
-							name='username'
-							title='Логін *'
-							type='text'
-							values={formik.values.username}
-						/>
-						<Input
-							error={
-								(formik.errors.password as string) || (error?.password as any)
-							}
-							handleChange={formik.handleChange}
-							name='password'
-							title='Пароль *'
-							type='password'
-							values={formik.values.password}
-						/>
-						<Checkbox
-							text={
-								<>
-									*Реєструючись, я приймаю умови публічної{' '}
-									<Link href='#'>оферти</Link> та надаю згоду на{' '}
-									<Link href='#'>обробку персональних даних.</Link>
-								</>
-							}
-						/>
-						<Checkbox
-							text={
-								<>
-									Хочу отримувати комерційні пропозиції магазину Lama на
-									вказаний вище email.
-								</>
-							}
-						/>
-						<div className={style.registration__button}>
-							<Button text='Зареєструватися' />
+						<div className={style.pass__wrap}>
+							<Input
+								error={
+									(formik.errors.password as string) || (error?.password as any)
+								}
+								handleChange={formik.handleChange}
+								name='password'
+								title='Пароль *'
+								type={passwordShown ? 'text' : 'password'}
+								values={formik.values.password}
+							/>
+							<Image
+								src={passwordShown ? img__eyeClick : img__eye}
+								alt='eye'
+								onClick={togglePassword}
+								className={style.eye__button}
+							/>
+						</div>
+
+						<div className={style.register__checkbox}>
+							<Checkbox
+								text={
+									<>
+										*Погоджуюсь з правилами магазину.{' '}
+										<Link href='#'>правилами магазину</Link>
+									</>
+								}
+							/>
+							<Checkbox
+								text={
+									<>
+										Хочу отримувати комерційні пропозиції магазину Lama на
+										вказаний вище email.
+									</>
+								}
+							/>
+							<div className={style.registration__button}>
+								<Button text='Зареєструватися' />
+							</div>
 						</div>
 					</form>
 				</>
