@@ -8,7 +8,7 @@ interface ProfileItemProps {
 
 const ProfileItem: React.FC<ProfileItemProps> = ({ onClick, label }) => {
 	return (
-		<div onClick={onClick} className={style.ItemWrap}>
+		<div onClick={onClick} className={style.itemContent}>
 			{label}
 		</div>
 	)

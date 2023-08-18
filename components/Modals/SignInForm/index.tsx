@@ -6,6 +6,7 @@ import { FormEventHandler, useState } from 'react'
 
 import { validate } from '@/components/functions/validate'
 import { useModals } from '@/context/ModalsProvider'
+
 import Button from '../Button'
 import Checkbox from '../Checkbox'
 import { FacebookButton } from '../FacebookSignIn'
@@ -29,7 +30,9 @@ const SignIn = () => {
 			username: ''
 		},
 		validate,
-		onSubmit: () => {}
+		onSubmit: () => {
+			setError
+		}
 	})
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
@@ -50,7 +53,7 @@ const SignIn = () => {
 					modals?.SignInModalChangeVisibility(false)
 				}, 2000)
 		} else {
-			console.log(res)
+			setError(formData.res)
 		}
 	}
 

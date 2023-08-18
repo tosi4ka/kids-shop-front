@@ -1,126 +1,124 @@
 @import '../../style/mixins.scss';
 
 .header {
-    background-color: #FBF3E9;
+	background-color: #fbf3e9;
 }
 
 .header__wrapper {
-    @include container;
-    display: grid;
-    grid-template-columns: 1fr 100px 1fr;
-    padding: 21px 0 10px 0;
+	@include container;
+	display: grid;
+	grid-template-columns: 1fr 100px 1fr;
+	padding: 21px 0 10px 0;
 
-    .header__nav {
-        padding: 22px 0 0 0;
+	.header__nav {
+		padding: 22px 0 0 0;
 
-        .header__nav_list {
-            display: flex;
-            gap: 24px;
+		.header__nav_list {
+			display: flex;
+			gap: 24px;
 
+			.list_item {
+				a {
+					color: #000;
+					font-family: var(--font-Montserrat);
+					font-size: 16px;
+					line-height: 26px;
+					font-style: normal;
+					font-weight: 600;
+					letter-spacing: -0.356px;
+					text-decoration: none;
+				}
 
-            .list_item {
-                a {
-                    color: #000;
-                    font-family: var(--font-Montserrat);
-                    font-size: 16px;
-                    line-height: 26px;
-                    font-style: normal;
-                    font-weight: 600;
-                    letter-spacing: -0.356px;
-                    text-decoration: none;
-                }
+				&:hover {
+					a {
+						color: #da0909;
+					}
+				}
+			}
+		}
+	}
 
-                &:hover {
-                    a {
+	.header__user_nav {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		padding: 16px 0 0 0;
 
-                        color: #da0909;
-                    }
-                }
-            }
-        }
-    }
+		.user_nav__list {
+			display: flex;
+			gap: 24px;
 
-    .header__user_nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 16px 0 0 0;
+			.user_nav__list_item {
+				display: flex;
+				align-items: center;
+				cursor: pointer;
+				color: #000;
+				font-family: var(--font-Montserrat);
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 24px;
 
-        .user_nav__list {
-            display: flex;
-            gap: 24px;
+				.list_item_icon {
+					path {
+						transition: all 0.4s ease;
+					}
+				}
 
-            .user_nav__list_item {
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                color: #000;
-                font-family: var(--font-Montserrat);
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 24px;
+				.list_item_icon_stroke {
+					path {
+						transition: all 0.3s ease;
+					}
+				}
 
-                .list_item_icon {
-                    path {
-                        transition: all .4s ease;
-                    }
-                }
+				&:hover {
+					.list_item_icon {
+						path {
+							fill: rgb(255, 0, 0);
+						}
+					}
 
-                .list_item_icon_stroke {
-                    path {
-                        transition: all .3s ease;
-                    }
-                }
-
-                &:hover {
-                    .list_item_icon {
-                        path {
-                            fill: rgb(255, 0, 0)
-                        }
-                    }
-
-                    .list_item_icon_stroke {
-                        path {
-                            stroke: rgb(255, 0, 0);
-                        }
-                    }
-                }
-            }
-        }
-    }
+					.list_item_icon_stroke {
+						path {
+							stroke: rgb(255, 0, 0);
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 .userInfo {
-    position: absolute;
-    top: 25px;
-    right: 0;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #000;
-    width: 100px;
-    transform: scale(0, 0);
-    transition: all .3s ease;
+	position: absolute;
+	top: 25px;
+	right: 0;
+	padding: 20px;
+	background-color: #fff;
+	border: 1px solid #000;
+	width: 100px;
+	transform: scale(0, 0);
+	transition: all 0.3s ease;
 
-    ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
+	ul {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
 
-        li {
-            cursor: pointer;
-            transition: color .4s ease;
+		li {
+			cursor: pointer;
+			transition: color 0.4s ease;
 
-            &:hover {
-                color: red
-            }
-        }
-    }
+			&:hover {
+				color: red;
+			}
+		}
+	}
 }
 
 .closeUserInfo {
-    transition: all .3s ease;
-    transform: scale(1, 1);
-    transform-origin: top right;
+	transition: all 0.3s ease;
+	transform: scale(1, 1);
+	transform-origin: top right;
 }

@@ -10,7 +10,6 @@ import { useRouter } from 'next/navigation'
 import { GoogleButton } from '../../Modals//GoogleSignIn'
 import { FacebookButton } from '../../Modals/FacebookSignIn'
 import Button from '../Button'
-import Checkbox from '../Checkbox'
 import Input from '../Input'
 import style from './style.module.scss'
 
@@ -89,7 +88,7 @@ const Login = () => {
 						className={style.eye__button}
 					/>
 				</div>
-				<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль' />
+				<input type='checkbox' />
 				<div className={style.signin__button}>
 					<Button text='Увійти' />
 				</div>
