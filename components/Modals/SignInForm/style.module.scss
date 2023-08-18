@@ -1,5 +1,7 @@
 .form__title,
 .social__title {
+	display: flex;
+	justify-content: center;
 	color: #000;
 	font-family: var(--font-Montserrat);
 	font-size: 16px;
@@ -20,4 +22,16 @@
 }
 .social__button {
 	display: flex;
+}
+.pass__wrap {
+	position: relative;
+
+	.eye__button {
+		position: absolute;
+		right: 6.5%;
+		top: 53.6%;
+		display: block;
+		z-index: 99999999;
+		cursor: pointer;
+	}
 }

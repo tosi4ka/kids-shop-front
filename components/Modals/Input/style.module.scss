@@ -1,54 +1,54 @@
 .input_label {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 
-    .input_title {
-        color: #000;
-        font-family: var(--font-Montserrat);
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        opacity: .6;
-    }
+	.input_title {
+		color: #000;
+		font-family: var(--font-Montserrat);
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		opacity: 0.6;
+	}
 
-    .input {
-        border-radius: 4px;
-        border: 1px solid #D9D9D9;
-        padding: 14px 12px;
+	.input {
+		border-radius: 6.25rem;
+		border: 1px solid #d9d9d9;
+		padding: 14px 12px;
 
-        &::placeholder {
-            color: #000;
-            font-family: var(--font-Montserrat);
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            opacity: .6;
-        }
+		&::placeholder {
+			color: #000;
+			font-family: var(--font-Montserrat);
+			font-size: 12px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			opacity: 0.6;
+		}
 
-        &:focus {
-            border-color: #236CF8;
-            outline: none;
-        }
-    }
+		&:focus {
+			border-color: #f0d2ac;
+			outline: none;
+		}
+	}
 
-    .input_error {
-        border: 1px solid #F20;
-    }
+	.input_error {
+		border: 1px solid #f20;
+	}
 
-    .input_error_message {
-        position: absolute;
-        bottom: -16px;
-        right: 0;
-        color: #F20;
-        text-align: right;
-        font-family: var(--font-Montserrat);
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+	.input_error_message {
+		position: absolute;
+		bottom: -16px;
+		right: 0;
+		color: #f20;
+		text-align: right;
+		font-family: var(--font-Montserrat);
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
 }

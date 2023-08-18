@@ -14,6 +14,10 @@ import { GoogleButton } from '../GoogleSignIn'
 import Input from '../Input'
 import style from './style.module.scss'
 
+import Image from 'next/image'
+import img__eye from '../../../public/icons/Eye.svg'
+import img__eyeClick from '../../../public/icons/Eye__click.svg'
+
 type SignInErrorsTypes = {
 	detail: string
 }
@@ -21,6 +25,11 @@ type SignInErrorsTypes = {
 const SignIn = () => {
 	const [error, setError] = useState<SignInErrorsTypes | null>(null)
 	const modals = useModals()
+
+	const [passwordShown, setPasswordShown] = useState(false)
+	const togglePassword = () => {
+		setPasswordShown(!passwordShown)
+	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -59,9 +68,7 @@ const SignIn = () => {
 
 	return (
 		<>
-			<span className={style.form__title}>
-				Будь-ласка, введіть дані свого облікового запису:
-			</span>
+			<span className={style.form__title}>Я тут вже свій</span>
 			<form onSubmit={handleSubmit} className={style.sign_in__form}>
 				{modals?.userName ? (
 					<span>Вы успешно вошли как {modals?.userName}</span>
@@ -76,15 +83,23 @@ const SignIn = () => {
 							name='email'
 							// placeholder='Username *'
 						/>
-						<Input
-							title='Пароль*'
-							error={error?.detail as string}
-							type='password'
-							handleChange={formik.handleChange}
-							values={formik.values.password}
-							name='password'
-							// placeholder='Password *'
-						/>
+						<div className={style.pass__wrap}>
+							<Input
+								title='Пароль*'
+								error={error?.detail as string}
+								type={passwordShown ? 'text' : 'password'}
+								handleChange={formik.handleChange}
+								values={formik.values.password}
+								name='password'
+								// placeholder='Password *'
+							/>
+							<Image
+								src={passwordShown ? img__eyeClick : img__eye}
+								alt='eye'
+								onClick={togglePassword}
+								className={style.eye__button}
+							/>
+						</div>
 						<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль' />
 						<Button text='Увійти' />
 						<div className={style.social__sign_in}>

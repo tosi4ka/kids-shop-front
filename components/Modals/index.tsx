@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import style from './styles.module.scss'
 import { useModals } from '@/context/ModalsProvider'
-import SignInForm from './SignInForm'
+import { useEffect, useState } from 'react'
 import RegistrationForm from './RegistrationForm'
+import SignInForm from './SignInForm'
+import style from './styles.module.scss'
 
 type ClickEvent = React.MouseEvent<HTMLDivElement>
 
@@ -53,7 +53,7 @@ const SignInModal = () => {
                 ${data?.signIn ? style.sign_in_modal_open : ''}
                 `}
 			>
-				<div className={style.modal__header}>
+				{/* <div className={style.modal__header}>
 					<span className={style.header_title}>Авторизація</span>
 					<svg
 						width='32'
@@ -74,7 +74,7 @@ const SignInModal = () => {
 							/>
 						</g>
 					</svg>
-				</div>
+				</div> */}
 				<div className={style.modal__tabs}>
 					<div className={style.modal__tabs_wrapper}>
 						<div
@@ -84,11 +84,11 @@ const SignInModal = () => {
 							onClick={handleToogleTabs}
 						>
 							Вхід
-							<div
+							{/* <div
 								className={`${style.tab_underline} ${
 									activeTab === 'Вхід' ? style.tab_underline_active : ''
 								}`}
-							></div>
+							></div> */}
 						</div>
 						<div
 							className={`${style.modal__tab} ${
@@ -97,11 +97,11 @@ const SignInModal = () => {
 							onClick={handleToogleTabs}
 						>
 							Реєстрація
-							<div
+							{/* <div
 								className={`${style.tab_underline} ${
 									activeTab === 'Реєстрація' ? style.tab_underline_active : ''
 								}`}
-							></div>
+							></div> */}
 						</div>
 					</div>
 				</div>

@@ -2,15 +2,15 @@
 
 import { useFormik } from 'formik'
 
-import style from './style.module.scss'
+import { useModals } from '@/context/ModalsProvider'
+import Link from 'next/link'
+import { useState } from 'react'
 import { registration } from '../../functions'
 import { validate } from '../../functions/validate'
-import { useModals } from '@/context/ModalsProvider'
-import { useState } from 'react'
-import Input from '../Input'
 import Button from '../Button'
 import Checkbox from '../Checkbox'
-import Link from 'next/link'
+import Input from '../Input'
+import style from './style.module.scss'
 
 type SignInErrorsTypes = {
 	email: string[]
@@ -59,9 +59,7 @@ const RegistrationModal = () => {
 				</span>
 			) : (
 				<>
-					<span className={style.form__title}>
-						Будь-ласка, заповніть усі поля нижче:
-					</span>
+					<span className={style.form__title}>Я тут новенький</span>
 					<form
 						onSubmit={formik.handleSubmit}
 						className={style.registration__form}
@@ -94,27 +92,18 @@ const RegistrationModal = () => {
 							type='password'
 							values={formik.values.password}
 						/>
-						<Input
-							error={formik.errors.first_name as string}
-							handleChange={formik.handleChange}
-							name='first_name'
-							title='Ім’я'
-							type='text'
-							values={formik.values.first_name as string}
-						/>
-						<Input
-							error={formik.errors.last_name as string}
-							handleChange={formik.handleChange}
-							name='last_name'
-							title='Прізвище '
-							type='text'
-							values={formik.values.last_name as string}
+						<Checkbox
+							text={
+								<>
+									*Погоджуюсь з <Link href='#'>правилами магазину</Link>
+								</>
+							}
 						/>
 						<Checkbox
 							text={
 								<>
-									*Реєструючись, я приймаю умови публічної <Link href="#">оферти</Link> та надаю згоду
-									на <Link href="#">обробку персональних даних.</Link>
+									*Хочу отримувати комерційні пропозиції магазину Lama на
+									вказаний вище email.
 								</>
 							}
 						/>
