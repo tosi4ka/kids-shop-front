@@ -1,0 +1,36 @@
+.add_to {
+    background-color: #FFFDFA;
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    display: none;
+}
+
+.add_to_cart {
+    position: absolute;
+    top: 48px;
+    left: 12px;
+
+    .svg_cart {
+        circle {
+            display: none;
+        }
+    }
+
+    &:hover {
+        .svg_cart {
+            path {
+                transition: all .4s ease;
+                stroke: #A663EE
+            }
+        }
+    }
+}
+
+.add_to_cart_active {
+    .svg_cart {
+        circle {
+            fill: #A663EE
+        }
+    }
+}

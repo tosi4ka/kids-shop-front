@@ -1,0 +1,22 @@
+.is_sale {
+    border-radius: 99px;
+    background: #F0D2AC;
+    padding: 0 12px;
+    width: max-content;
+
+    .sale_text {
+        color: #080709;
+        font-family: var(--font-Montserrat);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
+}
+
+.is_sale_absolute {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 0 12px;
+}

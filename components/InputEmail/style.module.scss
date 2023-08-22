@@ -1,0 +1,30 @@
+.email_input_with_arrow {
+    margin-top: 20px;
+    padding: 12px 20px 13px 20px;
+    border-radius: 100px;
+    border: 1px solid #CCCACD;
+    background: #F5F5F5 url('/icons/Arrow.svg') top 50% right 20px no-repeat;
+    color: #B3B3B3;
+    font-family: var(--font-Montserrat);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    max-width: 201px;
+    /* 20.8px */
+}
+
+.email_input_without_arrow {
+    margin-top: 20px;
+    padding: 12px 20px 13px 20px;
+    border-radius: 100px;
+    border: 1px solid #CCCACD;
+    background: #F5F5F5;
+    color: #B3B3B3;
+    font-family: var(--font-Montserrat);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    width: 100%;
+}
