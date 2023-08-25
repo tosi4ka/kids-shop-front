@@ -1,12 +1,14 @@
 .left_panel {
     background-color: #FAF6FD;
-    padding: 64px 58px 0 58px;
+    padding: 64px 0 0 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 64px;
 
 
     .panel_title {
+        padding: 0 44px;
         color: #000;
         text-align: center;
         font-family: var(--font-Montserrat);
@@ -30,24 +32,50 @@
     }
 
     .NextArrow {
+        cursor: pointer;
         position: absolute;
         padding: 4px 2px;
         top: 50%;
         right: 0;
         cursor: pointer;
         z-index: 2;
-        background-color: #E5E5E6;
+        background-color: #FCFBFE;
         border-radius: 100px 0 0 100px;
+        transition: all .4s ease;
+
+        &:hover {
+            transition: all .4s ease;
+            background-color: #E5E5E6;
+
+            svg {
+                path {
+                    stroke: #080709;
+                }
+            }
+        }
     }
 
     .PrevArrow {
+        cursor: pointer;
         position: absolute;
         padding: 4px 2px;
         top: 50%;
         left: -324px;
         cursor: pointer;
         z-index: 2;
-        background-color: #E5E5E6;
+        background-color: #FCFBFE;
         border-radius: 0 100px 100px 0;
+        transition: all .4s ease;
+
+        &:hover {
+            transition: all .4s ease;
+            background-color: #E5E5E6;
+
+            svg {
+                path {
+                    stroke: #080709;
+                }
+            }
+        }
     }
 }

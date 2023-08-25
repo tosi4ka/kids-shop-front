@@ -44,7 +44,7 @@ const ProfileMenu = () => {
 							fill='#C18170'
 						/>
 					</svg>
-					{session.data.user?.name}
+					{session.data?.user?.name}
 				</button>
 			</div>
 			{open && (
@@ -68,7 +68,7 @@ const ProfileMenu = () => {
 										fill='#C18170'
 									/>
 								</svg>
-								{session.data.user?.name}
+								{session.data?.user?.name}
 							</button>
 
 							<div className={style.ItemWithBorder}>

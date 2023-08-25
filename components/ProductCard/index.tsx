@@ -1,24 +1,52 @@
+'use client'
+
 import Image, { StaticImageData } from 'next/image'
 import style from './style.module.scss'
 import maleIcon from '../../public/icons/maleIcon.svg'
 import femaleIcon from '../../public/icons/femaleIcon.svg'
+import { ProductTypes } from '@/types/productsTypes'
+import { useAppDispatch } from '@/store'
+import {
+	addProductColor,
+	addToCart,
+	selectIsItemInCart
+} from '@/features/cartSlice'
+import { useSelector } from 'react-redux'
+import { useState } from 'react'
+import { addToFavorite, selectIsItemInFavorite } from '@/features/favoriteSlice'
 
 interface ProductCardProps {
-	brand: string
-	male: boolean
-	image: StaticImageData
-	price: number
-	name: string
 	topIcon: StaticImageData
-	rating: number
 	stars_Icon: StaticImageData
 	key: number
-	color: string
-	is_sale: boolean
-	discout?: number
+	data: ProductTypes
 }
 
 const ProductCard: React.FC<ProductCardProps> = props => {
+	const [selectedCOlor, setSelectedColor] = useState('')
+	const dispatch = useAppDispatch()
+
+	const isItemInCart = useSelector(selectIsItemInCart(props.data.id))
+	// const isItemInFavorite = useSelector(selectFavoriteProducts)
+	const isItemInFavorite = useSelector(selectIsItemInFavorite(props.data.id))
+
+	const handleAddToCart = (data: ProductTypes) => {
+		if (selectedCOlor) {
+			dispatch(addToCart(data))
+			dispatch(addProductColor({ id: props.data.id, color: selectedCOlor }))
+		} else {
+			dispatch(addToCart(data))
+		}
+	}
+
+	const handleAddColor = (color: string) => {
+		setSelectedColor(color)
+	}
+
+	const handleAddToFavorite = (data: ProductTypes) => {
+		dispatch(addToFavorite(data))
+	}
+
 	return (
 		<div className={style.card__slider_slide} key={props.key}>
 			<Image
@@ -30,16 +58,20 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 			/>
 			<div className={style.image}>
 				<Image
-					src={props.image}
-					alt={props.name}
+					src={props.data.product_images[0].product_image}
+					alt={props.data.name}
 					fill
 					sizes='100vw'
 					style={{ objectFit: 'cover', objectPosition: '50% 0' }}
 				/>
 				<div className={style.indicator_for}>
-					<Image src={props.male ? maleIcon : femaleIcon} alt='sex icon' />
+					<Image src={props.data.male ? maleIcon : femaleIcon} alt='sex icon' />
 				</div>
-				<div className={`${style.add_to} ${style.add_to_favorite}`}>
+				<div
+					className={`${style.add_to} ${style.add_to_favorite} ${
+						isItemInFavorite ? style.add_to_active : ''
+					}`}
+				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='40'
@@ -47,6 +79,7 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 						viewBox='0 0 40 40'
 						fill='none'
 						className={style.svg}
+						onClick={() => handleAddToFavorite(props.data)}
 					>
 						<circle cx='20' cy='20' r='20' fill='#A663EE' />
 						<path
@@ -58,7 +91,11 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 						/>
 					</svg>
 				</div>
-				<div className={`${style.add_to} ${style.add_to_cart}`}>
+				<div
+					className={`${style.add_to} ${style.add_to_cart} ${
+						isItemInCart ? style.add_to_active : ''
+					}`}
+				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						width='40'
@@ -66,6 +103,7 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 						viewBox='0 0 40 40'
 						fill='none'
 						className={style.svg_cart}
+						onClick={() => handleAddToCart(props.data)}
 					>
 						<circle cx='20' cy='20' r='15' fill='#A663EE' />
 						<path
@@ -77,17 +115,19 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 						/>
 					</svg>
 				</div>
-				{props.is_sale ? (
+				{props.data.is_sale ? (
 					<div className={style.is_sale}>
-						<span className={style.sale_text}>{`-${props.discout}%`}</span>
+						<span
+							className={style.sale_text}
+						>{`-${props.data.discount?.name}%`}</span>
 					</div>
 				) : null}
 			</div>
 			<div className={style.card_info}>
 				<div className={style.upper_row}>
 					<div className={style.card_title_row}>
-						<span className={style.card_brand}>{props.brand}</span>
-						<span className={style.card_title}>{props.name}</span>
+						<span className={style.card_brand}>{props.data.brand.name}</span>
+						<span className={style.card_title}>{props.data.name}</span>
 						<span className={style.card_model}>D 4578</span>
 					</div>
 					<div className={style.raiting}>
@@ -98,29 +138,38 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 								width={20}
 								height={20}
 							/>
-							<span>{props.rating}</span>
+							<span>{props.data.rating}</span>
 						</div>
 						<span>(16)</span>
 					</div>
 				</div>
 				<div className={style.category_wrapp}>
-					<span className={style.card_title}>{props.name}</span>
+					<span className={style.card_title}>{props.data.name}</span>
 					<div className={style.card_price_wrapp}>
-						<span className={style.card_price}>{props.price}₴</span>
+						<span className={style.card_price}>{props.data.price}₴</span>
 						<div className={style.indicator_for}>
-							<Image src={props.male ? maleIcon : femaleIcon} alt='sex icon' />
+							<Image
+								src={props.data.male ? maleIcon : femaleIcon}
+								alt='sex icon'
+							/>
 						</div>
 					</div>
 				</div>
 				<div className={style.colors_and_sizes}>
 					<div className={style.circle_wrapp}>
-						<div
-							className={style.circle}
-							style={{
-								backgroundColor: props.color,
-								border: `1px solid ${props.color}`
-							}}
-						></div>
+						{props.data.color.map((item, index) => (
+							<div
+								className={`${style.circle} ${
+									selectedCOlor === item.name ? style.circle_active : ''
+								}`}
+								style={{
+									backgroundColor: item.name
+								}}
+								data-color={item.name}
+								key={index}
+								onClick={() => handleAddColor(item.name)}
+							></div>
+						))}
 					</div>
 					<div className={style.sizes_wrap}>
 						<div className={`${style.size_item} ${style.size_item_inactive}`}>

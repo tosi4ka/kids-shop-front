@@ -6,9 +6,9 @@ import SignInModal from '@/components/Modals'
 import navigationsData from '../data/navigation.json'
 
 import truckIcon from '../public/icons/truck.svg'
-import shirtIcon from '../public/icons/shirt.svg'
-import priceTagIcon from '../public/icons/price tag.svg'
-import silhouetteIcon from '../public/icons/silhouette.svg'
+import articlesIcon from '../public/icons/Articles.svg'
+import priceTagIcon from '../public/icons/Label.svg'
+import giftIcon from '../public/icons/gift.svg'
 import logoIcon from '../public/icons/logo.svg'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -35,7 +35,7 @@ const offresData = [
 		text: 'Бескоштовна доставка на покупки від 1000 ₴'
 	},
 	{
-		icon: shirtIcon,
+		icon: articlesIcon,
 		text: '30 днів на обмін та повернення'
 	},
 	{
@@ -43,7 +43,7 @@ const offresData = [
 		text: 'Тільки оригінальні бренди'
 	},
 	{
-		icon: silhouetteIcon,
+		icon: giftIcon,
 		text: 'Програми лояльності для постійних клієнтів'
 	}
 ]

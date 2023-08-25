@@ -67,7 +67,7 @@ const Login = () => {
 					error={error?.detail as string}
 					type='email'
 					handleChange={formik.handleChange}
-					values={formik.values.email}
+					values={formik.values.email as string}
 					name='email'
 					// placeholder='Username *'
 				/>

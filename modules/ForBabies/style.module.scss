@@ -25,6 +25,21 @@
             display: flex;
             flex-direction: column;
 
+            &:hover {
+                .cell_title {
+                    transition: all .4s ease;
+                    box-shadow: none;
+                    background: #CD9EFF;
+
+                    svg {
+                        animation: slide 2s linear infinite;
+                        path {
+                            stroke: #080709;
+                        }
+                    }
+                }
+            }
+
             .image_wrapp {
                 position: relative;
                 height: 281px;
@@ -46,7 +61,23 @@
                 font-style: normal;
                 font-weight: 500;
                 line-height: 28px;
+                box-shadow: 0px -2px 40px 0px rgba(0, 0, 0, 0.08);
+                transition: all .4s ease;
             }
         }
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-30px);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }

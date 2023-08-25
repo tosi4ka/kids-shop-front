@@ -1,5 +1,5 @@
 interface validateTypes {
-	username: string
+	username?: string
 	email?: string
 	password: string
 	agreement: boolean

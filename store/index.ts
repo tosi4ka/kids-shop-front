@@ -1,10 +1,12 @@
-import cartSlise from '@/features/cartSlide'
+import cartSlise from '@/features/cartSlice'
+import favoriteSlice from '@/features/favoriteSlice'
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 
 const store = configureStore({
 	reducer: {
-		cart: cartSlise
+		cart: cartSlise,
+		favorite: favoriteSlice
 	},
 	devTools: true
 })

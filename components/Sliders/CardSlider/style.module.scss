@@ -5,6 +5,7 @@
 }
 
 .prevArrow {
+    cursor: pointer;
     position: absolute;
     top: -101px;
     right: 68px;
@@ -13,15 +14,22 @@
     padding: 2px 4px;
     background-color: #FCFBFE;
     border-radius: 24px 0 0 24px;
-    transition: background-color .4s ease;
+    transition: all .4s ease;
 
     &:hover {
-        transition: background-color .4s ease;
+        transition: all .4s ease;
         background-color: #E5E5E6;
+
+        svg {
+            path {
+                stroke: #080709;
+            }
+        }
     }
 }
 
 .nextArrow {
+    cursor: pointer;
     position: absolute;
     top: -101px;
     right: 20px;
@@ -30,11 +38,17 @@
     padding: 2px 4px;
     background-color: #FCFBFE;
     border-radius: 0 24px 24px 0;
-    transition: background-color .4s ease;
+    transition: all .4s ease;
 
     &:hover {
-        transition: background-color .4s ease;
+        transition: all .4s ease;
         background-color: #E5E5E6;
-        ;
+
+        svg {
+            path {
+                stroke: #080709;
+            }
+        }
+
     }
 }

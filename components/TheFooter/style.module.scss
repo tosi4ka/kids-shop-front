@@ -74,6 +74,16 @@
 					display: flex;
 					gap: 30px;
 					margin-top: 85px;
+
+					a {
+						&:hover {
+							.icon {
+								path {
+									fill: #7F7C83
+								}
+							}
+						}
+					}
 				}
 
 				.payments_wrap {
@@ -91,13 +101,16 @@
 					font-style: normal;
 					font-weight: 400;
 					line-height: 20px;
-					color: #080709;
 					font-family: var(--font-Montserrat);
 
 					.list_item {
 						color: #080709;
 						cursor: pointer;
 						text-decoration: none;
+
+						&:hover {
+							color: #7F7C83
+						}
 					}
 				}
 

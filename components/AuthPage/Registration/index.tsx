@@ -41,7 +41,6 @@ const RegistrationModal = () => {
 		},
 		validate,
 		onSubmit: values => {
-			console.log(values)
 			const value = {
 				username: formik.values.username,
 				email: formik.values.email,
@@ -49,12 +48,10 @@ const RegistrationModal = () => {
 			}
 			registration(value).then(data => {
 				if (!data.id) {
-					console.log(data)
 					setError(data)
 					return
 				}
 				setSuccessRef(true)
-				console.log(data)
 			})
 		}
 	})

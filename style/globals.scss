@@ -364,7 +364,6 @@ $slick-opacity-not-active: 0.25 !default;
 		list-style: none;
 		display: flex;
 		align-items: center;
-		padding: 0;
 		margin: 0;
 		width: max-content;
 		z-index: 2;
@@ -374,7 +373,6 @@ $slick-opacity-not-active: 0.25 !default;
 			display: flex;
 			justify-content: flex-end;
 			gap: 12px;
-			padding: 0;
 
 			.slick-active {
 				width: 28px;

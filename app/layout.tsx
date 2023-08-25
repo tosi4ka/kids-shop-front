@@ -1,12 +1,14 @@
 'use client'
 
 import '../style/globals.scss'
+import { Provider } from 'react-redux'
 import type { Metadata } from 'next'
 import { Manrope, Montserrat } from 'next/font/google'
 import { Providers } from '../components/SocProviders/Provider'
 import { ModalsProvider } from '../context/ModalsProvider'
 import style from './page.module.scss'
 import Layout from '@/Layout'
+import store from '../store'
 
 export const metadata: Metadata = {
 	title: 'Lama Shop',
@@ -45,9 +47,11 @@ export default function RootLayout({
 			`}</style>
 			<body suppressHydrationWarning={true}>
 				<Providers>
-					<ModalsProvider>
-						<Layout>{children}</Layout>
-					</ModalsProvider>
+					<Provider store={store}>
+						<ModalsProvider>
+							<Layout>{children}</Layout>
+						</ModalsProvider>
+					</Provider>
 				</Providers>
 			</body>
 		</html>

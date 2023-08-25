@@ -1,11 +1,12 @@
+import { InputEmail } from '@/components/InputEmail'
 import style from './style.module.scss'
 import Image, { StaticImageData } from 'next/image'
 
 interface PageProps {
 	title: string
 	image: StaticImageData
-    text: string
-    placeholderText: string
+	text: string
+	placeholderText: string
 }
 
 const Page: React.FC<PageProps> = props => {
@@ -14,8 +15,8 @@ const Page: React.FC<PageProps> = props => {
 			<div className={style.content_wrapp}>
 				<div className={style.content}>
 					<h2 className={style.title}>{props.title}</h2>
-                    <span className={style.text}>{props.text}</span>
-                    <input className={style.email_input} type="email" placeholder={props.placeholderText}/>
+					<span className={style.text}>{props.text}</span>
+					<InputEmail arrowIcon placeholderText='Електронна пошта' />
 				</div>
 				<div className={style.image_block}>
 					<Image

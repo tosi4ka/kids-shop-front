@@ -6,12 +6,12 @@ import { useState } from 'react'
 
 interface MainSliderProps {
 	data: dataProps[]
-	lamaImg: StaticImageData
 }
 
 type dataProps = {
 	image: StaticImageData
-	text?: string
+	text: string
+	lamaImg: StaticImageData
 }
 
 interface ArrowProps {
@@ -91,7 +91,7 @@ const MainSlider: React.FC<MainSliderProps> = props => {
 		<>
 			<div className={style.left_panel}>
 				<h3 className={style.panel_title}>{props.data[activeSlide].text}</h3>
-				<Image src={props.lamaImg} alt='Lama image' />
+				<Image src={props.data[activeSlide].lamaImg} alt='Lama image' />
 			</div>
 			<div className={`${style.slider} main-slider`}>
 				<Slider {...settings}>

@@ -11,8 +11,11 @@ import Offers from '../modules/Offers'
 import getProducts from '../components/functions/getProducts'
 
 import lamaImg from '../public/MainPage/MainSlider/lama.png'
-import slide1 from '../public/MainPage/MainSlider/Image 1.jpg'
-import slide2 from '../public/MainPage/MainSlider/Image 2.jpg'
+import Lama_dreamsImg from '../public/MainPage/MainSlider/Lama_dreams.png'
+import Lama_scarfImg from '../public/MainPage/MainSlider/Lama_scarf.png'
+import slide1 from '../public/MainPage/MainSlider/slide1_1.png'
+import slide2 from '../public/MainPage/MainSlider/slide2_1.png'
+import slide3 from '../public/MainPage/MainSlider/slide3_1.png'
 import disneyLogo from '../public/MainPage/MiniSlider/disney_logo.png'
 import levisLogo from '../public/MainPage/MiniSlider/levis_logo.png'
 import bossLogo from '../public/MainPage/MiniSlider/boss_logo.png'
@@ -30,11 +33,10 @@ export default function Home() {
 	useEffect(() => {
 		getProducts().then(data => setOurTopData(data))
 	}, [])
-	console.log(ourTopData)
 	return (
 		<>
 			<MainPageSlider
-				lamaImg={lamaImg}
+				// lamaImg={lamaImg}
 				mainSliderData={sliderData}
 				miniSliderData={miniSliderData}
 			/>
@@ -76,11 +78,18 @@ export default function Home() {
 const sliderData = [
 	{
 		image: slide1,
-		text: '10% на нову колекцію'
+		text: '10% на нову колекцію',
+		lamaImg: lamaImg
 	},
 	{
 		image: slide2,
-		text: '20% на нову колекцію'
+		text: '-25% на теплий одяг',
+		lamaImg: Lama_dreamsImg
+	},
+	{
+		image: slide3,
+		text: 'Постійні знижки на аксесуари',
+		lamaImg: Lama_scarfImg
 	}
 ]
 
