@@ -16,14 +16,17 @@ export const authConfig: AuthOptions = {
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {
-				username: { label: 'Username', type: 'text' },
+				email: { label: 'Email', type: 'email' },
 				password: { label: 'Password', type: 'password' }
 			},
 			async authorize(credentials, req) {
 				const res = await fetch('http://localhost:8000/api/auth/jwt/create/', {
 					method: 'POST',
 					body: JSON.stringify(credentials),
-					headers: { 'Content-Type': 'application/json' }
+					headers: {
+						'Content-Type': 'application/json',
+						Accept: 'application/json'
+					}
 				})
 				const user = await res.json()
 
@@ -34,6 +37,23 @@ export const authConfig: AuthOptions = {
 			}
 		})
 	],
+	// callbacks: {
+	// 	session: async ({ session, token }) => {
+	// 		if (session?.user) {
+	// 			session.user.id = token.uid
+	// 		}
+	// 		return session
+	// 	},
+	// 	jwt: async ({ user, token }) => {
+	// 		if (user) {
+	// 			token.uid = user.id
+	// 		}
+	// 		return token
+	// 	}
+	// },
+	// session: {
+	// 	strategy: 'jwt'
+	// },
 	pages: {
 		signIn: '/login'
 	}

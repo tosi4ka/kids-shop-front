@@ -12,6 +12,10 @@ import Checkbox from '../Checkbox'
 import Input from '../Input'
 import style from './style.module.scss'
 
+import Image from 'next/image'
+import img__eye from '../../../public/icons/Eye.svg'
+import img__eyeClick from '../../../public/icons/Eye__click.svg'
+
 type SignInErrorsTypes = {
 	email: string[]
 	username?: string[]
@@ -22,6 +26,11 @@ const RegistrationModal = () => {
 	const [error, setError] = useState<SignInErrorsTypes | null>(null)
 	const [successRef, setSuccessRef] = useState(false)
 	const modals = useModals()
+
+	const [passwordShown, setPasswordShown] = useState(false)
+	const togglePassword = () => {
+		setPasswordShown(!passwordShown)
+	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -69,7 +78,7 @@ const RegistrationModal = () => {
 							type='email'
 							values={formik.values.email as string}
 						/>
-						<Input
+						{/* <Input
 							error={
 								(formik.errors.username as string) || (error?.username as any)
 							}
@@ -78,18 +87,28 @@ const RegistrationModal = () => {
 							title='Логін *'
 							type='text'
 							values={formik.values.username as string}
-						/>
-						<Input
-							error={
-								(formik.errors.password as string) || (error?.password as any)
-							}
-							handleChange={formik.handleChange}
-							name='password'
-							title='Пароль *'
-							type='password'
-							values={formik.values.password}
-						/>
+						/> */}
+						<div className={style.pass__wrap}>
+							<Input
+								error={
+									(formik.errors.password as string) || (error?.password as any)
+								}
+								handleChange={formik.handleChange}
+								name='password'
+								title='Пароль *'
+								type={passwordShown ? 'text' : 'password'}
+								values={formik.values.password}
+							/>
+							<Image
+								src={passwordShown ? img__eyeClick : img__eye}
+								alt='eye'
+								onClick={togglePassword}
+								className={style.eye__button}
+							/>
+						</div>
+
 						<Checkbox
+							id='conditions'
 							text={
 								<>
 									*Погоджуюсь з <Link href='#'>правилами магазину</Link>
@@ -97,6 +116,7 @@ const RegistrationModal = () => {
 							}
 						/>
 						<Checkbox
+							id='newsletter'
 							text={
 								<>
 									*Хочу отримувати комерційні пропозиції магазину Lama на

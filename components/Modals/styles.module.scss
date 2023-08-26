@@ -12,13 +12,14 @@
 .sign_in_modal {
 	// надо будет поправить позиционирование, тянется за экраном
 	position: absolute;
+	top: 7rem;
 	right: -530px;
 	width: 26.5rem;
 	padding-bottom: 2rem;
 	background-color: #fff;
 	transition: right 1s ease;
 	z-index: 10;
-	border-radius: 1rem;
+	border-radius: 1.4rem;
 
 	.modal__header {
 		display: flex;
@@ -53,7 +54,7 @@
 	}
 
 	.modal__tabs {
-		padding: 32px 40px;
+		padding: 3.1rem 3.2rem 2.6rem 3rem;
 
 		.modal__tabs_wrapper {
 			display: flex;
@@ -63,7 +64,7 @@
 			border-radius: 6.25rem;
 
 			.modal__tab {
-				padding: 7px 0;
+				padding: 0.8rem 0;
 				position: relative;
 				flex: 0 0 50%;
 				display: flex;
@@ -109,7 +110,7 @@
 }
 
 .sign_in_modal_open {
-	right: 46.5rem;
+	right: 38.5%;
 }
 
 .form_wrapper {

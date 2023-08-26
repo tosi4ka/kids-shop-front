@@ -39,9 +39,7 @@ const SignIn = () => {
 			username: ''
 		},
 		validate,
-		onSubmit: () => {
-			setError
-		}
+		onSubmit: () => {}
 	})
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
@@ -76,17 +74,17 @@ const SignIn = () => {
 					<>
 						<Input
 							title='Електронна пошта *'
-							error={error?.detail as string}
+							error={(formik.errors.email as string) || (error?.email as any)}
 							type='email'
 							handleChange={formik.handleChange}
-							values={formik.values.email}
+							values={formik.values.email as string}
 							name='email'
 							// placeholder='Username *'
 						/>
 						<div className={style.pass__wrap}>
 							<Input
 								title='Пароль*'
-								error={error?.detail as string}
+								error={formik.errors.password as string}
 								type={passwordShown ? 'text' : 'password'}
 								handleChange={formik.handleChange}
 								values={formik.values.password}
@@ -100,7 +98,11 @@ const SignIn = () => {
 								className={style.eye__button}
 							/>
 						</div>
-						<Checkbox text='Запам’ятати мене' sideLink='Відновити пароль' />
+						<Checkbox
+							id='rules'
+							text='Запам’ятати мене'
+							sideLink='Відновити пароль'
+						/>
 						<Button text='Увійти' />
 						<div className={style.social__sign_in}>
 							<span className={style.social__title}>або за допомогою</span>

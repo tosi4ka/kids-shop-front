@@ -55,6 +55,10 @@ const RegistrationModal = () => {
 			})
 		}
 	})
+
+	const handleChange = () => {
+		this.props.onChange({ checked: !this.props.checked })
+	}
 	return (
 		<>
 			{successRef ? (
@@ -99,6 +103,7 @@ const RegistrationModal = () => {
 
 						<div className={style.register__checkbox}>
 							<Checkbox
+								id='rules'
 								text={
 									<>
 										*Погоджуюсь з правилами магазину.{' '}

@@ -12,6 +12,23 @@
 .registration__form {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
-	padding: 30px 0 0 0;
+	gap: 0.8rem;
+	padding: 1.5rem 0.6rem 3.6rem 0.5rem;
+	button {
+		margin-top: 1.8rem;
+	}
+}
+.pass__wrap {
+	position: relative;
+	padding-top: 0.7rem;
+	margin-bottom: 0.8rem;
+
+	.eye__button {
+		position: absolute;
+		right: 6.5%;
+		top: 58%;
+		display: block;
+		z-index: 99999999;
+		cursor: pointer;
+	}
 }

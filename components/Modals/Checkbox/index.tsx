@@ -2,6 +2,7 @@ import React, { InputHTMLAttributes } from 'react'
 import style from './style.module.scss'
 
 type CheckboxProps = {
+	id: string
 	text: string | React.ReactNode
 	error?: boolean
 	sideLink?: string
@@ -9,12 +10,16 @@ type CheckboxProps = {
 }
 
 const Checkbox: React.FC<CheckboxProps> = props => {
+	const [checked, setChecked] = React.useState([true, false])
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setChecked([event.target.checked, checked[1]])
+	}
 	return (
 		<div className={style.agreement_wrapp}>
 			<div className={style.agreement_block}>
 				<input
 					type='checkbox'
-					id='checkbox'
+					id={props.id}
 					className={style.checkbox}
 					onChange={props.agreement}
 				/>
@@ -22,7 +27,7 @@ const Checkbox: React.FC<CheckboxProps> = props => {
 					className={`${style.checkbox_label} ${
 						props.error ? style.checkbox_label_error : ''
 					}`}
-					htmlFor='checkbox'
+					htmlFor={props.id}
 				>
 					<span className={style.remember_me_text}>{props.text}</span>
 				</label>
