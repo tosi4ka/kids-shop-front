@@ -46,13 +46,13 @@ export default function RootLayout({
 				}
 			`}</style>
 			<body suppressHydrationWarning={true}>
-				<Providers>
-					<Provider store={store}>
+				<Provider store={store}>
+					<Providers>
 						<ModalsProvider>
 							<Layout>{children}</Layout>
 						</ModalsProvider>
-					</Provider>
-				</Providers>
+					</Providers>
+				</Provider>
 			</body>
 		</html>
 	)

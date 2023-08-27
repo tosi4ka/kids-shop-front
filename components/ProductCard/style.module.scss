@@ -10,28 +10,101 @@
 
     &:hover {
         .image {
-            .add_to_favorite {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
 
-            .add_to_cart {
+            .cards_buttons_add_to_wrapper {
                 display: flex;
-                justify-content: center;
-                align-items: center;
+                flex-direction: column;
+                gap: 5px;
+                position: absolute;
+                top: 8px;
+                left: 12px;
+
+                .add_to {
+                    background-color: #FFFDFA;
+                    border-radius: 100px;
+                    width: 30px;
+                    height: 30px;
+                    display: none;
+                }
+
+                .add_to_favorite {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .add_to_cart {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .add_to_cart_active {
+                    svg {
+                        circle {
+                            fill: #A663EE;
+                        }
+                    }
+                }
+
+                .add_to_favorite {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .svg {
+                        circle {
+                            display: none;
+                        }
+                    }
+
+                    &:hover {
+                        .svg {
+                            path {
+                                transition: all .4s ease;
+                                stroke: #A663EE
+                            }
+                        }
+                    }
+                }
+
+                .add_to_cart {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .svg_cart {
+                        circle {
+                            display: none;
+                        }
+                    }
+
+                    &:hover {
+                        .svg_cart {
+                            path {
+                                transition: all .4s ease;
+                                stroke: #A663EE
+                            }
+                        }
+                    }
+                }
+
+                .add_to_active {
+                    background-color: #A663EE;
+
+                    &:hover {
+                        .svg_cart {
+                            path {
+                                transition: all .4s ease;
+                                stroke: #fff
+                            }
+                        }
+                    }
+                }
             }
 
             .indicator_for {
                 display: none;
-            }
-
-            .add_to_cart_active {
-                svg {
-                    circle {
-                        fill: #A663EE;
-                    }
-                }
             }
         }
 
@@ -210,76 +283,6 @@
             width: 16px;
             height: 16px;
             border-radius: 20px;
-        }
-
-        .add_to {
-
-            background-color: #FFFDFA;
-            border-radius: 100px;
-            width: 30px;
-            height: 30px;
-            display: none;
-        }
-
-        .add_to_favorite {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 8px;
-            left: 12px;
-
-            .svg {
-                circle {
-                    display: none;
-                }
-            }
-
-            &:hover {
-                .svg {
-                    path {
-                        transition: all .4s ease;
-                        stroke: #A663EE
-                    }
-                }
-            }
-        }
-
-        .add_to_cart {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 48px;
-            left: 12px;
-
-            .svg_cart {
-                circle {
-                    display: none;
-                }
-            }
-
-            &:hover {
-                .svg_cart {
-                    path {
-                        transition: all .4s ease;
-                        stroke: #A663EE
-                    }
-                }
-            }
-        }
-
-        .add_to_active {
-            background-color: #A663EE;
-
-            &:hover {
-                .svg_cart {
-                    path {
-                        transition: all .4s ease;
-                        stroke: #fff
-                    }
-                }
-            }
         }
 
         .is_sale {

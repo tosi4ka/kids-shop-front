@@ -91,23 +91,25 @@ const TheHeader = () => {
 								cartProducts ? style.user_nav__cart : style.user_nav__empty_cart
 							}`}
 						>
-							<svg
-								width='36'
-								height='36'
-								viewBox='0 0 36 36'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								className={style.list_item_icon_stroke}
-							>
-								<path
-									d='M14.25 12.913C14.25 11.8752 14.6451 10.8799 15.3483 10.1461C16.0516 9.41227 17.0054 9 18 9C18.9946 9 19.9484 9.41227 20.6517 10.1461C21.3549 10.8799 21.75 11.8752 21.75 12.913M9.75 12.913H26.25C26.6642 12.913 27 13.2634 27 13.6957V26.2174C27 26.6496 26.6642 27 26.25 27H9.75C9.33579 27 9 26.6496 9 26.2174V13.6957C9 13.2634 9.33579 12.913 9.75 12.913Z'
-									stroke='#CD9EFF'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
-							Кошик ({cart.length})
+							<Link href="/checkout">
+								<svg
+									width='36'
+									height='36'
+									viewBox='0 0 36 36'
+									fill='none'
+									xmlns='http://www.w3.org/2000/svg'
+									className={style.list_item_icon_stroke}
+								>
+									<path
+										d='M14.25 12.913C14.25 11.8752 14.6451 10.8799 15.3483 10.1461C16.0516 9.41227 17.0054 9 18 9C18.9946 9 19.9484 9.41227 20.6517 10.1461C21.3549 10.8799 21.75 11.8752 21.75 12.913M9.75 12.913H26.25C26.6642 12.913 27 13.2634 27 13.6957V26.2174C27 26.6496 26.6642 27 26.25 27H9.75C9.33579 27 9 26.6496 9 26.2174V13.6957C9 13.2634 9.33579 12.913 9.75 12.913Z'
+										stroke='#CD9EFF'
+										strokeWidth='1.5'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+								</svg>
+								Кошик ({cart.length})
+							</Link>
 							<div className={style.cart_menu}>
 								<div className={style.cart_menu_header}>
 									<div className={style.cart_menu__title_wrapper}>
@@ -204,31 +206,33 @@ const TheHeader = () => {
 									))}
 								</div>
 								<div className={style.cart_menu_btn}>
-									<span className={style.cart_menu_btn_text}>
+									<Link href='/checkout' className={style.cart_menu_btn_text}>
 										Переглянути кошик
-									</span>
+									</Link>
 								</div>
 							</div>
 						</li>
 						<li className={style.user_nav__list_item}>
-							<svg
-								width='36'
-								height='36'
-								viewBox='0 0 36 36'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-								className={style.list_item_icon_stroke}
-							>
-								<path
-									d='M18 26C18 26 9 20.9091 9 14.7273C9.00018 13.6347 9.37499 12.5759 10.0607 11.7308C10.7464 10.8858 11.7007 10.3068 12.7613 10.0921C13.8219 9.8775 14.9233 10.0405 15.8784 10.5535C16.8334 11.0665 17.5831 11.8977 18 12.9059L18 12.9059C18.4169 11.8977 19.1666 11.0665 20.1216 10.5535C21.0767 10.0405 22.1781 9.8775 23.2387 10.0921C24.2993 10.3068 25.2536 10.8858 25.9393 11.7308C26.625 12.5759 26.9998 13.6347 27 14.7273C27 20.9091 18 26 18 26Z'
-									fill='transparent'
-									stroke='#CD9EFF'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
-							Сподобалось ({favorite.length})
+							<Link href='/favorite'>
+								<svg
+									width='36'
+									height='36'
+									viewBox='0 0 36 36'
+									fill='none'
+									xmlns='http://www.w3.org/2000/svg'
+									className={style.list_item_icon_stroke}
+								>
+									<path
+										d='M18 26C18 26 9 20.9091 9 14.7273C9.00018 13.6347 9.37499 12.5759 10.0607 11.7308C10.7464 10.8858 11.7007 10.3068 12.7613 10.0921C13.8219 9.8775 14.9233 10.0405 15.8784 10.5535C16.8334 11.0665 17.5831 11.8977 18 12.9059L18 12.9059C18.4169 11.8977 19.1666 11.0665 20.1216 10.5535C21.0767 10.0405 22.1781 9.8775 23.2387 10.0921C24.2993 10.3068 25.2536 10.8858 25.9393 11.7308C26.625 12.5759 26.9998 13.6347 27 14.7273C27 20.9091 18 26 18 26Z'
+										fill='transparent'
+										stroke='#CD9EFF'
+										strokeWidth='1.5'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+								</svg>
+								Сподобалось ({favorite.length})
+							</Link>
 						</li>
 						{!session?.data && (
 							<li

@@ -1,13 +1,8 @@
 import Slider from 'react-slick'
-import startIcon from '../../../public/MainPage/MainOurTop/Star.svg'
-import topIcon from '../../../public/MainPage/MainOurTop/top_logo.png'
 
 import style from './style.module.scss'
 import ProductCard from '@/components/ProductCard'
 import { ProductTypes } from '@/types/productsTypes'
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { selectCart } from '@/features/cartSlice'
 
 interface HeaderSliderProps {
 	data: ProductTypes[]
@@ -37,10 +32,9 @@ const MiniSlider: React.FC<HeaderSliderProps> = props => {
 					{props.data &&
 						props.data.map((item, index: number) => (
 							<ProductCard
-								topIcon={topIcon}
 								key={index}
-								stars_Icon={startIcon}
 								data={item}
+								isFavorite={true}
 							/>
 						))}
 				</Slider>

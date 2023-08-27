@@ -1,0 +1,13 @@
+@import '../../style/mixins.scss';
+
+.wrapper {
+    @include container;
+    margin-top: 32px;
+
+    .products__wrapper {
+        margin-top: 52px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 64px 24px;
+    }
+}
