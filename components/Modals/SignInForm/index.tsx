@@ -55,12 +55,12 @@ const SignIn = () => {
 
 		if (res && !res.error) {
 			// router.push('/profile')
-			modals?.setUserName(formData.get('email')),
+			modals?.setUserName(formData.get('email') as string),
 				setTimeout(() => {
 					modals?.SignInModalChangeVisibility(false)
 				}, 2000)
 		} else {
-			setError(formData.res)
+			setError(res as any)
 		}
 	}
 
@@ -74,7 +74,7 @@ const SignIn = () => {
 					<>
 						<Input
 							title='Електронна пошта *'
-							error={(formik.errors.email as string) || (error?.email as any)}
+							error={formik.errors.email as string}
 							type='email'
 							handleChange={formik.handleChange}
 							values={formik.values.email as string}

@@ -58,13 +58,13 @@ const Login = () => {
 			router.push('/profile')
 		}
 
-		let status = function (response) {
+		let status = function (response: Response) {
 			if (response.status !== 200) {
 				return Promise.reject(new Error(response.statusText))
 			}
 			return Promise.resolve(response)
 		}
-		let json = function (response) {
+		let json = function (response: Response) {
 			return response.json()
 		}
 		const user_info = 'http://localhost:8000/api/auth/users/'
@@ -86,7 +86,7 @@ const Login = () => {
 			<form onSubmit={handleSubmit} className={style.sign_in__form}>
 				<Input
 					title='Електронна пошта *'
-					error={(formik.errors.email as string) || (error?.email as any)}
+					error={formik.errors.email as string}
 					type='email'
 					handleChange={formik.handleChange}
 					values={formik.values.email as string}

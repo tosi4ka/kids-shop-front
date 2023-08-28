@@ -56,9 +56,9 @@ const RegistrationModal = () => {
 		}
 	})
 
-	const handleChange = () => {
-		this.props.onChange({ checked: !this.props.checked })
-	}
+	// const handleChange = () => {
+	// 	this.props.onChange({ checked: !this.props.checked })
+	// }
 	return (
 		<>
 			{successRef ? (
@@ -118,6 +118,7 @@ const RegistrationModal = () => {
 										вказаний вище email.
 									</>
 								}
+								id=''
 							/>
 							<div className={style.registration__button}>
 								<Button text='Зареєструватися' />
