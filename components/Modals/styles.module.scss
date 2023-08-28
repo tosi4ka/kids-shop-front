@@ -12,7 +12,7 @@
 .sign_in_modal {
 	// надо будет поправить позиционирование, тянется за экраном
 	position: absolute;
-	top: 7rem;
+	top: 50%;
 	right: -530px;
 	width: 26.5rem;
 	padding-bottom: 2rem;
@@ -20,6 +20,7 @@
 	transition: right 1s ease;
 	z-index: 10;
 	border-radius: 1.4rem;
+	transform: translate(50%, -50%);
 
 	.modal__header {
 		display: flex;
@@ -110,7 +111,7 @@
 }
 
 .sign_in_modal_open {
-	right: 38.5%;
+	right: 50%;
 }
 
 .form_wrapper {
