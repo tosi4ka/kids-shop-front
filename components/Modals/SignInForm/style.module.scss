@@ -14,22 +14,29 @@
 .social__sign_in {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
-	padding: 30px 0 0 0;
+	gap: 0.1rem;
+	padding: 1.5rem 0.5rem 0 0.6rem;
+	button {
+		margin-top: 2rem;
+	}
 }
 .social__sign_in {
 	align-items: center;
+	padding-top: 2.2rem;
 }
 .social__button {
 	display: flex;
+	padding: 0.9rem 0.1rem 0;
 }
 .pass__wrap {
 	position: relative;
+	padding-top: 0.7rem;
+	margin-bottom: 0.8rem;
 
 	.eye__button {
 		position: absolute;
 		right: 6.5%;
-		top: 53.6%;
+		top: 58%;
 		display: block;
 		z-index: 99999999;
 		cursor: pointer;

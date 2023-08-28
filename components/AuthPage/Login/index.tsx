@@ -13,7 +13,9 @@ import Button from '../Button'
 import Input from '../Input'
 import style from './style.module.scss'
 
+import Checkbox from '@/components/AuthPage/Checkbox'
 import Image from 'next/image'
+import Link from 'next/link'
 import img__eye from '../../../public/icons/Eye.svg'
 import img__eyeClick from '../../../public/icons/Eye__click.svg'
 
@@ -34,7 +36,8 @@ const Login = () => {
 		initialValues: {
 			email: '',
 			password: '',
-			agreement: true
+			agreement: true,
+			username: ''
 		},
 		validate,
 		onSubmit: () => {}
@@ -53,9 +56,28 @@ const Login = () => {
 
 		if (res && !res.error) {
 			router.push('/profile')
-		} else {
-			console.log(res)
 		}
+
+		let status = function (response) {
+			if (response.status !== 200) {
+				return Promise.reject(new Error(response.statusText))
+			}
+			return Promise.resolve(response)
+		}
+		let json = function (response) {
+			return response.json()
+		}
+		const user_info = 'http://localhost:8000/api/auth/users/'
+
+		fetch(user_info)
+			.then(status)
+			.then(json)
+			.then(function (data) {
+				console.log('data', data)
+			})
+			.catch(function (error) {
+				console.log('error', error)
+			})
 	}
 
 	return (
@@ -64,7 +86,7 @@ const Login = () => {
 			<form onSubmit={handleSubmit} className={style.sign_in__form}>
 				<Input
 					title='Електронна пошта *'
-					error={error?.detail as string}
+					error={(formik.errors.email as string) || (error?.email as any)}
 					type='email'
 					handleChange={formik.handleChange}
 					values={formik.values.email as string}
@@ -74,7 +96,7 @@ const Login = () => {
 				<div className={style.pass__wrap}>
 					<Input
 						title='Пароль*'
-						error={error?.detail as string}
+						error={formik.errors.password as string}
 						type={passwordShown ? 'text' : 'password'}
 						handleChange={formik.handleChange}
 						values={formik.values.password}
@@ -88,7 +110,15 @@ const Login = () => {
 						className={style.eye__button}
 					/>
 				</div>
-				<input type='checkbox' />
+				<Checkbox
+					text={
+						<>
+							Запам’ятати мене
+							<Link href='#'>Відновити пароль</Link>
+						</>
+					}
+					id='remember'
+				/>
 				<div className={style.signin__button}>
 					<Button text='Увійти' />
 				</div>
