@@ -10,10 +10,10 @@ import style from './page.module.scss'
 import Layout from '@/Layout'
 import store from '../store'
 
-export const metadata: Metadata = {
-	title: 'Lama Shop',
-	description: 'Магазин детской одежды и аксесуаров'
-}
+// export const metadata: Metadata = {
+// 	title: 'Lama Shop',
+// 	description: 'Магазин детской одежды и аксесуаров'
+// }
 
 // const manrope = Manrope({
 // 	subsets: ['latin'],

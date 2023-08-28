@@ -1,5 +1,3 @@
-'use client'
-
 import { TheHeader } from '@/components/TheHeader'
 import TheFooter from '@/components/TheFooter'
 import SignInModal from '@/components/Modals'

@@ -11,7 +11,7 @@ const initialState: {
 
 	selectedSizes: {
 		id: number
-		color: string
+		size: string
 	}[]
 } = {
 	products: [],
@@ -49,7 +49,7 @@ const cartSlise = createSlice({
 		addProductSize: (state, action) => {
 			state.selectedSizes.push({
 				id: action.payload.id,
-				color: action.payload.color
+				size: action.payload.size
 			})
 		}
 	}
