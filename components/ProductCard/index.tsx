@@ -1,6 +1,6 @@
 'use client'
 
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import style from './style.module.scss'
 import maleIcon from '../../public/icons/maleIcon.svg'
 import femaleIcon from '../../public/icons/femaleIcon.svg'
@@ -13,7 +13,11 @@ import {
 } from '@/features/cartSlice'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { addToFavorite, removeProduct, selectIsItemInFavorite } from '@/features/favoriteSlice'
+import {
+	addToFavorite,
+	removeProduct,
+	selectIsItemInFavorite
+} from '@/features/favoriteSlice'
 import starIcon from '../../public/MainPage/MainOurTop/Star.svg'
 import topIcon from '../../public/MainPage/MainOurTop/top_logo.png'
 
@@ -21,22 +25,29 @@ interface ProductCardProps {
 	key: number
 	data: ProductTypes
 	isFavorite: boolean
+	setShowMessage?: (message: { show: boolean; isAddToCart: boolean }) => void
 }
 
 const ProductCard: React.FC<ProductCardProps> = props => {
-	const [selectedCOlor, setSelectedColor] = useState('')
+	const [selectedColor, setSelectedColor] = useState('')
 	const dispatch = useAppDispatch()
 
 	const isItemInCart = useSelector(selectIsItemInCart(props.data.id))
 	const isItemInFavorite = useSelector(selectIsItemInFavorite(props.data.id))
 
-	const handleAddToCart = (data: ProductTypes) => {
-		if (selectedCOlor) {
+	const handleAddToCart = (data: ProductTypes, message?: boolean) => {
+		if (selectedColor) {
 			dispatch(addToCart(data))
-			dispatch(addProductColor({ id: props.data.id, color: selectedCOlor }))
+			dispatch(addProductColor({ id: props.data.id, color: selectedColor }))
 		} else {
 			dispatch(addToCart(data))
 		}
+		message && props.setShowMessage &&
+			props.setShowMessage({ show: true, isAddToCart: true })
+		setTimeout(() => {
+			props.setShowMessage &&
+				props.setShowMessage({ show: false, isAddToCart: true })
+		}, 5000)
 	}
 
 	const handleAddColor = (color: string) => {
@@ -49,10 +60,16 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 
 	const handleRemoveFromFavorite = (id: number) => {
 		dispatch(removeProduct(id))
+		props.setShowMessage &&
+			props.setShowMessage({ show: true, isAddToCart: false })
+		setTimeout(() => {
+			props.setShowMessage &&
+				props.setShowMessage({ show: false, isAddToCart: false })
+		}, 5000)
 	}
 
 	return (
-		<div className={style.card__slider_slide} key={props.key}>
+		<div className={style.card__slider_slide}>
 			<Image
 				className={style.top_icon}
 				src={topIcon}
@@ -98,9 +115,7 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 							</svg>
 						</div>
 					) : (
-						<div
-							className={`${style.add_to} ${style.add_to_favorite}`}
-						>
+						<div className={`${style.add_to} ${style.add_to_favorite}`}>
 							<svg
 								width='40'
 								height='40'
@@ -133,8 +148,12 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 							height='40'
 							viewBox='0 0 40 40'
 							fill='none'
-							className={style.svg_cart}
-							onClick={() => handleAddToCart(props.data)}
+							className={style.svg}
+							onClick={() =>
+								!isItemInCart
+									? handleAddToCart(props.data, true)
+									: handleAddToCart(props.data)
+							}
 						>
 							<circle cx='20' cy='20' r='15' fill='#A663EE' />
 							<path
@@ -188,7 +207,7 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 						{props.data.color.map((item, index) => (
 							<div
 								className={`${style.circle} ${
-									selectedCOlor === item.name ? style.circle_active : ''
+									selectedColor === item.name ? style.circle_active : ''
 								}`}
 								style={{
 									backgroundColor: item.name

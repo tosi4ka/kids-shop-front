@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import style from './style.module.scss'
 import Image, { StaticImageData } from 'next/image'
-import { InputEmail } from '../InputEmail'
+import { Input } from '../Input'
 
 interface FotterProps {
 	offresData: {
@@ -116,7 +116,7 @@ const TheFooter: React.FC<FotterProps> = props => {
 					})}
 					<div className={style.licks_column}>
 						<h3 className={style.columns_title}>Підписуйтесь на наші новини</h3>
-						<InputEmail arrowIcon={false} placeholderText='Електронна пошта' />
+						<Input type='email' className='withOutArrowIcon' placeholderText='Електронна пошта' />
 					</div>
 				</div>
 			</div>

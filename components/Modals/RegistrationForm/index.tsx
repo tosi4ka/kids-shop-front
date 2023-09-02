@@ -9,7 +9,7 @@ import { registration } from '../../functions'
 import { validate } from '../../functions/validate'
 import Button from '../Button'
 import Checkbox from '../Checkbox'
-import Input from '../Input'
+import Input from '../FormInput'
 import style from './style.module.scss'
 
 import Image from 'next/image'

@@ -31,26 +31,6 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                }
-
-                .add_to_cart {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .add_to_cart_active {
-                    svg {
-                        circle {
-                            fill: #A663EE;
-                        }
-                    }
-                }
-
-                .add_to_favorite {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
 
                     .svg {
                         circle {
@@ -73,14 +53,14 @@
                     justify-content: center;
                     align-items: center;
 
-                    .svg_cart {
+                    .svg {
                         circle {
                             display: none;
                         }
                     }
 
                     &:hover {
-                        .svg_cart {
+                        .svg {
                             path {
                                 transition: all .4s ease;
                                 stroke: #A663EE
@@ -93,7 +73,7 @@
                     background-color: #A663EE;
 
                     &:hover {
-                        .svg_cart {
+                        .svg {
                             path {
                                 transition: all .4s ease;
                                 stroke: #fff

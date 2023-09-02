@@ -1,4 +1,4 @@
-import { InputEmail } from '@/components/InputEmail'
+import { Input } from '@/components/Input'
 import style from './style.module.scss'
 import Image, { StaticImageData } from 'next/image'
 
@@ -16,7 +16,7 @@ const Page: React.FC<PageProps> = props => {
 				<div className={style.content}>
 					<h2 className={style.title}>{props.title}</h2>
 					<span className={style.text}>{props.text}</span>
-					<InputEmail arrowIcon placeholderText='Електронна пошта' />
+					<Input type='email' className='arrowIcon' placeholderText='Електронна пошта' />
 				</div>
 				<div className={style.image_block}>
 					<Image

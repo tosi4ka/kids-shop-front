@@ -1,0 +1,19 @@
+.sign_in__form {
+    position: relative;
+    width: 100%;
+
+    .input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 12.5px 12px 12.5px 20px;
+        border-radius: 100px;
+        border: 1px solid #CCCACD;
+        background: #FCFBFE;
+        color: #7F7C83;
+        font-family: var(--font-Montserrat);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+    }
+}

@@ -1,0 +1,32 @@
+.button_back_to_catalog {
+    display: flex;
+    align-items: center;
+    gap: 8;
+    margin-top: 12px;
+    background: transparent;
+    border: none;
+    outline: 0;
+    color: #7F7C83;
+    font-family: var(--font-Montserrat);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 7px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    max-width: 250px;
+    transition: color .2s ease;
+
+    &:hover {
+        transition: color .2s ease;
+        color: #080709;
+
+        .btn__arrow {
+
+            path {
+                stroke: #080709;
+            }
+        }
+    }
+}

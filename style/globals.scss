@@ -444,3 +444,42 @@ $slick-opacity-not-active: 0.25 !default;
 		gap: 24px;
 	}
 }
+
+.custom__select {
+	&__control {
+		border-radius: 28px !important;
+		border: 1px solid #CCCACD !important;
+		width: 142px !important;
+		height: 40px !important;
+	}
+
+	&__indicator-separator {
+		display: none !important;
+	}
+
+	&__single-value {
+		padding-left: 10px !important;
+		color: #7F7C83 !important;
+		font-family: var(--font-Montserrat) !important;
+		font-size: 16px !important;
+		font-style: normal !important;
+		font-weight: 400 !important;
+		line-height: 24px !important;
+	}
+
+	&__option {
+		cursor: pointer !important;
+		color: #080709 !important;
+		background-color: #FBF3E9 !important;
+		font-family: var(--font-Montserrat) !important;
+		font-size: 16px !important;
+		font-style: normal !important;
+		font-weight: 400 !important;
+		line-height: 24px !important;
+
+		&:hover {
+			background-color: #F0D2AC !important;
+
+		}
+	}
+}

@@ -11,7 +11,7 @@ import Button from '../Button'
 import Checkbox from '../Checkbox'
 import { FacebookButton } from '../FacebookSignIn'
 import { GoogleButton } from '../GoogleSignIn'
-import Input from '../Input'
+import Input from '../FormInput'
 import style from './style.module.scss'
 
 import Image from 'next/image'

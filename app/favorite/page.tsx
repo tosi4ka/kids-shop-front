@@ -1,6 +1,7 @@
 'use client'
 
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 import style from './style.module.scss'
 import Title from '@/components/SectionTitle'
@@ -8,27 +9,51 @@ import { selectFavoriteProducts } from '@/features/favoriteSlice'
 import { ProductTypes } from '@/types/productsTypes'
 import ProductCard from '@/components/ProductCard'
 import Offers from '../../modules/Offers'
-import lamaImage from '../../public/MainPage/Offers.png'
-import Link from 'next/link'
 import EmptyProducts from '@/modules/EmptyProducts'
+import PopUpMessage from '@/components/PopupMessage'
+import { outProductsTextByCount } from '@/components/functions/formatText'
+
+import lamaImage from '../../public/MainPage/Offers.png'
+import ButtonBackToCatalog from '@/components/Buttons/BackToCatalog'
+
+interface StateProps {
+	show: boolean
+	isAddToCart: boolean
+}
+
+const initialObj = {
+	show: false,
+	isAddToCart: false
+}
 
 const FavoritePage = () => {
+	const [showMessage, setShowMessage] = useState<StateProps>(initialObj)
 	const favoriteProducts: ProductTypes[] = useSelector(selectFavoriteProducts)
 
 	return (
-		<>
+		<section className={style.favorite}>
 			{favoriteProducts.length > 0 ? (
 				<>
-					<section className={style.wrapper}>
+					<div className={style.favorite__wrapper}>
 						<Title
-							title={`Сподобалось (${formatText(favoriteProducts.length)})`}
+							title={`Сподобалось (${outProductsTextByCount(
+								favoriteProducts.length
+							)})`}
 						/>
 						<div className={style.products__wrapper}>
 							{favoriteProducts.map((item, index) => (
-								<ProductCard data={item} key={index} isFavorite={false} />
+								<ProductCard
+									data={item}
+									key={index}
+									isFavorite={false}
+									setShowMessage={setShowMessage}
+								/>
 							))}
 						</div>
-					</section>
+						<div className={style.back_to_catalog}>
+							<ButtonBackToCatalog btn_text='Назад до каталогу' />
+						</div>
+					</div>
 					<Offers
 						title='Бажаєте отримувати цікаві пропозиції?'
 						text='Підписуйтесь на нашу розсилку'
@@ -46,25 +71,17 @@ const FavoritePage = () => {
 					title='У вас поки немає товарів у списку “Сподобалось”'
 				/>
 			)}
-		</>
+			{showMessage.show && (
+				<PopUpMessage
+					text={`${
+						showMessage.isAddToCart
+							? 'Товар перенесено до кошику'
+							: 'Товар видалено з улюбленого'
+					}`}
+				/>
+			)}
+		</section>
 	)
 }
 
 export default FavoritePage
-
-function formatText(number: number) {
-	const remainder10 = number % 10
-	const remainder100 = number % 100
-
-	if (remainder10 === 1 && remainder100 !== 11) {
-		return `${number} товар`
-	} else if (
-		remainder10 >= 2 &&
-		remainder10 <= 4 &&
-		(remainder100 < 10 || remainder100 >= 20)
-	) {
-		return `${number} товара`
-	} else {
-		return `${number} товарів`
-	}
-}
