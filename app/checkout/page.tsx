@@ -7,7 +7,13 @@ import style from './style.module.scss'
 
 import { ProductTypes } from '@/types/productsTypes'
 import { outProductsTextByCount } from '@/components/functions/formatText'
-import { removeProduct, selectCart } from '@/features/cartSlice'
+import {
+	removeProduct,
+	selectCart,
+	selectCartColors,
+	selectCartProductsCount,
+	selectCartSizes
+} from '@/features/cartSlice'
 import { getTotalCost } from '@/components/functions/getTotalCost'
 import { addToFavorite } from '@/features/favoriteSlice'
 import { useAppDispatch } from '@/store'
@@ -22,8 +28,16 @@ import MainPageOurTop from '../../modules/MainPageOurTop'
 const FavoritePage = () => {
 	const [ourTopData, setOurTopData] = useState()
 	const cartProducts: ProductTypes[] = useSelector(selectCart)
-
+	const cartProductsCount: { id: number; count: number }[] = useSelector(
+		selectCartProductsCount
+	)
 	const dispatch = useAppDispatch()
+
+	const cartProductsSizes: { id: number; size: string }[] =
+		useSelector(selectCartSizes)
+
+	const cartColors: { id: number; color: string }[] =
+		useSelector(selectCartColors)
 
 	const handleAddToFavorite = (data: ProductTypes) => {
 		dispatch(addToFavorite(data))
@@ -31,6 +45,32 @@ const FavoritePage = () => {
 
 	const handleRemoveItemFromCart = (id: number) => {
 		dispatch(removeProduct(id))
+	}
+
+	const setActiveColor = (id: number): string => {
+		let activeColor = ''
+		cartColors.map(item => {
+			item.id === id ? (activeColor = item.color) : null
+		})
+		return activeColor
+	}
+
+	const setActiveSize = (id: number): string => {
+		let activeSize = ''
+		cartProductsSizes.map(item => {
+			item.id === id ? (activeSize = item.size) : null
+		})
+		return activeSize
+	}
+
+	const setCount = (id: number): number => {
+		let res = 0
+		cartProductsCount.forEach(item => {
+			if (item.id === id) {
+				return (res = item.count)
+			}
+		})
+		return res
 	}
 
 	useEffect(() => {
@@ -53,6 +93,9 @@ const FavoritePage = () => {
 									<CheckoutProductCard
 										item={item}
 										key={index}
+										activeColor={() => setActiveColor(item.id)}
+										activeSize={() => setActiveSize(item.id)}
+										count={() => setCount(item.id)}
 										addToFavorite={handleAddToFavorite}
 										removeProductFromCart={handleRemoveItemFromCart}
 									/>

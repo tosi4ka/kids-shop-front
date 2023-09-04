@@ -4,11 +4,13 @@ import Image from 'next/image'
 import style from './style.module.scss'
 import maleIcon from '../../public/icons/maleIcon.svg'
 import femaleIcon from '../../public/icons/femaleIcon.svg'
-import { ProductTypes } from '@/types/productsTypes'
+import { ProductSizeTypes, ProductTypes } from '@/types/productsTypes'
 import { useAppDispatch } from '@/store'
 import {
 	addProductColor,
+	addProductSize,
 	addToCart,
+	changeProductCount,
 	selectIsItemInCart
 } from '@/features/cartSlice'
 import { useSelector } from 'react-redux'
@@ -20,6 +22,7 @@ import {
 } from '@/features/favoriteSlice'
 import starIcon from '../../public/MainPage/MainOurTop/Star.svg'
 import topIcon from '../../public/MainPage/MainOurTop/top_logo.png'
+import { getUniqueLetterSizes } from '../functions/getUniqueLetterSizes'
 
 interface ProductCardProps {
 	key: number
@@ -30,20 +33,24 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = props => {
 	const [selectedColor, setSelectedColor] = useState('')
+	const [selectedSize, setSelectedSize] = useState('')
 	const dispatch = useAppDispatch()
 
 	const isItemInCart = useSelector(selectIsItemInCart(props.data.id))
 	const isItemInFavorite = useSelector(selectIsItemInFavorite(props.data.id))
 
 	const handleAddToCart = (data: ProductTypes, message?: boolean) => {
-		if (selectedColor) {
-			dispatch(addToCart(data))
-			dispatch(addProductColor({ id: props.data.id, color: selectedColor }))
-		} else {
-			dispatch(addToCart(data))
-		}
-		message && props.setShowMessage &&
+		dispatch(addToCart(data))
+		selectedColor
+			? dispatch(addProductColor({ id: props.data.id, color: selectedColor }))
+			: null
+		selectedSize
+			? dispatch(addProductSize({ id: props.data.id, size: selectedSize }))
+			: null
+		message &&
+			props.setShowMessage &&
 			props.setShowMessage({ show: true, isAddToCart: true })
+		dispatch(changeProductCount({ id: props.data.id }))
 		setTimeout(() => {
 			props.setShowMessage &&
 				props.setShowMessage({ show: false, isAddToCart: true })
@@ -52,6 +59,10 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 
 	const handleAddColor = (color: string) => {
 		setSelectedColor(color)
+	}
+
+	const handleAddSize = (size: string) => {
+		setSelectedSize(size)
 	}
 
 	const handleAddToFavorite = (data: ProductTypes) => {
@@ -219,18 +230,19 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 						))}
 					</div>
 					<div className={style.sizes_wrap}>
-						<div className={`${style.size_item} ${style.size_item_inactive}`}>
-							98
-						</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
-						<div className={style.size_item}>98</div>
+						{getUniqueLetterSizes(props.data.product_size).map(
+							(item, index) => (
+								<div
+									className={`${style.size_item} ${
+										selectedSize === item ? style.size_item_active : ''
+									}`}
+									key={index}
+									onClick={() => handleAddSize(item)}
+								>
+									{item}
+								</div>
+							)
+						)}
 					</div>
 				</div>
 			</div>

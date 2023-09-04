@@ -17,11 +17,11 @@ const SubHeader = ({
 			<nav className={style.sub_header__nav}>
 				<ul className={style.nav__list}>
 					{navigationData.map((item, index) => (
-						<li>
+						<li key={index}>
 							<Link
 								href={item.link}
 								className={style.nav__list_item}
-								key={index}
+								
 							>
 								{item.icon ? (
 									<svg

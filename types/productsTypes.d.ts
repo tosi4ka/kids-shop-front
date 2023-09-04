@@ -13,11 +13,16 @@ interface ProductTypes {
 	item_number: string
 	price: number
 	rating: number
-	size: number
+	product_size: ProductSizeTypes[]
 	age: number
 	male: boolean
 	is_sale: boolean
 }
+
+interface ProductSizeTypes {
+	brand_size: number,
+	letter_size: string
+  }
 
 interface ProductCategoryTypes {
 	id: number

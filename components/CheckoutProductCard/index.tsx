@@ -8,11 +8,21 @@ import maleIcon from '../../public/icons/maleIcon.svg'
 import femaleIcon from '../../public/icons/femaleIcon.svg'
 import { selectIsItemInFavorite } from '@/features/favoriteSlice'
 import { ProductTypes } from '@/types/productsTypes'
+import { useAppDispatch } from '@/store'
+import {
+	addProductColor,
+	addProductSize,
+	changeProductCount
+} from '@/features/cartSlice'
+import { getUniqueLetterSizes } from '../functions/getUniqueLetterSizes'
 
 interface CheckoutProductCardTypes {
 	item: ProductTypes
 	addToFavorite: (data: ProductTypes) => void
 	removeProductFromCart: (id: number) => void
+	activeColor: () => string
+	activeSize: () => string
+	count: () => number
 }
 
 interface Option {
@@ -22,26 +32,40 @@ interface Option {
 
 const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 	const [selectedOption, setSelectedOption] = useState<Option>()
-	const [selectedColor, setSelectedColor] = useState('')
+	const [count, setCount] = useState(props.count)
+	const dispatch = useAppDispatch()
 
-	const Options: Option[] = [
-		{ value: '28', label: '28' },
-		{ value: '29', label: '29' }
-	]
+	const activeColor = props.activeColor()
+	const activeSize = props.activeSize()
+	const isItemInFavorite = useSelector(selectIsItemInFavorite(props.item.id))
+
+	const Options: Option[] = getUniqueLetterSizes(props.item.product_size).map(
+		item => ({ value: item, label: item })
+	)
 
 	const onChange = (selectedOptions: any) => {
-		setSelectedOption(selectedOptions)
+		const selectedOption: Option = selectedOptions
+		setSelectedOption(selectedOption)
+		dispatch(addProductSize({ id: props.item.id, size: selectedOption.value }))
 	}
 
 	const handleAddColor = (color: string) => {
-		setSelectedColor(color)
+		dispatch(addProductColor({ id: props.item.id, color: color }))
 	}
 
 	useEffect(() => {
-		setSelectedOption({ value: '28', label: '28' })
+		setSelectedOption({ value: activeSize, label: activeSize })
 	}, [])
 
-	const isItemInFavorite = useSelector(selectIsItemInFavorite(props.item.id))
+	const handleDecrement = () => {
+		setCount(prev => (prev > 1 ? prev - 1 : prev))
+		dispatch(changeProductCount({ id: props.item.id, type: 'dec' }))
+	}
+
+	const handleIncrement = () => {
+		setCount(prev => prev + 1)
+		dispatch(changeProductCount({ id: props.item.id, type: 'inc' }))
+	}
 
 	return (
 		<div className={style.cart_product}>
@@ -69,7 +93,10 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 						</svg>
 						{isItemInFavorite ? 'Додано до обранного' : 'Додати до обранного'}
 					</span>
-					<span className={style.text_with_icon} onClick={()=> props.removeProductFromCart(props.item.id)}>
+					<span
+						className={style.text_with_icon}
+						onClick={() => props.removeProductFromCart(props.item.id)}
+					>
 						<svg
 							width='40'
 							height='40'
@@ -118,9 +145,12 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 							/>
 						</div>
 						<div className={style.price_block}>
-							<span className={style.price}>{`${props.item.price} ₴`}</span>
+							<span className={style.price}>{`${props.item.price * count} ₴`}</span>
 							<div className={style.count_block}>
-								<div className={style.controls_button_inc}>
+								<div
+									className={style.controls_button_inc}
+									onClick={handleDecrement}
+								>
 									<svg
 										width='8'
 										height='2'
@@ -128,7 +158,7 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 										fill='none'
 										xmlns='http://www.w3.org/2000/svg'
 									>
-										<g clip-path='url(#clip0_597_7318)'>
+										<g clipPath='url(#clip0_597_7318)'>
 											<rect width='8' height='2' rx='1' fill='#7F7C83' />
 										</g>
 										<defs>
@@ -138,8 +168,11 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 										</defs>
 									</svg>
 								</div>
-								<span className={style.count_value}>22</span>
-								<div className={style.controls_button_dec}>
+								<span className={style.count_value}>{count}</span>
+								<div
+									className={style.controls_button_dec}
+									onClick={handleIncrement}
+								>
 									<svg
 										width='8'
 										height='8'
@@ -147,10 +180,10 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 										fill='none'
 										xmlns='http://www.w3.org/2000/svg'
 									>
-										<g clip-path='url(#clip0_597_7321)'>
+										<g clipPath='url(#clip0_597_7321)'>
 											<path
-												fill-rule='evenodd'
-												clip-rule='evenodd'
+												fillRule='evenodd'
+												clipRule='evenodd'
 												d='M4.79688 0.8C4.79688 0.358172 4.4387 0 3.99688 0C3.55505 0 3.19688 0.358172 3.19688 0.8V3.19922H0.8C0.358172 3.19922 0 3.55739 0 3.99922C0 4.44105 0.358172 4.79922 0.8 4.79922H3.19688V7.2C3.19688 7.64183 3.55505 8 3.99688 8C4.4387 8 4.79688 7.64183 4.79688 7.2V4.79922H7.2C7.64183 4.79922 8 4.44105 8 3.99922C8 3.55739 7.64183 3.19922 7.2 3.19922H4.79688V0.8Z'
 												fill='#7F7C83'
 											/>
@@ -172,7 +205,7 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 								{props.item.color.map((item, index) => (
 									<div
 										className={`${style.circle} ${
-											selectedColor === item.name ? style.circle_active : ''
+											activeColor === item.name ? style.circle_active : ''
 										}`}
 										style={{
 											backgroundColor: item.name
