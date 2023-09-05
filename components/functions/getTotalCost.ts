@@ -1,16 +1,14 @@
-import { selectCartProductsCount } from '@/features/cartSlice'
 import { ProductTypes } from '@/types/productsTypes'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
 
-export const getTotalCost = (cart: ProductTypes[]) => {
-	const productsCount: { id: number; count: number }[] = useSelector(
-		selectCartProductsCount
-	)
-
-	const totalCost: number = cart.reduce(
-		(accumulator, currentValue, index) =>
-			accumulator + currentValue.price * productsCount[index].count,
-		0
-	)
+export const getTotalCost = (
+	cart: ProductTypes[],
+	cartProductsCount?: { id: number; count: number }[]
+) => {
+	const totalCost: number = cart.reduce((accumulator, currentValue, index) => {
+		if (cartProductsCount) {
+			return accumulator + currentValue.price * cartProductsCount[index].count
+		} else return accumulator + currentValue.price
+		
+	}, 0)
 	return totalCost
 }

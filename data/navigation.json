@@ -41,19 +41,27 @@
 		"help": [
 			{
 				"text": "Доставка і оплата",
-				"link": "/"
+				"link": "/delivery-and-payments"
 			},
 			{
 				"text": "Обмін та повернення",
-				"link": "/"
+				"link": "/exchange-and-return"
 			},
 			{
 				"text": "Таблиці розмірів",
-				"link": "/"
+				"link": "/tabels-of-sizes"
 			},
 			{
 				"text": "Бонусна програма",
-				"link": "/"
+				"link": "/bonus-program"
+			},
+			{
+				"text": "Правила магазину",
+				"link": "/rules"
+			},
+			{
+				"text": "Зв’язатися з нами",
+				"link": "/contacts"
 			}
 		],
 		"often_searched": [

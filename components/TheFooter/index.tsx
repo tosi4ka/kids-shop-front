@@ -65,7 +65,9 @@ const TheFooter: React.FC<FotterProps> = props => {
 							return (
 								<div className={style.licks_column} key={index}>
 									<h3 className={style.columns_title}>{item.title}</h3>
-									<p className={style.adress}>{item.contacts.adress}</p>
+									<address>
+										<p className={style.adress}>{item.contacts.adress}</p>
+									</address>
 									<p className={style.schedule}>{item.contacts.schedule}</p>
 									<p className={style.dayOff}>{item.contacts.dayOff}</p>
 									<Link
@@ -116,7 +118,11 @@ const TheFooter: React.FC<FotterProps> = props => {
 					})}
 					<div className={style.licks_column}>
 						<h3 className={style.columns_title}>Підписуйтесь на наші новини</h3>
-						<Input type='email' className='withOutArrowIcon' placeholderText='Електронна пошта' />
+						<Input
+							type='email'
+							className='withOutArrowIcon'
+							placeholderText='Електронна пошта'
+						/>
 					</div>
 				</div>
 			</div>

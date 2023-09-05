@@ -1,16 +1,16 @@
 import type { Metadata } from 'next'
-import FavoritePage from '.'
+import DeliveryPage from '.'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
-	title: 'Сподобалось',
+	title: 'Доставка і оплата',
 	description: '...'
 }
 
 const Page = () => {
 	return (
 		<Suspense fallback='Щось пішло не так'>
-			<FavoritePage />
+			<DeliveryPage />
 		</Suspense>
 	)
 }

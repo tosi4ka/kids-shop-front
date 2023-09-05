@@ -2,7 +2,7 @@
 
 import { useFormik } from 'formik'
 import { signIn } from 'next-auth/react'
-import { FormEventHandler, useState } from 'react'
+import { FormEventHandler, Suspense, useState } from 'react'
 
 import { validate } from '@/components/functions/validate'
 import { useModals } from '@/context/ModalsProvider'
@@ -107,8 +107,10 @@ const SignIn = () => {
 						<div className={style.social__sign_in}>
 							<span className={style.social__title}>або за допомогою</span>
 							<div className={style.social__button}>
-								<FacebookButton />
-								<GoogleButton />
+								<Suspense fallback="as">
+									<FacebookButton />
+									<GoogleButton />
+								</Suspense>
 							</div>
 						</div>
 					</>
