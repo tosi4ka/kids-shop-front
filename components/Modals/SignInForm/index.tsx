@@ -106,8 +106,9 @@ const SignIn = () => {
 							error={formik.errors.email as string}
 							type='email'
 							// handleChange={formik.handleChange}
-							values={formik.values.email as string}
+							// values={formik.values.email as string}
 							name='email'
+							values={email}
 							handleChange={e => setEmail(e.target.value)}
 						/>
 						<div className={style.pass__wrap}>
@@ -116,9 +117,10 @@ const SignIn = () => {
 								error={formik.errors.password as string}
 								type={passwordShown ? 'text' : 'password'}
 								// handleChange={formik.handleChange}
-								values={formik.values.password}
+								// values={formik.values.password}
 								name='password'
 								handleChange={e => setPassword(e.target.value)}
+								values={password}
 							/>
 							<Image
 								src={passwordShown ? img__eyeClick : img__eye}

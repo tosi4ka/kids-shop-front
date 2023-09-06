@@ -18,6 +18,7 @@ import ProfileMenu from './ProfileMenu'
 import SubHeader from './SubHeader'
 
 import { selectFavoriteProducts } from '@/features/favoriteSlice'
+import { IRootState } from '@/store'
 import logo from '../../public/icons/logo.svg'
 import HeaderCartMenu from '../HeaderCartMenu'
 
@@ -118,6 +119,10 @@ const TheHeader = () => {
 							</Link>
 						</li>
 						{isLoggedIn ? (
+							<li className={style.user_nav__list_item}>
+								<ProfileMenu />
+							</li>
+						) : (
 							<li
 								className={style.user_nav__list_item}
 								onClick={handleToggleSignUpModal}
@@ -136,10 +141,6 @@ const TheHeader = () => {
 									/>
 								</svg>
 								Авторизація
-							</li>
-						) : (
-							<li className={style.user_nav__list_item}>
-								<ProfileMenu />
 							</li>
 						)}
 						{/* {!session?.data && (

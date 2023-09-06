@@ -1,6 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit'
 import { AxiosPromise } from 'axios'
-import store from '../'
+import store from '..'
 import api from '../../api'
 import { ILoginRequest, ILoginResponse } from '../../api/auth/types'
 import { history } from '../../utils/history'
@@ -24,6 +24,7 @@ export const loginUser =
 			const res = await api.auth.login(data)
 
 			dispatch(loginSucess(res.data.access))
+			dispatch(getProfile())
 		} catch (e: any) {
 			console.error(e)
 

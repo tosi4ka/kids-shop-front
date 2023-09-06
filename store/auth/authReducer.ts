@@ -8,6 +8,7 @@ export interface AuthState {
 	}
 	profileData: {
 		profile: string | null
+		email: string | null
 		isLoading: boolean
 		error: string | null
 	}
@@ -66,6 +67,7 @@ export const authReducer = createSlice({
 			profileData: {
 				...state.profileData,
 				profile: action.payload,
+				email: action.payload.email,
 				isLoading: false,
 				error: null
 			}

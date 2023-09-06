@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = props => {
 				className={`${style.input} ${props.error ? style.input_error : ''}`}
 				type={props.type}
 				onChange={props.handleChange}
-				value={props.value}
+				value={props.values}
 				name={props.name}
 				placeholder={props.placeholder}
 			/>
