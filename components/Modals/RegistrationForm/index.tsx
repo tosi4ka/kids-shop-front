@@ -1,15 +1,14 @@
 'use client'
 
 import { useFormik } from 'formik'
+import Link from 'next/link'
 
 import { useModals } from '@/context/ModalsProvider'
-import Link from 'next/link'
 import { useState } from 'react'
 import { registration } from '../../functions'
 import { validate } from '../../functions/validate'
-import Button from '../Button'
 import Checkbox from '../Checkbox'
-import Input from '../FormInput'
+import Input from '../Input'
 import style from './style.module.scss'
 
 import Image from 'next/image'
@@ -32,6 +31,23 @@ const RegistrationModal = () => {
 		setPasswordShown(!passwordShown)
 	}
 
+	const [checked, setChecked] = useState(false)
+	const handleChange = () => {
+		setChecked(!checked)
+	}
+
+	const btn = document.querySelector('#click-me')
+	const checkbox = document.querySelector('#conditions')
+	checkbox?.addEventListener('change', () => {
+		if (checked === false) {
+			btn.disabled = <true></true>
+		} else if (checked === true) {
+			btn.disabled = false
+		} else {
+			btn.disabled = true
+		}
+	})
+
 	const formik = useFormik({
 		initialValues: {
 			username: '',
@@ -46,6 +62,7 @@ const RegistrationModal = () => {
 				email: formik.values.email,
 				password: formik.values.password
 			}
+			console.log(values.checkbox)
 			registration(value).then(data => {
 				if (!data.id) {
 					setError(data)
@@ -78,16 +95,6 @@ const RegistrationModal = () => {
 							type='email'
 							values={formik.values.email as string}
 						/>
-						{/* <Input
-							error={
-								(formik.errors.username as string) || (error?.username as any)
-							}
-							handleChange={formik.handleChange}
-							name='username'
-							title='Логін *'
-							type='text'
-							values={formik.values.username as string}
-						/> */}
 						<div className={style.pass__wrap}>
 							<Input
 								error={
@@ -103,28 +110,37 @@ const RegistrationModal = () => {
 								src={passwordShown ? img__eyeClick : img__eye}
 								alt='eye'
 								onClick={togglePassword}
-								className={style.eye__button}
+								className={passwordShown ? style.eye__open : style.eye__close}
 							/>
 						</div>
-
-						<Checkbox
-							id='conditions'
-							text={
-								<>
-									*Погоджуюсь з <Link href='#'>правилами магазину</Link>
-								</>
-							}
-						/>
-						<Checkbox
-							id='newsletter'
-							text={
-								<>
-									*Хочу отримувати комерційні пропозиції магазину Lama на
-									вказаний вище email.
-								</>
-							}
-						/>
-						<Button text='Зареєструватися' />
+						<div className={style.regis__check}>
+							<Checkbox
+								id='conditions'
+								onClick={handleChange}
+								text={
+									<>
+										*Погоджуюсь з <Link href='#'>правилами магазину</Link>
+									</>
+								}
+							/>
+							<Checkbox
+								id='newsletter'
+								text={
+									<>
+										*Хочу отримувати комерційні пропозиції магазину Lama на
+										вказаний вище email.
+									</>
+								}
+							/>
+						</div>
+						<button
+							className={style.form_button}
+							type='submit'
+							disabled={formik.dirty && !formik.isValid}
+							id='click-me'
+						>
+							Увійти
+						</button>
 					</form>
 				</>
 			)}

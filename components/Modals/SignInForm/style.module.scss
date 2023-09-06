@@ -33,12 +33,56 @@
 	padding-top: 0.7rem;
 	margin-bottom: 0.8rem;
 
-	.eye__button {
+	.eye__open,
+	.eye__close {
 		position: absolute;
+		display: block;
+		z-index: 11;
+		cursor: pointer;
+	}
+	.eye__close {
+		right: 6.5%;
+		top: 59%;
+	}
+	.eye__open {
 		right: 6.5%;
 		top: 58%;
-		display: block;
-		z-index: 99999999;
-		cursor: pointer;
+	}
+}
+.form_button {
+	margin-top: 0.8rem;
+	text-align: center;
+	font-family: var(--font-Montserrat);
+	font-size: 22px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	padding: 15px 0;
+	width: 100%;
+	cursor: pointer;
+	border-radius: 6.25rem;
+	background: #cd9eff;
+	outline: none;
+	border: 0;
+	transition: all 0.3s ease;
+}
+.form_button:hover {
+	color: #080709;
+	background: #a663ee;
+}
+.form_button:active {
+	color: #080709;
+	background: #cd9eff;
+	border: 2px solid #a663ee;
+}
+.form_button:disabled {
+	background: #e5e5e6;
+	color: #b7b4bb;
+	cursor: auto;
+	&:hover {
+		color: #b7b4bb;
+	}
+	&:active {
+		border: none;
 	}
 }

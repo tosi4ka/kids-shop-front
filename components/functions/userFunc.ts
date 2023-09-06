@@ -1,9 +1,9 @@
-
 interface RegistrationDataProps {
 	username?: string
 	email?: string
 	password: string
 }
+const LOGIN_URL = 'http://localhost:8000/api/auth/jwt/create/'
 
 const registration = async (values: RegistrationDataProps) => {
 	try {
@@ -11,9 +11,9 @@ const registration = async (values: RegistrationDataProps) => {
 			method: 'POST',
 			body: JSON.stringify(values),
 			headers: {
-				'Accept': 'application/json',
+				Accept: 'application/json',
 				'Content-Type': 'application/json'
-			},
+			}
 		})
 		if (!response.ok) {
 			return response.json()
@@ -31,18 +31,20 @@ const signIn = async (values: RegistrationDataProps) => {
 			method: 'POST',
 			body: JSON.stringify(values),
 			headers: {
-				'Accept': 'application/json',
+				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			}
 		})
 		if (!response.ok) {
 			return response.json()
 		}
-
 		return response.json()
 	} catch (error) {
 		console.log(error)
 	}
 }
 
-export { signIn, registration }
+export { registration, signIn }
+function setAuthToken(token: any) {
+	throw new Error('Function not implemented.')
+}
