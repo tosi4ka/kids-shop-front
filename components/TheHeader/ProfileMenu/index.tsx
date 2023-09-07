@@ -3,8 +3,10 @@ import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import iconArrow from '../../../public/icons/Arrow.svg'
 import iconExit from '../../../public/icons/exit.svg'
+import { IRootState } from '../../../store'
 import ProfileItem from './ProfileItem'
 import style from './style.module.scss'
 
@@ -23,6 +25,11 @@ const ProfileMenu = () => {
 
 	const router = useRouter()
 	const session = useSession()
+
+	const profile = useSelector(
+		(state: IRootState) => state.auth.profileData.profile
+	)
+	const email = profile?.email
 
 	return (
 		<div className={style.position}>
@@ -44,6 +51,7 @@ const ProfileMenu = () => {
 							fill='#C18170'
 						/>
 					</svg>
+					{email}
 					{session.data?.user?.name}
 				</button>
 			</div>
@@ -68,6 +76,7 @@ const ProfileMenu = () => {
 										fill='#C18170'
 									/>
 								</svg>
+								{email}
 								{session.data?.user?.name}
 							</button>
 

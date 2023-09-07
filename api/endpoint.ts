@@ -3,7 +3,7 @@ const Endpoints = {
 		LOGIN: 'http://localhost:8000/api/auth/jwt/create/',
 		REFRESH: 'http://localhost:8000/api/auth/jwt/refresh/',
 		LOGOUT: '/',
-		PROFILE: 'http://localhost:8000/api/auth/users/'
+		PROFILE: 'http://localhost:8000/api/auth/users/1/'
 	}
 }
 

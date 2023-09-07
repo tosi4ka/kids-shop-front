@@ -67,7 +67,6 @@ export const authReducer = createSlice({
 			profileData: {
 				...state.profileData,
 				profile: action.payload,
-				email: action.payload.email,
 				isLoading: false,
 				error: null
 			}
