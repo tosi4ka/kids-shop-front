@@ -1,12 +1,13 @@
 'use client'
-import { signOut, useSession } from 'next-auth/react'
+import { logoutUser } from '@/store/auth/actionCreators'
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import iconArrow from '../../../public/icons/Arrow.svg'
 import iconExit from '../../../public/icons/exit.svg'
-import { IRootState } from '../../../store'
+import { IRootState, useAppDispatch } from '../../../store'
 import ProfileItem from './ProfileItem'
 import style from './style.module.scss'
 
@@ -26,10 +27,17 @@ const ProfileMenu = () => {
 	const router = useRouter()
 	const session = useSession()
 
+	const dispatch = useAppDispatch()
+
 	const profile = useSelector(
 		(state: IRootState) => state.auth.profileData.profile
 	)
 	const email = profile?.email
+
+	function handleSubmit() {
+		dispatch(logoutUser())
+		localStorage.removeItem('refresh')
+	}
 
 	return (
 		<div className={style.position}>
@@ -91,7 +99,8 @@ const ProfileMenu = () => {
 							</div>
 							<div className={style.ItemProfile}>
 								<ProfileItem
-									onClick={() => signOut({ callbackUrl: '/' })}
+									onClick={handleSubmit}
+									// onClick={() => signOut({ callbackUrl: '/' })}
 									label='Вийти'
 								/>
 								<Image src={iconExit} alt='exit' className={style.iconExit} />

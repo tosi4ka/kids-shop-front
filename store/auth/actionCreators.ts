@@ -1,10 +1,11 @@
+import Endpoints from '@/api/endpoint'
+import { isTokenExpired } from '@/utils/jwt'
 import { Dispatch } from '@reduxjs/toolkit'
-import { AxiosPromise } from 'axios'
+import axios, { AxiosPromise } from 'axios'
 import store from '..'
 import api from '../../api'
 import { ILoginRequest, ILoginResponse } from '../../api/auth/types'
 import { history } from '../../utils/history'
-import { isTokenExpired } from '../../utils/jwt'
 import {
 	loadProfileFailure,
 	loadProfileStart,
@@ -22,6 +23,9 @@ export const loginUser =
 			dispatch(loginStart())
 
 			const res = await api.auth.login(data)
+
+			const Token = res.data.refresh
+			localStorage.setItem('refresh', Token)
 
 			dispatch(loginSucess(res.data.access))
 			dispatch(getProfile())
@@ -69,21 +73,26 @@ export const getAccessToken =
 	async (dispatch: Dispatch<any>): Promise<string | null> => {
 		try {
 			const accessToken = store.getState().auth.authData.access
-
+			const refreshToken_Data = localStorage.getItem('refresh')
+			let refreshToken = {
+				refresh: refreshToken_Data
+			}
+			console.log(refreshToken)
 			if (!accessToken || isTokenExpired(accessToken)) {
 				if (refreshTokenRequest === null) {
-					refreshTokenRequest = api.auth.refreshToken()
+					refreshTokenRequest = axios.post(Endpoints.AUTH.REFRESH, refreshToken)
 				}
-
+				console.log(refreshTokenRequest)
 				const res = await refreshTokenRequest
 				refreshTokenRequest = null
+				console.log(res)
 
 				dispatch(loginSucess(res.data.access))
 
 				return res.data.access
 			}
 
-			return accessToken
+			return accessTokenNew
 		} catch (e) {
 			console.error(e)
 

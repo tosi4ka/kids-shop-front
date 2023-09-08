@@ -18,7 +18,8 @@ import ProfileMenu from './ProfileMenu'
 import SubHeader from './SubHeader'
 
 import { selectFavoriteProducts } from '@/features/favoriteSlice'
-import { IRootState } from '@/store'
+import { IRootState, useAppDispatch } from '@/store'
+import { getProfile } from '@/store/auth/actionCreators'
 import logo from '../../public/icons/logo.svg'
 import HeaderCartMenu from '../HeaderCartMenu'
 
@@ -43,6 +44,12 @@ const TheHeader = () => {
 	const isLoggedIn = useSelector(
 		(state: IRootState) => !!state.auth.authData.access
 	)
+
+	const dispatch = useAppDispatch()
+
+	useEffect(() => {
+		dispatch(getProfile())
+	}, [dispatch])
 
 	return (
 		<header className={style.header}>

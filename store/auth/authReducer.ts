@@ -8,7 +8,6 @@ export interface AuthState {
 	}
 	profileData: {
 		profile: string | null
-		email: string | null
 		isLoading: boolean
 		error: string | null
 	}
