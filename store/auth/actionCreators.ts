@@ -1,7 +1,9 @@
 import Endpoints from '@/api/endpoint'
+import { axiosInstance } from '@/api/instance'
 import { isTokenExpired } from '@/utils/jwt'
 import { Dispatch } from '@reduxjs/toolkit'
 import axios, { AxiosPromise } from 'axios'
+import jwtDecode from 'jwt-decode'
 import store from '..'
 import api from '../../api'
 import { ILoginRequest, ILoginResponse } from '../../api/auth/types'
@@ -23,7 +25,6 @@ export const loginUser =
 			dispatch(loginStart())
 
 			const res = await api.auth.login(data)
-
 			const Token = res.data.refresh
 			localStorage.setItem('refresh', Token)
 
@@ -56,7 +57,8 @@ export const getProfile =
 		try {
 			dispatch(loadProfileStart())
 
-			const res = await api.auth.getProfile()
+			let decode = jwtDecode(localStorage.getItem('refresh')).user_id
+			const res = await axiosInstance.get(Endpoints.AUTH.PROFILE + decode + '/')
 
 			dispatch(loadProfileSucess(res.data))
 		} catch (e: any) {
@@ -77,7 +79,6 @@ export const getAccessToken =
 			let refreshToken = {
 				refresh: refreshToken_Data
 			}
-			console.log(refreshToken)
 			if (!accessToken || isTokenExpired(accessToken)) {
 				if (refreshTokenRequest === null) {
 					refreshTokenRequest = axios.post(Endpoints.AUTH.REFRESH, refreshToken)
@@ -85,7 +86,6 @@ export const getAccessToken =
 				console.log(refreshTokenRequest)
 				const res = await refreshTokenRequest
 				refreshTokenRequest = null
-				console.log(res)
 
 				dispatch(loginSucess(res.data.access))
 
