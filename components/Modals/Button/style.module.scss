@@ -1,6 +1,6 @@
 .form_button {
 	margin-top: 0.8rem;
-	color: #7f7c83;
+	color: #080709;
 	text-align: center;
 	font-family: var(--font-Montserrat);
 	font-size: 22px;
@@ -11,20 +11,29 @@
 	width: 100%;
 	cursor: pointer;
 	border-radius: 6.25rem;
-	background: #cd9eff;
+	background: #a663ee;
 	outline: none;
 	border: 0;
 	transition: all 0.3s ease;
-	&:disabled {
-		background: #e5e5e6;
-	}
+
 	&:hover {
-		color: rgba(0, 0, 0, 1);
+		color: #080709;
 		background: #a663ee;
 	}
 	&:active {
 		color: #080709;
 		background: #cd9eff;
-		border-color: #a663ee;
+		border: 2px solid #a663ee;
+	}
+	&:disabled {
+		background: #e5e5e6;
+		color: #b7b4bb;
+		cursor: auto;
+		&:hover {
+			color: #b7b4bb;
+		}
+		&:active {
+			border: none;
+		}
 	}
 }

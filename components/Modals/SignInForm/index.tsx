@@ -1,7 +1,6 @@
 'use client'
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
 import { useAppDispatch } from '../../../store'
-import { loginUser } from '../../../store/auth/actionCreators'
 
 import { useModals } from '@/context/ModalsProvider'
 import { useFormik } from 'formik'
@@ -11,9 +10,15 @@ import { GoogleButton } from '../GoogleSignIn'
 import Input from '../Input'
 import style from './style.module.scss'
 
+import Endpoints from '@/api/endpoint'
+import { validate } from '@/components/functions/validateSiginIn'
+import { getProfile } from '@/store/auth/actionCreators'
+import { loginFailure, loginStart, loginSucess } from '@/store/auth/authReducer'
+import axios from 'axios'
 import Image from 'next/image'
 import img__eye from '../../../public/icons/Eye.svg'
 import img__eyeClick from '../../../public/icons/Eye__click.svg'
+import Button from '../Button'
 import Checkbox from '../Checkbox'
 
 type SignInErrorsTypes = {
@@ -29,74 +34,67 @@ const SignIn = () => {
 		setPasswordShown(!passwordShown)
 	}
 
-	const [checked, setChecked] = useState(false)
+	const [isChecked, setIsChecked] = useState(false)
 	const handleChange = () => {
-		setChecked(!checked)
+		setIsChecked(!isChecked)
 	}
 
 	const dispatch = useAppDispatch()
 
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-
-	const handleSubmit = (e: FormEvent) => {
-		e.preventDefault()
-
-		dispatch(loginUser({ email, password }))
-		modals?.setUserName(email)
-		setTimeout(() => {
-			modals?.SignInModalChangeVisibility(false)
-		}, 2000)
-	}
 	const formik = useFormik({
 		initialValues: {
 			email: '',
 			password: '',
 			agreement: true
 		},
-		// validate,
-		onSubmit: () => {
-			// axios
-			// 	.post(Endpoints.AUTH.LOGIN, values)
-			// 	.then(response => {
-			// 		const token = response.data.access
-			// 		if (checked === true) {
-			// 			localStorage.setItem('token', token)
-			// 		} else {
-			// 			sessionStorage.setItem('token', token)
-			// 		}
-			// 		if (response.data) {
-			// 			setError(response.data)
-			// 		}
-			// 		modals?.setUserName(values.email)
-			// 		setTimeout(() => {
-			// 			modals?.SignInModalChangeVisibility(false)
-			// 		}, 2000)
-			// 	})
-			// 	.catch(error => {
-			// 		if (error.response.status === 400) {
-			// 			console.log(error.response)
-			// 			console.log('Missing Username or Password')
-			// 		} else if (error.response.status === 401) {
-			// 			console.log(error.response)
-			// 			console.log('Unauthorized')
-			// 			return (error.text = 'Unauthorized')
-			// 		} else if (error.response) {
-			// 			console.log(error.response)
-			// 			console.log('server responded')
-			// 		} else if (error.request) {
-			// 			console.log('network error')
-			// 		} else {
-			// 			console.log(error)
-			// 		}
-			// 	})
+		validate,
+		onSubmit: values => {
+			dispatch(loginStart())
+			const value = {
+				email: values.email,
+				password: values.password
+			}
+			axios
+				.post(Endpoints.AUTH.LOGIN, value)
+				.then(response => {
+					const Token = response.data.refresh
+					localStorage.setItem('refresh', Token)
+					if (response.status === 200) {
+						modals?.setUserName(values.email)
+						setTimeout(() => {
+							modals?.SignInModalChangeVisibility(false)
+						}, 2000)
+						dispatch(loginSucess(response.data.access))
+						dispatch(getProfile())
+					}
+				})
+				.catch(error => {
+					if (error.response.status === 400) {
+						console.log(error.response)
+						console.log('Missing Username or Password')
+					} else if (error.response.status === 401) {
+						console.log(error.response)
+						console.log('Unauthorized')
+						return (error.text = 'Unauthorized')
+					} else if (error.response) {
+						console.log(error.response)
+						console.log('server responded')
+					} else if (error.request) {
+						console.log('network error')
+					} else {
+						console.log(error)
+					}
+					console.error(error)
+
+					dispatch(loginFailure(error.message))
+				})
 		}
 	})
 
 	return (
 		<>
 			<span className={style.form__title}>Я тут вже свій</span>
-			<form onSubmit={handleSubmit} className={style.sign_in__form}>
+			<form onSubmit={formik.handleSubmit} className={style.sign_in__form}>
 				{modals?.userName ? (
 					<span>Вы успешно вошли как {modals?.userName}</span>
 				) : (
@@ -105,22 +103,22 @@ const SignIn = () => {
 							title='Електронна пошта *'
 							error={formik.errors.email as string}
 							type='email'
-							// handleChange={formik.handleChange}
-							// values={formik.values.email as string}
+							handleChange={formik.handleChange}
+							values={formik.values.email}
 							name='email'
-							values={email}
-							handleChange={e => setEmail(e.target.value)}
+							// values={email}
+							// handleChange={e => setEmail(e.target.value)}
 						/>
 						<div className={style.pass__wrap}>
 							<Input
 								title='Пароль*'
 								error={formik.errors.password as string}
 								type={passwordShown ? 'text' : 'password'}
-								// handleChange={formik.handleChange}
-								// values={formik.values.password}
+								handleChange={formik.handleChange}
+								values={formik.values.password}
 								name='password'
-								handleChange={e => setPassword(e.target.value)}
-								values={password}
+								// handleChange={e => setPassword(e.target.value)}
+								// values={password}
 							/>
 							<Image
 								src={passwordShown ? img__eyeClick : img__eye}
@@ -135,13 +133,10 @@ const SignIn = () => {
 							sideLink='Відновити пароль'
 							onClick={handleChange}
 						/>
-						<button
-							className={style.form_button}
-							type='submit'
-							// disabled={!(formik.dirty && formik.isValid)}
-						>
-							Увійти
-						</button>
+						<Button
+							text='Увійти'
+							disabled={!(formik.dirty && formik.isValid)}
+						/>
 						<div className={style.social__sign_in}>
 							<span className={style.social__title}>або за допомогою</span>
 							<div className={style.social__button}>

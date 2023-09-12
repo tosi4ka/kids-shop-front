@@ -10,10 +10,10 @@
 
 .MenuOpen {
 	position: absolute;
-	top: -0.7rem;
-	left: -2.5%;
+	top: -0.9rem;
+	left: -3.5%;
 	border-radius: 1rem;
-	padding: 0.7rem 0.5rem 0.1rem 0.3rem;
+	padding: 0.9rem 0.6rem 0.1rem 0.4rem;
 	box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1);
 	// box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	background-color: #faf6fd;
@@ -42,7 +42,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-left: 0.75rem;
+		padding-left: 0.9rem;
 		.iconExit {
 			padding: 0.75rem 0.55rem 0.75rem 0;
 		}
@@ -97,8 +97,8 @@
 	font-weight: 500;
 	line-height: 24px;
 	cursor: pointer;
-	background: #faf6fd;
-	width: 11.8rem;
+	background: hsl(274.29, 63.64%, 97.84%);
+	width: 12rem;
 	.list_item_icon {
 		path {
 			fill: #cd9eff;

@@ -125,7 +125,7 @@ const TheHeader = () => {
 								Сподобалось ({favorite.length})
 							</Link>
 						</li>
-						{isLoggedIn ? (
+						{isLoggedIn || session?.data ? (
 							<li className={style.user_nav__list_item}>
 								<ProfileMenu />
 							</li>

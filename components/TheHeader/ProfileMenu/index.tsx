@@ -1,6 +1,6 @@
 'use client'
 import { logoutUser } from '@/store/auth/actionCreators'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
@@ -36,7 +36,9 @@ const ProfileMenu = () => {
 
 	function handleSubmit() {
 		dispatch(logoutUser())
-		localStorage.removeItem('refresh')
+		signOut({ callbackUrl: '/' })
+		localStorage.clear()
+		sessionStorage.clear()
 	}
 
 	return (

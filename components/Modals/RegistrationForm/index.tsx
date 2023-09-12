@@ -14,6 +14,7 @@ import style from './style.module.scss'
 import Image from 'next/image'
 import img__eye from '../../../public/icons/Eye.svg'
 import img__eyeClick from '../../../public/icons/Eye__click.svg'
+import Button from '../Button'
 
 type SignInErrorsTypes = {
 	email: string[]
@@ -35,18 +36,6 @@ const RegistrationModal = () => {
 	const handleChange = () => {
 		setChecked(!checked)
 	}
-
-	const btn = document.querySelector('#click-me')
-	const checkbox = document.querySelector('#conditions')
-	checkbox?.addEventListener('change', () => {
-		if (checked === false) {
-			btn.disabled = <true></true>
-		} else if (checked === true) {
-			btn.disabled = false
-		} else {
-			btn.disabled = true
-		}
-	})
 
 	const formik = useFormik({
 		initialValues: {
@@ -133,14 +122,12 @@ const RegistrationModal = () => {
 								}
 							/>
 						</div>
-						<button
-							className={style.form_button}
-							type='submit'
-							disabled={formik.dirty && !formik.isValid}
-							id='click-me'
-						>
-							Увійти
-						</button>
+						<Button
+							text='Зареєструватися'
+							disabled={
+								(true ? !checked : checked) || !(formik.dirty && formik.isValid)
+							}
+						/>
 					</form>
 				</>
 			)}

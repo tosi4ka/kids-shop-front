@@ -3,11 +3,12 @@ import { axiosInstance } from '@/api/instance'
 import { isTokenExpired } from '@/utils/jwt'
 import { Dispatch } from '@reduxjs/toolkit'
 import axios, { AxiosPromise } from 'axios'
-import jwtDecode from 'jwt-decode'
+import { Router } from 'next/router'
 import store from '..'
 import api from '../../api'
 import { ILoginRequest, ILoginResponse } from '../../api/auth/types'
-import { history } from '../../utils/history'
+// import isChecked from '../../components/Modals/SignInForm'
+import jwtDecode from 'jwt-decode'
 import {
 	loadProfileFailure,
 	loadProfileStart,
@@ -45,7 +46,7 @@ export const logoutUser =
 
 			dispatch(logoutSuccess())
 
-			history.push('/')
+			Router.push('/')
 		} catch (e) {
 			console.error(e)
 		}
@@ -92,7 +93,7 @@ export const getAccessToken =
 				return res.data.access
 			}
 
-			return accessTokenNew
+			return accessToken
 		} catch (e) {
 			console.error(e)
 
