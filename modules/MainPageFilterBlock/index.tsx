@@ -19,6 +19,10 @@ import Girl_all_goodsImage from '../../public/MainPage/MainFilter/Girl_all_goods
 import Girl_family_lookImage from '../../public/MainPage/MainFilter/Girl_family_look.png'
 import Girl_thematic_costumesImage from '../../public/MainPage/MainFilter/Girl_thematic_costumes.png'
 import ageImage from '../../public/MainPage/MainFilter/age_image.png'
+import { useAppDispatch } from '@/store'
+import { addFilter, selectFilters } from '@/features/filtersSlice'
+import { useSelector } from 'react-redux'
+import Link from 'next/link'
 
 interface PageProps {
 	title: string
@@ -30,16 +34,24 @@ const Page: React.FC<PageProps> = props => {
 	const [activeAge, setActiveAge] = useState<string | null>(null)
 	const [activeCategory, setActiveCategory] = useState<string | null>(null)
 
+	const dispatch = useAppDispatch()
+
 	const handleChangeActiveAgeTab = (e: MouseEvent<HTMLSpanElement>) => {
 		const clickedSpan = e.target as HTMLDivElement
 		const value = clickedSpan.getAttribute('data-id')
+		dispatch(addFilter({ key: 'age_range', value: value as string }))
 		if (value) setActiveAge(value)
 	}
+
+	const filters = useSelector(selectFilters)
+	console.log(filters)
 
 	const handleChangeActiveCategory = (e: MouseEvent<HTMLDivElement>) => {
 		const clickedButton = e.target as HTMLButtonElement
 		if (clickedButton.tagName === 'BUTTON') {
 			const value = clickedButton.textContent
+			console.log(value)
+			dispatch(addFilter({ key: 'category__name', value: value?.toLowerCase() as string }))
 			setActiveCategory(value)
 		}
 	}
@@ -153,7 +165,7 @@ const Page: React.FC<PageProps> = props => {
 								className={`${style.filter_cell} ${
 									style.cell_0_2
 								} ${handleToggleActiveAgeTab('0-2')}`}
-								data-id='0-2'
+								data-id={'0-2'}
 							>
 								0-2
 								<br />
@@ -163,7 +175,7 @@ const Page: React.FC<PageProps> = props => {
 								className={`${style.filter_cell} ${
 									style.cell_3_4
 								} ${handleToggleActiveAgeTab('3-4')}`}
-								data-id='3-4'
+								data-id={'3-4'}
 							>
 								3-4
 								<br />
@@ -173,7 +185,7 @@ const Page: React.FC<PageProps> = props => {
 								className={`${style.filter_cell} ${
 									style.cell_5_7
 								} ${handleToggleActiveAgeTab('5-7')}`}
-								data-id='5-7'
+								data-id={'5-7'}
 							>
 								5-7
 								<br />
@@ -183,7 +195,7 @@ const Page: React.FC<PageProps> = props => {
 								className={`${style.filter_cell} ${
 									style.cell_8_11
 								} ${handleToggleActiveAgeTab('8-11')}`}
-								data-id='8-11'
+								data-id={'8-11'}
 							>
 								8-11
 								<br />
@@ -193,7 +205,7 @@ const Page: React.FC<PageProps> = props => {
 								className={`${style.filter_cell} ${
 									style.cell_12_14
 								} ${handleToggleActiveAgeTab('12-14')}`}
-								data-id='12-14'
+								data-id={'12-14'}
 							>
 								12-14
 								<br />
@@ -203,7 +215,7 @@ const Page: React.FC<PageProps> = props => {
 								className={`${style.filter_cell} ${
 									style.cell_14
 								} ${handleToggleActiveAgeTab('14+')}`}
-								data-id='14+'
+								data-id={'14+'}
 							>
 								14+
 								<br />
@@ -262,9 +274,12 @@ const Page: React.FC<PageProps> = props => {
 									Скинути обране
 								</span>
 							) : null}
-							<button className={`${style.button} ${handleActiveButton()}`}>
+							<Link
+								href='/catalog'
+								className={`${style.button} ${handleActiveButton()}`}
+							>
 								Показати результати
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>

@@ -2,11 +2,12 @@ import React, { InputHTMLAttributes } from 'react'
 import style from './style.module.scss'
 
 type CheckboxProps = {
-	[x: string]: MouseEventHandler<HTMLInputElement> | undefined
-	id: string
-	text: string | React.ReactNode
+	onClick?: React.MouseEventHandler<HTMLInputElement>
+	id?: string
+	text?: string | React.ReactNode
 	error?: boolean
 	sideLink?: string
+	checked: boolean | undefined
 
 	agreement?: (e: InputHTMLAttributes<HTMLInputElement>) => void
 }
@@ -26,6 +27,7 @@ const Checkbox: React.FC<CheckboxProps> = props => {
 					className={style.checkbox}
 					onChange={props.agreement}
 					onClick={props.onClick}
+					checked={props.checked}
 				/>
 				<label
 					className={`${style.checkbox_label} ${

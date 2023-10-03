@@ -1,6 +1,6 @@
 interface validateTypes {
 	username?: string
-	email?: string
+	email: string
 	password: string
 	agreement: boolean
 	first_name?: string
@@ -21,10 +21,9 @@ interface errorsTypes {
 export const validate = (values: validateTypes) => {
 	const errors: errorsTypes = {}
 
-	if ((values.email && values.password) !== undefined) {
-		if (values.email === '' && values.password == '') {
+	if (values.email !== undefined) {
+		if (values.email === '') {
 			errors.email = "Обов'язково"
-			errors.password = "Обов'язково"
 		} else if (values.checkbox == false) {
 			errors.checkbox = "Обов'язково"
 		} else if (
@@ -33,14 +32,20 @@ export const validate = (values: validateTypes) => {
 			)
 		) {
 			errors.email = 'Не правильний email'
-		} else if (values.password.length < 6) {
-			errors.password = 'Пароль має містити не менше 6-х символів'
-		} else if (values.password.length > 14) {
-			errors.password = 'Пароль має містити не більше 14-х символів'
 		} else if (values.email.length > 128) {
 			errors.email = 'Занадто багато сиволів'
-		} else {
-			return true
+		}
+	}
+
+	if (values.password !== undefined) {
+		if (values.password == '') {
+			errors.password = "Обов'язково"
+		}
+		if (values.password.length < 6) {
+			errors.password = 'Пароль має містити не менше 6-х символів'
+		}
+		if (values.password.length > 14) {
+			errors.password = 'Пароль має містити не більше 14-х символів'
 		}
 	}
 

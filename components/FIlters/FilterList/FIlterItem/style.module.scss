@@ -1,0 +1,30 @@
+.filter_item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .title_row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .filter_item_title {
+            color: #080709;
+            font-family: var(--font-Montserrat);
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+        }
+
+        .filter_item_arrow {
+            transform: rotate(0);
+            transition: transform .4s ease;
+        }
+
+        .active_filter_item_arrow {
+            transform: rotate(-180deg);
+            transition: transform .4s ease;
+        }
+    }
+}

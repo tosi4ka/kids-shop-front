@@ -5,12 +5,14 @@ import { useDispatch } from 'react-redux'
 import authReducer from './auth/authReducer'
 
 import logger from 'redux-logger'
+import filtersSlice from '@/features/filtersSlice'
 
 const store = configureStore({
 	reducer: {
 		cart: cartSlise,
 		favorite: favoriteSlice,
-		auth: authReducer
+		auth: authReducer,
+		filters: filtersSlice
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware().concat(

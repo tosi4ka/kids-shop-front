@@ -4,7 +4,7 @@ import { useFormik } from 'formik'
 import Link from 'next/link'
 
 import { useModals } from '@/context/ModalsProvider'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { registration } from '../../functions'
 import { validate } from '../../functions/validate'
 import Checkbox from '../Checkbox'
@@ -25,14 +25,15 @@ type SignInErrorsTypes = {
 const RegistrationModal = () => {
 	const [error, setError] = useState<SignInErrorsTypes | null>(null)
 	const [successRef, setSuccessRef] = useState(false)
-	const modals = useModals()
-
+	const [checked, setChecked] = useState(false)
 	const [passwordShown, setPasswordShown] = useState(false)
+	const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+	const buttonRef = useRef(null)
+
 	const togglePassword = () => {
 		setPasswordShown(!passwordShown)
 	}
 
-	const [checked, setChecked] = useState(false)
 	const handleChange = () => {
 		setChecked(!checked)
 	}
@@ -54,8 +55,7 @@ const RegistrationModal = () => {
 			console.log(values.checkbox)
 			registration(value).then(data => {
 				if (!data.id) {
-					setError(data)
-					return
+					return setError(data)
 				}
 				setSuccessRef(true)
 			})

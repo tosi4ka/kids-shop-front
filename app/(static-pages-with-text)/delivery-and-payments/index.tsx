@@ -1,4 +1,4 @@
-import Meta from '@/components/Meta'
+// import Meta from '@/components/Meta'
 import List from '@/components/TextComponents/List'
 import Paragraph from '@/components/TextComponents/Paragraph'
 import Subtitle from '@/components/TextComponents/SubTitle'
@@ -7,7 +7,7 @@ import Link from 'next/link'
 const DeliveryPage = () => {
 	return (
 		<>
-			<Meta title='s' description='sf' />
+			{/* <Meta title='s' description='sf' /> */}
 			<Subtitle title='Доставка' />
 			<Paragraph text='При оформленні замовлення будуть доступні служби доставки, які можуть його доставити, а також вартість їх послуг.' />
 			<Paragraph

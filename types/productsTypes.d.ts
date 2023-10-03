@@ -19,10 +19,14 @@ interface ProductTypes {
 	is_sale: boolean
 }
 
+interface FiltersTypes {
+	[key: string]: string | number | boolean
+}
+
 interface ProductSizeTypes {
-	brand_size: number,
+	brand_size: number
 	letter_size: string
-  }
+}
 
 interface ProductCategoryTypes {
 	id: number

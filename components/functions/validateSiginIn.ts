@@ -4,8 +4,8 @@ interface validateTypes {
 }
 
 interface errorsTypes {
-	email: string
-	password: string
+	email?: string
+	password?: string
 }
 
 export const validate = (values: validateTypes) => {
@@ -23,9 +23,7 @@ export const validate = (values: validateTypes) => {
 			errors.email = 'Не правильний email'
 		} else if (values.email.length > 128) {
 			errors.email = 'Занадто багато сиволів'
-		} else {
-			return true
-		}
+		} 
 	}
 
 	return errors

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import style from './style.module.scss'
 import maleIcon from '../../public/icons/maleIcon.svg'
 import femaleIcon from '../../public/icons/femaleIcon.svg'
-import { ProductSizeTypes, ProductTypes } from '@/types/productsTypes'
+import { ProductTypes } from '@/types/productsTypes'
 import { useAppDispatch } from '@/store'
 import {
 	addProductColor,
@@ -22,7 +22,7 @@ import {
 } from '@/features/favoriteSlice'
 import starIcon from '../../public/MainPage/MainOurTop/Star.svg'
 import topIcon from '../../public/MainPage/MainOurTop/top_logo.png'
-import { getUniqueLetterSizes } from '../functions/getUniqueLetterSizes'
+import { outCapitalizeFirstLetterBrand } from '../functions/outCapitalizeLetter'
 
 interface ProductCardProps {
 	key: number
@@ -189,9 +189,8 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 			<div className={style.card_info}>
 				<div className={style.upper_row}>
 					<div className={style.card_title_row}>
-						<span className={style.card_brand}>{props.data.brand.name}</span>
+						<span className={style.card_brand}>{outCapitalizeFirstLetterBrand(props.data.brand.name)}</span>
 						<span className={style.card_title}>{props.data.name}</span>
-						<span className={style.card_model}>D 4578</span>
 					</div>
 					<div className={style.raiting}>
 						<div className={style.raiting_block}>
@@ -213,8 +212,7 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 						</div>
 					</div>
 				</div>
-				<div className={style.colors_and_sizes}>
-					<div className={style.circle_wrapp}>
+				<div className={style.circle_wrapp}>
 						{props.data.color.map((item, index) => (
 							<div
 								className={`${style.circle} ${
@@ -229,7 +227,9 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 							></div>
 						))}
 					</div>
-					<div className={style.sizes_wrap}>
+				{/* <div className={style.colors_and_sizes}> */}
+					
+					{/* <div className={style.sizes_wrap}>
 						{getUniqueLetterSizes(props.data.product_size).map(
 							(item, index) => (
 								<div
@@ -243,8 +243,8 @@ const ProductCard: React.FC<ProductCardProps> = props => {
 								</div>
 							)
 						)}
-					</div>
-				</div>
+					</div> */}
+				{/* </div> */}
 			</div>
 		</div>
 	)

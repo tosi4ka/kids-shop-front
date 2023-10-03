@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios'
+import axios, { AxiosError, AxiosRequestHeaders } from 'axios'
 import store from '../store'
 import { getAccessToken, logoutUser } from '../store/auth/actionCreators'
 
@@ -21,7 +21,6 @@ axiosInstance.interceptors.request.use(async config => {
 
 	if (accessToken) {
 		const authorization = `Bearer ${accessToken}`
-
 		config.headers = {
 			...config.headers,
 			authorization: authorization

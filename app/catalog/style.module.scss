@@ -1,0 +1,145 @@
+@import '../../style/mixins.scss';
+
+.wrapper {
+    @include container;
+    padding: 24px 0 158px 0;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+
+        .upper_row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filters_and_products_wrapper {
+            display: grid;
+            grid-template-columns: 282px 1fr;
+            gap: 24px;
+            margin-top: 12px;
+
+            .filters_panel {
+                display: flex;
+                flex-direction: column;
+
+                .count_choosen_product {
+                    align-self: flex-end;
+                    color: #7F7C83;
+                    font-family: var(--font-Montserrat);
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px;
+                    margin-top: 7px;
+                }
+
+                .active_filters_block {
+                    display: flex;
+                    flex-direction: column;
+
+                    .filters_block_title {
+                        display: flex;
+                        justify-content: space-between;
+                        padding-bottom: 8px;
+                        border-bottom: 1px solid #CCCACD;
+
+                        .title {
+                            color: #99969C;
+                            font-family: var(--font-Montserrat);
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 20px;
+                        }
+
+                        .reset_filters_btn {
+                            cursor: pointer;
+                            color: #1F93ED;
+                            font-family: var(--font-Montserrat);
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 20px;
+                            transition: color .4s ease;
+
+                            &:hover {
+                                transition: color .4s ease;
+                                color: #1977BF;
+                            }
+                        }
+                    }
+
+                    .active_filters_list {
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        .active_filter_item {
+                            display: flex;
+                            gap: 4px;
+                            padding: 4px 12px 4px 0;
+
+                            &:hover {
+                                cursor: pointer;
+
+                                .active_filter_text {
+                                    transition: color .1s ease;
+                                    color: #080709
+                                }
+
+                                .cross {
+                                    stroke: #080709;
+                                }
+                            }
+
+                            .active_filter_text {
+                                color: #7F7C83;
+                                font-family: var(--font-Montserrat);
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 24px;
+                                transition: color .4s ease;
+
+                            }
+                        }
+                    }
+                }
+
+                .active_filter_item {
+                    cursor: pointer;
+                }
+            }
+
+            .products_wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                .catalog_title {
+                    display: flex;
+                    gap: 12px;
+                    height: 46px;
+                    align-items: flex-end;
+
+                    .title {
+                        color: #080709;
+                        font-family: var(--font-Montserrat);
+                        font-size: 28px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 32px;
+                        margin-bottom: 7px;
+                        height: max-content;
+                    }
+                }
+
+                .products_grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 32px 24px;
+                }
+            }
+        }
+    }
+}

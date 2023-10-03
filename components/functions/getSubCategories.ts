@@ -1,6 +1,6 @@
-const getProducts = async () => {
+const getSubCategories = async (category: string) => {
 	try {
-		const response = await fetch('http://localhost:8000/api/top/', {
+		const response = await fetch(`http://localhost:8000/api/section/?category__name=${category}`, {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json',
@@ -17,4 +17,4 @@ const getProducts = async () => {
 	}
 }
 
-export default getProducts
+export default getSubCategories
