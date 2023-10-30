@@ -33,7 +33,11 @@ const cartSlise = createSlice({
 			const existingItem = state.products.find(
 				item => item.id === action.payload.id
 			)
-			!existingItem ? state.products.push(action.payload) : null
+			if (!existingItem) {
+				state.products.push(action.payload)
+				state.productsCount.push({ id: action.payload.id, count: 1 })
+
+			}
 		},
 		removeProduct: (state, action) => {
 			const filteredCartProducts = state.products.filter(
@@ -42,9 +46,16 @@ const cartSlise = createSlice({
 			const filteredCOlors = state.selectedColors.filter(item => {
 				item.id !== action.payload
 			})
+
+			const filteredProductCount = state.productsCount.filter(item => {
+				item.id !== action.payload.id
+			})
+
 			state.products = filteredCartProducts
 			state.selectedColors = filteredCOlors
+			state.productsCount = filteredProductCount
 		},
+
 		addProductColor: (state, action) => {
 			const existingColor = state.selectedColors.find(
 				item => item.id === action.payload.id
@@ -105,6 +116,8 @@ const cartSlise = createSlice({
 						}
 				} else return item
 			})
+
+
 
 			!existingProduct
 				? state.productsCount.push({ id: action.payload.id, count: 1 })
