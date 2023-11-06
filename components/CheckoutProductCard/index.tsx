@@ -202,7 +202,7 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 						<div className={style.left_block}>
 							<span className={style.left_block_text}>Колір</span>
 							<div className={style.circle_wrapp}>
-								{props.item.color.map((item, index) => (
+								{props.item.color?.map((item, index) => (
 									<div
 										className={`${style.circle} ${
 											activeColor === item.name ? style.circle_active : ''
