@@ -59,7 +59,9 @@ const TheHeader = () => {
 					<ul className={style.header__nav_list}>
 						{header.leftLinks.map((item, index) => (
 							<li className={style.list_item} tabIndex={index + 1} key={index}>
-								<Link href={item.link}>{item.text}</Link>
+								<div >
+								<Link className={style.alignCenter} href={item.link}><Image src={"/icons/" + item.glyph} width={36} height={36} alt={item.text}/>{item.text}</Link>
+							</div>
 							</li>
 						))}
 					</ul>
