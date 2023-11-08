@@ -2,7 +2,7 @@
 
 .footer {
 	background-color: #E5E5E6;
-
+	margin-top: 10em;
 	.content {
 		@include container;
 		padding: 64px 0;
@@ -57,7 +57,7 @@
 			gap: 24px;
 			margin-top: 65px;
 
-			.licks_column {
+			.links_column {
 				display: flex;
 				flex-direction: column;
 
@@ -72,8 +72,8 @@
 
 				.socials_wrap {
 					display: flex;
-					gap: 30px;
-					margin-top: 85px;
+					gap: 15px;
+					margin-top: 20px;
 
 					a {
 						&:hover {

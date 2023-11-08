@@ -48,16 +48,20 @@ const offresData = [
 
 const navigationLinksData = [
 	{
-		title: 'Наші контакти',
-		contacts: navigationsData.footer.contacts,
+		title: 'Контакти',
+		contacts: navigationsData.footer.contacts
+	},
+	{
+		title: 'Слідкуйте за нами',
 		socials: navigationsData.footer.socials
+	},
+	{
+		title: 'Популярні категорії',
+		linksData: navigationsData.footer.popular_categories
 	},
 	{
 		title: 'Допомога',
 		linksData: navigationsData.footer.help
-	},
-	{
-		title: 'Часто шукають',
-		linksData: navigationsData.footer.often_searched
 	}
+
 ]

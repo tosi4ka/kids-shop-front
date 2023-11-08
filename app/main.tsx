@@ -65,12 +65,6 @@ export default function Home() {
 			{ourTopData && (
 				<MainPageOurTop title='Розпродаж' data={ourTopData} slideToShow={4} />
 			)}
-			<Offers
-				title='Бажаєте отримувати цікаві пропозиції?'
-				text='Підписуйтесь на нашу розсилку'
-				image={lamaImage}
-				placeholderText='Електронна пошта'
-			/>
 		</>
 	)
 }

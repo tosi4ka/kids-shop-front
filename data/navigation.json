@@ -110,6 +110,52 @@
 				"link": "/"
 			}
 		],
+		"popular_categories": [
+			{
+				"text": "Дівчинка",
+				"link": "/girls"
+			},
+			{
+				"text": "Хлопчик",
+				"link": "/boys"
+			},
+			{
+				"text": "Одяг",
+				"link": "/wear"
+			},
+			{
+				"text": "Взуття",
+				"link": "/footwear"
+			},
+			{
+				"text": "Аксесуари",
+				"link": "/accessories"
+			},
+			{
+				"text": "Фемілі лук",
+				"link": "/family-look"
+			},
+			{
+				"text": "Тематичні костюми",
+				"link": "/themed-costumes"
+			},
+			{
+				"text": "Самим маленьким",
+				"link": "/newborns"
+			},
+			{
+				"text": "Шкільна форма",
+				"link": "/school-uniform"
+			},
+			{
+				"text": "Чепчики",
+				"link": "/"
+			},
+			{
+				"text": "Одяг для Хрещення",
+				"link": "/"
+			}
+		],
 		"socials": [
 			{
 				"icon": "/icons/tiktok.svg",
