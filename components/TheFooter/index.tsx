@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import style from './style.module.scss'
 import Image, {StaticImageData} from 'next/image'
+import ScrollToTheTopButton from "@/components/ScrollToTheTopButton";
+import React from "react";
 
 interface FotterProps {
     offresData: {
@@ -133,6 +135,7 @@ const TheFooter: React.FC<FotterProps> = props => {
                             key={index}
                         />
                     ))}
+                    <ScrollToTheTopButton className={style.scroll_to_the_top_button}/>
                 </div>
             </div>
         </footer>

@@ -7,7 +7,6 @@
 		@include container;
 		padding: 64px 0;
 
-
 		.fotter_offers {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
@@ -165,6 +164,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
+		.scroll_to_the_top_button {
+			position: relative;
+			width: 100%;
+			left: -30px;
+			bottom: 130px;
+			height: 20px;
+			font-size: 3rem;
+			z-index: 1;
+			cursor: pointer;
+		}
 
 		.copyright {
 			color: #080709;

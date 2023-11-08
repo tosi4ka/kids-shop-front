@@ -8,6 +8,8 @@ import articlesIcon from '../public/icons/Articles.svg'
 import priceTagIcon from '../public/icons/Label.svg'
 import giftIcon from '../public/icons/gift.svg'
 import logoIcon from '../public/icons/logo.svg'
+import React from "react";
+import ScrollToTheTopButton from "@/components/ScrollToTheTopButton";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
