@@ -4,7 +4,7 @@ import Image from 'next/image'
 import style from './style.module.scss'
 
 import { ProductTypes } from '@/types/productsTypes'
-import { getTotalCost } from '../functions/getTotalCost'
+import {getTotalCost, getTotalCount} from '../functions/getTotalCost'
 import {removeProduct, selectCartProductsCount} from '@/features/cartSlice'
 import { useAppDispatch } from '@/store'
 import SaleMarker from '../ProductCard/SaleMarker'
@@ -29,10 +29,6 @@ const HeaderCartMenu: React.FC<HeaderCartMenuProps> = props => {
 		dispatch(removeProduct(id))
 	}
 
-	let calculatedTotalCount = cartProductsCount
-		.map(it => it.count)
-		.reduce((sum, e)=> sum+e, 0);
-
 	return (
 		<>
 			<div className={style.cart_menu_header}>
@@ -54,7 +50,7 @@ const HeaderCartMenu: React.FC<HeaderCartMenuProps> = props => {
 						/>
 					</svg>
 					<span className={style.cart_menu__title}>
-						Кошик ({calculatedTotalCount})
+						Кошик ({getTotalCount(cartProductsCount)})
 					</span>
 				</div>
 				<div className={style.cart_menu__total_wrapper}>
