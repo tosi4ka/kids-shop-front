@@ -1,0 +1,12 @@
+.wrapper_profile {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	.user__data {
+		display: flex;
+		flex-direction: column;
+		.wrapper__items {
+			padding: 2.75rem 0 2.25rem 0;
+		}
+	}
+}

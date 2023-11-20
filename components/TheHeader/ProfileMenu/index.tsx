@@ -10,6 +10,7 @@ import iconExit from '../../../public/icons/exit.svg'
 import { IRootState, useAppDispatch } from '../../../store'
 import ProfileItem from './ProfileItem'
 import style from './style.module.scss'
+import TextItem from './textItem'
 
 const ProfileMenu = () => {
 	const [open, setOpen] = useState<boolean>(false)
@@ -32,7 +33,7 @@ const ProfileMenu = () => {
 	const profile = useSelector(
 		(state: IRootState) => state.auth.profileData.profile
 	)
-	const email = profile?.email
+	const email = profile?.user.email
 
 	function handleSubmit() {
 		dispatch(logoutUser())
@@ -61,8 +62,7 @@ const ProfileMenu = () => {
 							fill='#C18170'
 						/>
 					</svg>
-					{email}
-					{session.data?.user?.name}
+					<TextItem label={'МІй профіль'} />
 				</button>
 			</div>
 			{open && (

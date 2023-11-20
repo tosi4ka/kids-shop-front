@@ -1,0 +1,71 @@
+.cart {
+	border: 1px #cccacd solid;
+	border-radius: 1rem;
+	padding: 2rem 2rem 0 2rem;
+	.cart__address {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		.firstAddress,
+		.secondAddress {
+			display: grid;
+			grid-template-columns: 18.35rem 18.35rem 7.55rem 7.55rem;
+			gap: 1.5rem;
+		}
+		.firstAddress {
+			padding-top: 1rem;
+			// padding-bottom: 1.75rem;
+		}
+		.secondAddress {
+			padding-top: 1.75rem;
+			padding-bottom: 2.25rem;
+		}
+		.dump__btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding-top: 0.5rem;
+			cursor: pointer;
+			.dump__img {
+				padding-top: 1.25rem;
+			}
+		}
+	}
+	.wrapper__btn {
+		display: flex;
+		flex-direction: row;
+		padding-bottom: 2rem;
+		.btn__cancel {
+			button {
+				border: none;
+				background: none;
+				color: #7f7c83;
+				&:hover {
+					color: #080709;
+				}
+			}
+		}
+	}
+	.wrapper__btnPlus {
+		padding-top: 1.85rem;
+		padding-left: 0.45rem;
+		div {
+			padding-left: 0;
+		}
+	}
+	.cart__display {
+		display: flex;
+		flex-direction: column;
+
+		.displayFirst {
+			padding-top: 1rem;
+			.FirstAddress {
+				padding-bottom: 0.25rem;
+			}
+		}
+		.btn__change {
+			padding-top: 1.5rem;
+			padding-bottom: 2rem;
+		}
+	}
+}

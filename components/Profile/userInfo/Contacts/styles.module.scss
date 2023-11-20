@@ -1,0 +1,139 @@
+.cart {
+	border: 1px #cccacd solid;
+	border-radius: 1rem;
+	padding: 2rem;
+	// height: 18.4rem;
+	.wrapper__title {
+		padding-bottom: 2rem;
+	}
+	.addPhone__wrap {
+		// input {
+		// 	border: none;
+		// }
+		button {
+			display: none;
+		}
+		.plus__inputPhone {
+			border-radius: 6.25rem;
+			border: 1px solid #d9d9d9;
+			margin-top: 0.25rem;
+			margin-right: 1.5rem;
+			width: 12.4rem;
+			&:focus {
+				border-color: #f0d2ac;
+				outline: none;
+			}
+		}
+		padding-bottom: 2.25rem;
+	}
+
+	.wrapper__info {
+		display: grid;
+		grid-template-columns: 20rem 18rem 18rem;
+
+		.info__top,
+		.info__topPhone {
+			padding-bottom: 1.25rem;
+			input {
+				&::placeholder {
+					color: #080709;
+					font-size: 16px;
+					line-height: 24px;
+					font-weight: 400;
+					font-family: var(--font-Montserrat);
+				}
+			}
+		}
+		.info__topPhone {
+			position: relative;
+			.dump {
+				position: absolute;
+				top: 2.3rem;
+				right: 3.5rem;
+				cursor: pointer;
+			}
+			input {
+				border-radius: 6.25rem;
+				border: 1px solid #d9d9d9;
+				padding: 0.3rem 1rem;
+				// margin-top: 0.25rem;
+				height: 2.6rem;
+				width: 16.25rem;
+				color: #7f7c83;
+				&:focus {
+					border-color: #f0d2ac;
+					outline: none;
+					color: #080709;
+				}
+			}
+			button {
+				display: none;
+			}
+		}
+		.info__top {
+			width: 37rem;
+		}
+		.text__name {
+			font-family: var(--font-Montserrat);
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 20px;
+			color: #080709;
+		}
+	}
+	.addPhone__wrap {
+		.plus__inputPhone {
+			position: relative;
+			.dump {
+				position: absolute;
+				top: 2.5rem;
+				right: -4rem;
+				cursor: pointer;
+			}
+			border: none;
+			input {
+				border-radius: 6.25rem;
+				border: 1px solid #d9d9d9;
+				padding: 0.3rem 1rem;
+				margin-top: 0.25rem;
+				height: 2.6rem;
+				width: 16.25rem;
+				color: #7f7c83;
+				&:focus {
+					border-color: #f0d2ac;
+					outline: none;
+					color: #080709;
+				}
+				&::placeholder {
+					color: #080709;
+					font-size: 16px;
+					line-height: 24px;
+					font-weight: 400;
+					font-family: var(--font-Montserrat);
+				}
+			}
+			button {
+				display: none;
+			}
+		}
+	}
+	.wrapper__btnPlus {
+		div {
+			padding-left: 0.6rem;
+		}
+	}
+	.wrapper__btn {
+		display: flex;
+		flex-direction: row;
+		.btn__cancel {
+			button {
+				border: none;
+				background: none;
+				color: #7f7c83;
+				&:hover {
+					color: #080709;
+				}
+			}
+		}
+	}
+}

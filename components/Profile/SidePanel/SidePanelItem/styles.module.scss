@@ -1,0 +1,29 @@
+.itemContent {
+	display: flex;
+	flex-direction: row;
+	// grid-template-columns: 2.5rem 10rem;
+	// grid-template-columns: 2.5rem 1fr 1rem;
+	align-items: center;
+	cursor: pointer;
+	width: 13.75rem;
+	height: 2.5rem;
+	font-family: var(--font-Montserrat);
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	padding-left: 1rem;
+	// margin-bottom: 0.01rem;
+	&:hover {
+		background: #fbf3e9;
+		border-radius: 0.25rem;
+	}
+	.wrapper_icon {
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-right: 0.6rem;
+		padding-top: 0.2rem;
+	}
+}

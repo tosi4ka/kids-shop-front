@@ -16,10 +16,10 @@ import { getProfile } from '@/store/auth/actionCreators'
 import { loginFailure, loginStart, loginSucess } from '@/store/auth/authReducer'
 import axios from 'axios'
 import Image from 'next/image'
+import Link from 'next/link'
 import img__eye from '../../../public/icons/Eye.svg'
 import img__eyeClick from '../../../public/icons/Eye__click.svg'
 import Button from '../Button'
-import Checkbox from '../Checkbox'
 
 type SignInErrorsTypes = {
 	detail: string
@@ -75,7 +75,14 @@ const SignIn = () => {
 					} else if (error.response.status === 401) {
 						console.log(error.response)
 						console.log('Unauthorized')
-						return (error.text = 'Unauthorized')
+						// setError(
+						// 	(formik.errors.email = 'Не вірний логін або пароль') &&
+						// 		(formik.errors.password = 'Не вірний логін або пароль')
+						// )
+						return setError(
+							(formik.errors.email = 'Не вірний логін або пароль') &&
+								(formik.errors.password = 'Не вірний логін або пароль')
+						)
 					} else if (error.response) {
 						console.log(error.response)
 						console.log('server responded')
@@ -106,8 +113,6 @@ const SignIn = () => {
 							handleChange={formik.handleChange}
 							values={formik.values.email}
 							name='email'
-							// values={email}
-							// handleChange={e => setEmail(e.target.value)}
 						/>
 						<div className={style.pass__wrap}>
 							<Input
@@ -117,8 +122,6 @@ const SignIn = () => {
 								handleChange={formik.handleChange}
 								values={formik.values.password}
 								name='password'
-								// handleChange={e => setPassword(e.target.value)}
-								// values={password}
 							/>
 							<Image
 								src={passwordShown ? img__eyeClick : img__eye}
@@ -127,12 +130,9 @@ const SignIn = () => {
 								className={passwordShown ? style.eye__open : style.eye__close}
 							/>
 						</div>
-						<Checkbox
-							id='rules'
-							text='Запам’ятати мене'
-							sideLink='Відновити пароль'
-							onClick={handleChange}
-						/>
+						<div className={style.wrapper__returnPasword}>
+							<Link href={'/#'}>Відновити пароль</Link>
+						</div>
 						<Button
 							text='Увійти'
 							disabled={!(formik.dirty && formik.isValid)}

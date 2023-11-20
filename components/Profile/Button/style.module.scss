@@ -1,0 +1,29 @@
+.form_button {
+	color: #080709;
+	text-align: center;
+	font-family: var(--font-Montserrat);
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 18px;
+	padding: 15px 0;
+	width: 100%;
+	cursor: pointer;
+	border-radius: 6.25rem;
+	background: #cd9eff;
+	outline: none;
+	border: 0;
+	border: 2px solid #cd9eff;
+	transition: all 0.3s ea;
+	width: 11.25rem;
+	&:hover {
+		color: #080709;
+		background: #a663ee;
+		border: 2px solid #a663ee;
+	}
+	&:active {
+		color: #080709;
+		background: #cd9eff;
+		border: 2px solid #a663ee;
+	}
+}

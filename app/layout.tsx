@@ -1,19 +1,26 @@
 'use client'
 
-import '../style/globals.scss'
+import localFont from 'next/font/local'
 import { Provider } from 'react-redux'
-import { Montserrat } from 'next/font/google'
 import { Providers } from '../components/SocProviders/Provider'
 import { ModalsProvider } from '../context/ModalsProvider'
+import '../style/globals.scss'
 
 import Layout from '@/Layout'
 import store from '../store'
 
-const montserrat = Montserrat({
-	subsets: ['latin', 'cyrillic'],
-	display: 'swap',
-	weight: ['400', '500', '600', '700'],
-	variable: '--font-Manrope'
+const montserrat = localFont({
+	src: [
+		{
+			path: '../public/fonts/Montserrat-Medium.ttf',
+			weight: '500'
+		},
+		{
+			path: '../public/fonts/Montserrat-Regular.ttf',
+			weight: '400'
+		}
+	],
+	variable: '--font-Montserrat'
 })
 
 export default function RootLayout({
@@ -22,16 +29,8 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html
-			lang='ua'
-			suppressHydrationWarning={true}
-		>
-			<style jsx global>{`
-				:root {
-					--font-Montserrat: ${montserrat.style.fontFamily};
-				}
-			`}</style>
-			<body suppressHydrationWarning={true}>
+		<html lang='ua' suppressHydrationWarning={true}>
+			<body suppressHydrationWarning={true} className={montserrat.variable}>
 				<Provider store={store}>
 					<Providers>
 						<ModalsProvider>

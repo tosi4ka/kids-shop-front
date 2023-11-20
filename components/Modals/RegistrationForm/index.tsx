@@ -40,7 +40,6 @@ const RegistrationModal = () => {
 
 	const formik = useFormik({
 		initialValues: {
-			username: '',
 			email: '',
 			password: '',
 			agreement: true
@@ -48,7 +47,6 @@ const RegistrationModal = () => {
 		validate,
 		onSubmit: values => {
 			const value = {
-				username: formik.values.username,
 				email: formik.values.email,
 				password: formik.values.password
 			}

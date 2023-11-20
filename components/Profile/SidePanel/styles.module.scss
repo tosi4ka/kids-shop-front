@@ -1,0 +1,13 @@
+.profile__menu {
+	display: flex;
+	flex-direction: column;
+	// padding-left: 40%;
+	padding-top: 2.8rem;
+	.menu__item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		padding-top: 0.75rem;
+		padding-right: 0.1rem;
+	}
+}

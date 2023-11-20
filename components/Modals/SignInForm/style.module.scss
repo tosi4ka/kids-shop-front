@@ -86,3 +86,19 @@
 		border: none;
 	}
 }
+
+.wrapper__returnPasword {
+	display: flex;
+	justify-content: flex-end;
+	a {
+		color: #1f93ed;
+		text-align: right;
+		font-family: var(--font-Montserrat);
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		text-decoration: none;
+		border-bottom: 1px #1f93ed solid;
+	}
+}

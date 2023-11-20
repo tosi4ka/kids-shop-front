@@ -16,7 +16,12 @@
 		.header__nav_list {
 			display: flex;
 			gap: 24px;
-
+			.sub__menu {
+				display: flex;
+				.img {
+					padding-right: 0.35rem;
+				}
+			}
 			.list_item {
 				padding: 0 0 10px 0;
 				border-bottom: 2px solid #fbf3e9;
@@ -33,6 +38,12 @@
 
 				&:hover {
 					border-bottom: 2px solid #080709;
+
+					ul {
+						opacity: 1;
+						top: 80;
+						visibility: visible;
+					}
 				}
 			}
 		}

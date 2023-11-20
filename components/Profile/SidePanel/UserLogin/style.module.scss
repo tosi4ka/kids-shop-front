@@ -1,0 +1,24 @@
+.user__login {
+	display: flex;
+	flex-direction: row;
+	.user__avatar {
+		padding-right: 0.5rem;
+	}
+	.user__name {
+		padding-top: 0.2rem;
+		.name {
+			font-family: var(--font-Montserrat);
+			color: #080709;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 24px;
+		}
+		.members__text {
+			font-family: Montserrat;
+			color: #7f7c83;
+			font-weight: 400;
+			font-size: 12px;
+			line-height: 16px;
+		}
+	}
+}

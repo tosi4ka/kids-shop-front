@@ -1,0 +1,125 @@
+.cart {
+	border: 1px #cccacd solid;
+	border-radius: 1rem;
+	padding: 2rem 2rem 0 2rem;
+	.wrapper__btnPlus,
+	.wrapper__btnPlusTwo {
+		padding-left: 0.35rem;
+		padding-top: 0.25rem;
+		div {
+			padding-left: 0;
+		}
+		button {
+			margin-bottom: 0;
+		}
+	}
+	.wrapper__btnPlus {
+		padding-bottom: 1.5rem;
+	}
+	.wrapper__btnPlusTwo {
+		padding-bottom: 1.5rem;
+	}
+	.wrapper__btn {
+		display: flex;
+		flex-direction: row;
+		padding-bottom: 2rem;
+		// padding-top: 1rem;
+		.btn__cancel {
+			button {
+				border: none;
+				background: none;
+				color: #7f7c83;
+				&:hover {
+					color: #080709;
+				}
+			}
+		}
+	}
+	.cart__child {
+		padding-bottom: 1.5rem;
+		.Child {
+			display: grid;
+			grid-template-columns: 18rem 18rem 12.25rem;
+			gap: 1.5rem;
+			.info__bottom {
+				.select {
+					position: absolute;
+					.select__title {
+						padding-bottom: 0.25rem;
+					}
+					.selectBtn__default,
+					.selectBtn__open {
+						width: 15.8rem;
+						border: 1px solid #cccacd;
+						background: white;
+						padding: 0.4rem 0.75rem 0.3rem 1.25rem;
+						display: flex;
+						font-family: var(--font-Montserrat);
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 24px;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: space-between;
+					}
+					.selectBtn__default {
+						border-radius: 3rem;
+						color: #7f7c83;
+					}
+					.selectBtn__open {
+						border-top-left-radius: 1.5rem;
+						border-top-right-radius: 1.5rem;
+						color: #080709;
+					}
+					.select__menu {
+						position: relative;
+						display: flex;
+						flex-direction: column;
+						border: 1px solid #cccacd;
+						background: white;
+						color: #080709;
+						border-bottom-left-radius: 1.5rem;
+						border-bottom-right-radius: 1.5rem;
+						cursor: pointer;
+					}
+					.select__itemTop,
+					.select__itemBottom {
+						// padding-left: 1.4rem;
+						padding-top: 0.8rem;
+						font-family: var(--font-Montserrat);
+						font-size: 16px;
+						font-weight: 400;
+						line-height: 24px;
+						&:hover {
+							background: #fbf3e9;
+						}
+					}
+
+					.select__itemTop {
+						padding-bottom: 0.75rem;
+						border-bottom: 1px solid #cccacd;
+					}
+					.select__itemBottom {
+						padding-bottom: 0.85rem;
+						&:hover {
+							border-bottom-left-radius: 1.5rem;
+							border-bottom-right-radius: 1.5rem;
+						}
+					}
+				}
+			}
+			.delate__btn {
+				cursor: pointer;
+				color: #7f7c83;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding-top: 1rem;
+			}
+		}
+	}
+	.wrapper__title {
+		padding-bottom: 1rem;
+	}
+}
