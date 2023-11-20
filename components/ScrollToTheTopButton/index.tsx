@@ -26,11 +26,11 @@ const ScrollToTheTopButton: React.FC<Props> = (props) => {
         });
     };
 
-    window.addEventListener('scroll', toggleVisible);
+    if (typeof window != "undefined") { // needed if SSR
+        window.addEventListener('scroll', toggleVisible);
+    }
 
     return (
-        // <Link onClick={scrollToTop}                 style={{display: visible ? 'inline' : 'none'}}/>
-
         <Link href='#'
               className={props.className}
               onClick={scrollToTop}

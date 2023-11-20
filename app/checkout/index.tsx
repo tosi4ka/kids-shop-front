@@ -146,7 +146,7 @@ const CheckoutPage = () => {
 				</>
 			) : (
 				<EmptyProducts
-					btnLink='/'
+					btnLink='/catalog'
 					btnText='До каталогу'
 					cart={false}
 					text='Подивіться наші актуальні пропозиції. Ми впевнені, Ви знайдете щось цікаве!'

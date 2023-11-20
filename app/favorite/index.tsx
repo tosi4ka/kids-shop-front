@@ -63,7 +63,7 @@ const FavoritePage = () => {
 				</>
 			) : (
 				<EmptyProducts
-					btnLink='/'
+					btnLink='/catalog'
 					btnText='До каталогу'
 					cart={false}
 					text='Додайте товари, що сподобалися і завжди будете мати до них швидкий

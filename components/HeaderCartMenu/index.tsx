@@ -5,23 +5,34 @@ import style from './style.module.scss'
 
 import { ProductTypes } from '@/types/productsTypes'
 import { getTotalCost } from '../functions/getTotalCost'
-import { removeProduct } from '@/features/cartSlice'
+import {removeProduct, selectCartProductsCount} from '@/features/cartSlice'
 import { useAppDispatch } from '@/store'
 import SaleMarker from '../ProductCard/SaleMarker'
 
 import boyIcon from '../../public/icons/Sex_indicators_boy_12x12.svg'
 import girlIcon from '../../public/icons/Sex_indicators_girl_12x12.svg'
+import {useSelector} from "react-redux";
 
 interface HeaderCartMenuProps {
 	cart: ProductTypes[]
 }
 
 const HeaderCartMenu: React.FC<HeaderCartMenuProps> = props => {
+
+	const cartProductsCount: { id: number; count: number }[] = useSelector(
+		selectCartProductsCount
+	)
+
 	const dispatch = useAppDispatch()
 
 	const handleRemoveItemFromCart = (id: number) => {
 		dispatch(removeProduct(id))
 	}
+
+	let calculatedTotalCount = cartProductsCount
+		.map(it => it.count)
+		.reduce((sum, e)=> sum+e, 0);
+
 	return (
 		<>
 			<div className={style.cart_menu_header}>
@@ -43,13 +54,13 @@ const HeaderCartMenu: React.FC<HeaderCartMenuProps> = props => {
 						/>
 					</svg>
 					<span className={style.cart_menu__title}>
-						Кошик ({props.cart.length})
+						Кошик ({calculatedTotalCount})
 					</span>
 				</div>
 				<div className={style.cart_menu__total_wrapper}>
 					<span className={style.cart_menu__total_text}>Загальна сума</span>
 					<span className={style.cart_menu__total_count}>
-						{`${getTotalCost(props.cart)}₴`}
+						{`${getTotalCost(props.cart, cartProductsCount)}₴`}
 					</span>
 				</div>
 			</div>

@@ -70,7 +70,7 @@ const CheckoutProductCard: React.FC<CheckoutProductCardTypes> = props => {
 	return (
 		<div className={style.cart_product}>
 			<div className={style.title__row}>
-				<h3 className={style.title}>{props.item.name}</h3>
+				<div className={style.title_container}><p>{props.item.name}</p></div>
 				<div className={style.title_buttons}>
 					<span
 						className={style.text_with_icon}
