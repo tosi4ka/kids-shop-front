@@ -1,5 +1,4 @@
 @import '../../style/mixins.scss';
-
 .header {
 	background-color: #fbf3e9;
 }
@@ -34,6 +33,11 @@
 					font-weight: 500;
 					line-height: 24px;
 					text-decoration: none;
+				}
+
+				.align-center {
+					display: flex;
+					align-items: center;
 				}
 
 				&:hover {
@@ -175,3 +179,4 @@
 	transform: scale(1, 1);
 	transform-origin: top right;
 }
+

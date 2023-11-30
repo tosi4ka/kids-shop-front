@@ -3,11 +3,13 @@
 		"leftLinks": [
 			{
 				"text": "Дівчатам",
-				"link": "/girls"
+				"link": "/girls",
+				"glyph": "Sex_indicators_girl_12x12_no_bg.svg"
 			},
 			{
 				"text": "Хлопчикам",
-				"link": "/boys"
+				"link": "/boys",
+				"glyph": "Sex_indicators_boy_12x12_no_bg.svg"
 			}
 		]
 	},
