@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import style from './style.module.scss'
+import SearchBar from "@/components/TheHeader/SubHeader/SearchBar";
 
 type SubHeaderProps = {
 	text: string
@@ -44,30 +45,7 @@ const SubHeader = ({
 					))}
 				</ul>
 				<label>
-					<div className={style.search_input_wrapp}>
-						<input
-							className={style.search_input}
-							type='text'
-							placeholder='я шукаю'
-						/>
-						{/* <div className={style.search_input_icon}>
-							<svg
-								width='36'
-								height='36'
-								viewBox='0 0 36 36'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-							>
-								<path
-									d='M21.203 21.2031L25 25M23.1254 16.5625C23.1254 20.1868 20.1872 23.1249 16.5627 23.1249C12.9382 23.1249 10 20.1868 10 16.5625C10 12.9381 12.9382 10 16.5627 10C20.1872 10 23.1254 12.9381 23.1254 16.5625Z'
-									stroke='#707F72'
-									strokeWidth='1.5'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
-						</div> */}
-					</div>
+					<SearchBar></SearchBar>
 				</label>
 			</nav>
 		</div>
