@@ -1,69 +1,94 @@
 @import '../../../style/mixins.scss';
 
 .sub_header {
-    background-color: #FCFBFE;
+  background-color: #FCFBFE;
 
-    .sub_header__nav {
-        @include container;
+  .sub_header__nav {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav__list {
+      padding: 12px 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-family: var(--font-Montserrat);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+
+      .nav__list_item {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        text-decoration: none;
+        color: #000;
 
-        .nav__list {
-            padding: 12px 0 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            font-family: var(--font-Montserrat);
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: normal;
-
-            .nav__list_item {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: #000;
-
-                &:hover {
-                    .list_item__icon {
-                        path {
-                            fill: #A663EE
-                        }
-                    }
-                }
+        &:hover {
+          .list_item__icon {
+            path {
+              fill: #A663EE
             }
+          }
         }
-
-        .search_input_wrapp {
-            display: flex;
-
-            .search_input {
-                background: transparent;
-                border: none;
-                outline: 0;
-                border-radius: 100px;
-                border: 1px solid #99969C;
-                padding: 11px 20px;
-                width: 240px;
-                background: url('../../../public/icons/search.svg') right 20px top 50% no-repeat;
-
-                &::placeholder {
-                    font-family: var(--font--Montserrat);
-                    color: #808080;
-                    font-size: 18px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 140%;
-                }
-            }
-
-            .search_input_icon {
-                border-bottom: 1px solid black;
-            }
-        }
-
-
+      }
     }
+
+    .search_input_wrapp {
+      //display: flex;
+      flex-direction: row;
+
+      .search_input {
+        background: transparent;
+        outline: 0;
+        border-radius: 100px;
+        border: 1px solid #99969C;
+        padding: 11px 20px;
+        width: 240px;
+        position: relative;
+        background: url('../../../public/icons/search.svg') right 20px top 50% no-repeat;
+
+        &::placeholder {
+          font-family: var(--font--Montserrat);
+          color: #808080;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+        }
+      }
+
+      .search_input_icon {
+        border-bottom: 1px solid black;
+      }
+
+      .search_result {
+        position: absolute;
+        background: white;
+        outline: 0;
+        border-radius: 20px;
+        border: 1px solid #99969C;
+        padding: 11px 20px;
+        width: 240px;
+        z-index: 1000;
+
+        .search_result_item {
+          font-family: var(--font--Montserrat);
+          color: #808080;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+
+          &:hover {
+            color: black;
+          }
+        }
+      }
+    }
+
+
+  }
 }

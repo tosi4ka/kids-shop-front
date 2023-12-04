@@ -1,3 +1,12 @@
+import {ProductTypes} from "@/types/productsTypes";
+
+export interface ProductsProps {
+	count: number
+	next: string
+	previous: string
+	results: ProductTypes[]
+}
+
 const getProductsByFilters = async (query: string) => {
 	try {
 		const response = await fetch(
