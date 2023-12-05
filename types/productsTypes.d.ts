@@ -1,5 +1,11 @@
 export type ProductsTypes = ProductTypes[]
 
+export interface ProductsProps {
+	count: number
+	next: string
+	previous: string
+	results: ProductTypes[]
+}
 interface ProductTypes {
 	id: number
 	product_images: ProductImage[]

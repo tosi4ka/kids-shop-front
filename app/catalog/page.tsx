@@ -1,10 +1,10 @@
 'use client'
 
-import getProductsByFilters, {ProductsProps} from '@/components/functions/getProductsByFilters'
+import getProductsByFilters from '@/components/functions/getProductsByFilters'
 import {removeFilter, resetFilter, selectFilters} from '@/features/filtersSlice'
 import React, {useEffect, useState} from 'react'
 import {useSelector} from 'react-redux'
-import {FiltersTypes} from '@/types/productsTypes'
+import {FiltersTypes, ProductsProps} from '@/types/productsTypes'
 import style from './style.module.scss'
 import BreadCrumbs from '@/components/BreadCrumbs'
 import ProductCard from '@/components/ProductCard'

@@ -1,9 +1,10 @@
 import style from "@/components/TheHeader/SubHeader/style.module.scss";
 import React, {useEffect, useState} from "react";
-import getProductsByFilters, {ProductsProps} from "@/components/functions/getProductsByFilters";
+import getProductsByFilters from "@/components/functions/getProductsByFilters";
 import {useAppDispatch} from "@/store";
 import {addFilter} from "@/features/filtersSlice";
 import {useRouter} from "next/navigation";
+import {ProductsProps} from "@/types/productsTypes";
 
 interface SearchBarProps {
 
@@ -78,7 +79,7 @@ const SearchBar: React.FC<SearchBarProps> = () => {
 
             {searchResults && searchResults.count > 0 && (
                 <div className={style.search_result}>
-                    {searchResults.results.map((option, index) => (
+                    {searchResults.results.map((option) => (
                         <div key={option.id} className={style.search_result_item}
                              onClick={() => doSearch(option.name)}>{option.name}</div>
                         // <option key={index} value={option.id}>{option.name}</option>
